@@ -146,7 +146,10 @@
 
             await Task.WhenAll(tasks);
         }
-
+        /// <summary>
+        /// Update details to existing game from cloud (https://acs.leagueoflegends.com/)
+        /// </summary>
+        /// <returns></returns>
         public async Task UpdateDetailsFromCloud()
         {
             
