@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <AssemblyVersion>2016.4.9.1538</AssemblyVersion>
+    <AssemblyVersion>2016.4.9.1821</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,7 +46,7 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analyse\GameForThisPlayer.cs" />
+    <Compile Include="Class\GameForThisPlayer.cs" />
     <Compile Include="Class\GameManagerProgress.cs" />
     <Compile Include="DTO\Ban.cs" />
     <Compile Include="DTO\CsDiffPerMinDeltas.cs" />
@@ -73,9 +73,9 @@
     <Compile Include="DTO\XpDiffPerMinDeltas.cs" />
     <Compile Include="DTO\XpPerMinDeltas.cs" />
     <Compile Include="ExMethod\ExBlockingCollection.cs" />
-    <Compile Include="GameDbManager.cs" />
-    <Compile Include="GameCloudUpdater.cs" />
-    <Compile Include="GameAnalyze.cs" />
+    <Compile Include="Engine\GameDbSync.cs" />
+    <Compile Include="Engine\GameCloudSync.cs" />
+    <Compile Include="Engine\GameAnalyze.cs" />
     <Compile Include="RunProcess\RunProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

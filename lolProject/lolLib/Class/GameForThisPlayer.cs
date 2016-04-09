@@ -3,9 +3,10 @@
     using System;
     using System.Collections.Generic;
     using Class;
-
+    
     public class GameForThisPlayer
     {
+        // Global
         public Int64 gameId { get; set; }
         public String platformId { get; set; }
         public Int64 gameCreation { get; set; }
@@ -16,17 +17,7 @@
         public String gameVersion { get; set; }
         public String gameMode { get; set; }
         public String gameType { get; set; }
-        // Participant
-        public Int32 participantId { get; set; }
-        public Int32 teamId { get; set; }
-        public Int32 championId { get; set; }
-        public Int32 spell1Id { get; set; }
-        public Int32 spell2Id { get; set; }
-        public List<Mastery> masteries { get; set; }
-        public List<Rune> runes { get; set; }
-        public String highestAchievedSeasonTier { get; set; }
-        public Stats stats { get; set; }
-        public Timeline timeline { get; set; }
+        // Team
         public String win { get; set; }
         public Boolean firstBlood { get; set; }
         public Boolean firstTower { get; set; }
@@ -42,5 +33,16 @@
         public Int32 riftHeraldKills { get; set; }
         public Int32 dominionVictoryScore { get; set; }
         public List<Ban> bans { get; set; }
+        // Participant
+        public Int32 participantId { get; set; }
+        public Int32 teamId { get; set; }
+        public Int32 championId { get; set; }
+        public Int32 spell1Id { get; set; }
+        public Int32 spell2Id { get; set; }
+        public List<Mastery> masteries { get; set; }
+        public List<Rune> runes { get; set; }
+        public String highestAchievedSeasonTier { get; set; }
+        public Stats stats { get; set; }
+        public Timeline timeline { get; set; }
     }
 }

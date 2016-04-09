@@ -8,8 +8,8 @@ _RunProcess
  RunProcess.cs : gestion des processus en mode synchro ou asynchrone (utile pour curl.exe) 
 
 GameAnalyze.cs : analyse de parties et dispatch des parties selon les joueurs
-GameCloudUpdater.cs : chargement depuis un fichier, mise à jour via le serveur web de League Of Legend et export vers un fichier des parties
-GameDbManager.cs : gestion des parties avec la base de données relationnelle
+GameCloudSync.cs : chargement depuis un fichier, mise à jour via le serveur web de League Of Legend et export vers un fichier des parties
+GameDbSync.cs : gestion des parties avec la base de données relationnelle
 
 
 :Relatif à curl (pour Windows 32/64)

@@ -38,7 +38,7 @@
         private static async Task RunAsync()
         {
             // create class
-            var gm = new GameCloudUpdater(_platformId, _accountId, _authorizationKey);
+            var gm = new GameCloudSync(_platformId, _accountId, _authorizationKey);
             // set parameters
             gm.LoadFile(_inputJsonFile);
             gm.SetUpdateStep(20);
@@ -49,9 +49,9 @@
             if (_gameDetails) await gm.UpdateDetailsFromCloud();
             // export
             if (_gameDetails)
-                gm.GenerateGameDetailsJson(_ouputJsonFile, Indented: _indentedJson);
+                gm.GenerateGameDetailsJson(_ouputJsonFile, IndentedJson: _indentedJson);
             else
-                gm.GenerateGameJson(_ouputJsonFile, Indented: _indentedJson);
+                gm.GenerateGameJson(_ouputJsonFile, IndentedJson: _indentedJson);
             // end
             Console.WriteLine("done!");
         }

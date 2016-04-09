@@ -21,12 +21,12 @@
             _separateForEachGame = SeparateForEachGame;
             _indentedJson = IndentedJson;
 
-            RunAsync().Wait();
+            RunAsync();
 
             return 0;
         }
 
-        private static async Task RunAsync()
+        private static void RunAsync()
         {
             // create class
             var ga = new GameAnalyse();

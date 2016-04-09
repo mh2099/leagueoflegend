@@ -10,7 +10,7 @@
     using Class;
     using Newtonsoft.Json;
 
-    public class GameCloudUpdater
+    public class GameCloudSync
     {
         #region Constructor
         // Definition variables
@@ -22,9 +22,9 @@
         private Boolean _deleteTemporaryJson;
         // Working variables
         private BlockingCollection<Game> _games = new BlockingCollection<Game>();
-        private BlockingCollection<Game> _dGames = new BlockingCollection<Game>(); 
+        private BlockingCollection<Game> _dGames = new BlockingCollection<Game>();
 
-        public GameCloudUpdater(String PlatformId, String AccountId, String AuthorizationKey)
+        public GameCloudSync(String PlatformId, String AccountId, String AuthorizationKey)
         {
             _plateformId = PlatformId;
             _accountId = AccountId;
@@ -37,7 +37,7 @@
         #endregion
         #region Set Parameters
         /// <summary>
-        /// Set update step (by default: 20)
+        ///     Set update step (by default: 20)
         /// </summary>
         /// <param name="UpdateStep">update step between 1 and 20</param>
         /// <returns></returns>
@@ -47,8 +47,9 @@
             _updateStep = UpdateStep;
             return true;
         }
+
         /// <summary>
-        /// Set a delete temporary JSON directory ( needed for update from cloud )
+        ///     Set a delete temporary JSON directory ( needed for update from cloud )
         /// </summary>
         /// <param name="TemporaryDirectory"></param>
         /// <returns></returns>
@@ -59,8 +60,9 @@
             _temporaryDirectory = TemporaryDirectory;
             return true;
         }
+
         /// <summary>
-        /// Set if temporary JSON file are automatically deleted ( needed for update from cloud )
+        ///     Set if temporary JSON file are automatically deleted ( needed for update from cloud )
         /// </summary>
         /// <param name="DeleteTemporaryJson"></param>
         public void SetDeleteTemporaryJson(Boolean DeleteTemporaryJson)
@@ -70,7 +72,7 @@
         #endregion
         #region Public Methods
         /// <summary>
-        /// Reset game list
+        ///     Reset game list
         /// </summary>
         public void Reset()
         {
@@ -79,8 +81,9 @@
             // reset _dGames variables
             _dGames.Clear();
         }
+
         /// <summary>
-        /// Load a game list from a JSON file
+        ///     Load a game list from a JSON file
         /// </summary>
         /// <param name="Filename">JSON file</param>
         public void LoadFile(String Filename, Boolean ClearBefore = true)
@@ -94,11 +97,12 @@
             var games = JsonConvert.DeserializeObject<List<Game>>(json);
             // add only new game to _games variable
             foreach (var game in games)
-                if(!_games.Any(a => a.gameId == game.gameId))
+                if (!_games.Any(a => a.gameId == game.gameId))
                     _games.Add(game);
         }
+
         /// <summary>
-        /// Update games from cloud (https://acs.leagueoflegends.com/)
+        ///     Update games from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         public async Task UpdateGamesFromCloud()
         {
@@ -114,15 +118,15 @@
             await RunProcess.RunProcess.RunAsync("curl.exe ", matchHistoryParams);
             // deserialize curl result
             var matchHistoryFile = File.ReadAllText(matchHistoryOutput);
-            if(_deleteTemporaryJson) File.Delete(matchHistoryOutput);
+            if (_deleteTemporaryJson) File.Delete(matchHistoryOutput);
             var matchHistory = JsonConvert.DeserializeObject<MatchHistory>(matchHistoryFile);
             // add only new game to _games variable
             var count = matchHistory.games.gameCount;
             foreach (var game in matchHistory.games.games)
-                if(!_games.Any(a => a.gameId == game.gameId))
+                if (!_games.Any(a => a.gameId == game.gameId))
                     _games.Add(game);
             // calculate task count
-            var taskCount = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(count) - Convert.ToDouble(_updateStep))/ Convert.ToDouble(_updateStep)));
+            var taskCount = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(count) - Convert.ToDouble(_updateStep))/Convert.ToDouble(_updateStep)));
             var tasks = new Task[taskCount];
             // prepare and execute parallel tasks
             for (var i = 0; i < taskCount; i++)
@@ -131,7 +135,7 @@
                 tasks[i] = Task.Factory.StartNew(() =>
                 {
                     // aggregate firstIndex and lastIndex variables
-                    var tFirstIndex = _updateStep * tId + _updateStep;
+                    var tFirstIndex = _updateStep*tId + _updateStep;
                     var tLastIndex = tFirstIndex + _updateStep;
                     // prepare curl executable
                     var tMatchHistoryOutput = Path.Combine(_temporaryDirectory, $"matchHistory_{DateTime.Now.ToString("yyyyMMddHHmmss")}_{_plateformId}_{_accountId}_{tFirstIndex}_{tLastIndex}.json");
@@ -152,7 +156,7 @@
         }
 
         /// <summary>
-        /// Update details to existing game from cloud (https://acs.leagueoflegends.com/)
+        ///     Update details to existing game from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         /// <returns></returns>
         public async Task UpdateDetailsFromCloud()
@@ -188,31 +192,33 @@
 
             await Task.WhenAll(tasks);
         }
+
         /// <summary>
-        /// Export game list to JSON file
+        ///     Export game list to JSON file
         /// </summary>
         /// <param name="Filename">JSON file</param>
-        /// <param name="Indented">Indented or not JSON file</param>
-        public void GenerateGameJson(String Filename, Boolean Indented = true)
+        /// <param name="IndentedJson">Indented or not JSON file</param>
+        public void GenerateGameJson(String Filename, Boolean IndentedJson = true)
         {
-            if(File.Exists(Filename))
+            if (File.Exists(Filename))
                 File.Delete(Filename);
-            
-            var json = JsonConvert.SerializeObject(_games, Indented ? Formatting.Indented : Formatting.None);
+
+            var json = JsonConvert.SerializeObject(_games, IndentedJson ? Formatting.Indented : Formatting.None);
 
             File.WriteAllText(Filename, json);
         }
+
         /// <summary>
-        /// Export details game to JSON file
+        ///     Export details game to JSON file
         /// </summary>
         /// <param name="Filename"></param>
-        /// <param name="Indented"></param>
-        public void GenerateGameDetailsJson(String Filename, Boolean Indented = true)
+        /// <param name="IndentedJson"></param>
+        public void GenerateGameDetailsJson(String Filename, Boolean IndentedJson = true)
         {
-            if(File.Exists(Filename))
+            if (File.Exists(Filename))
                 File.Delete(Filename);
 
-            var json = JsonConvert.SerializeObject(_dGames, Indented ? Formatting.Indented : Formatting.None);
+            var json = JsonConvert.SerializeObject(_dGames, IndentedJson ? Formatting.Indented : Formatting.None);
 
             File.WriteAllText(Filename, json);
         }
