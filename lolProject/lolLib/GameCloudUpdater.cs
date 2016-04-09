@@ -11,13 +11,7 @@
     using Class;
     using Newtonsoft.Json;
 
-    public class GameManagerProgress
-    {
-        public Int32 ProgressValue { get; set; } = 0;
-        public String ProgressText { get; set; } = String.Empty;
-    }
-
-    public class GameUpdater
+    public class GameCloudUpdater
     {
         #region Constructor
         private readonly String _accountId;
@@ -30,7 +24,7 @@
         private String _temporaryDirectory = String.Empty;
         private Boolean _deleteTemporaryJson = true;
 
-        public GameUpdater(String PlatformId, String AccountId, String AuthorizationKey)
+        public GameCloudUpdater(String PlatformId, String AccountId, String AuthorizationKey)
         {
             _plateformId = PlatformId;
             _accountId = AccountId;
@@ -78,6 +72,8 @@
         {
             // reset _games variables
             _games.Clear();
+            // reset _dGames variables
+            _dGames.Clear();
         }
         /// <summary>
         /// Load a game list from a JSON file
@@ -109,7 +105,7 @@
             // prepare curl executable
             var matchHistoryOutput = Path.Combine(_temporaryDirectory, $"matchHistory_{DateTime.Now.ToString("yyyyMMddHHmmss")}_{_plateformId}_{_accountId}_{firstIndex}_{lastIndex}.json");
             var matchHistoryParams = $"\"https://acs.leagueoflegends.com/v1/stats/player_history/{_plateformId}/{_accountId}?begIndex={firstIndex}&endIndex={lastIndex}\" -H \"Host: acs.leagueoflegends.com\" -H \"User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0\" -H \"Accept: application/json, text/javascript, */*; q=0.01\" -H \"Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3\" -H \"Region: {_plateformId}\" -H \"Authorization: {_authorizationKey}\" -H \"Referer: http://matchhistory.euw.leagueoflegends.com/en/\" -H \"Origin: http://matchhistory.euw.leagueoflegends.com\" -o \"{matchHistoryOutput}\"";
-            await RunProcessAsync("curl.exe ", matchHistoryParams);
+            await RunProcess.RunProcess.RunAsync("curl.exe ", matchHistoryParams);
             // deserialize curl result
             var matchHistoryFile = File.ReadAllText(matchHistoryOutput);
             if(_deleteTemporaryJson) File.Delete(matchHistoryOutput);
@@ -134,7 +130,7 @@
                     // prepare curl executable
                     var tMatchHistoryOutput = Path.Combine(_temporaryDirectory, $"matchHistory_{DateTime.Now.ToString("yyyyMMddHHmmss")}_{_plateformId}_{_accountId}_{tFirstIndex}_{tLastIndex}.json");
                     var tMatchHistoryParams = $"\"https://acs.leagueoflegends.com/v1/stats/player_history/{_plateformId}/{_accountId}?begIndex={tFirstIndex}&endIndex={tLastIndex}\" -H \"Host: acs.leagueoflegends.com\" -H \"User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0\" -H \"Accept: application/json, text/javascript, */*; q=0.01\" -H \"Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3\" -H \"Region: {_plateformId}\" -H \"Authorization: {_authorizationKey}\" -H \"Referer: http://matchhistory.euw.leagueoflegends.com/en/\" -H \"Origin: http://matchhistory.euw.leagueoflegends.com\" -o \"{tMatchHistoryOutput}\"";
-                    RunProcess("curl.exe ", tMatchHistoryParams);
+                    RunProcess.RunProcess.Run("curl.exe ", tMatchHistoryParams);
                     // deserialize curl result
                     var tMatchHistoryFile = File.ReadAllText(tMatchHistoryOutput);
                     if (_deleteTemporaryJson) File.Delete(tMatchHistoryOutput);
@@ -213,49 +209,6 @@
             var json = JsonConvert.SerializeObject(_dGames, Indented ? Formatting.Indented : Formatting.None);
 
             File.WriteAllText(Filename, json);
-        }
-        #endregion
-        #region Private Methods
-        private static void RunProcess(String Filename, String Arguments)
-        {
-            var process = new Process
-            {
-                StartInfo =
-                {
-                    FileName = Filename,
-                    Arguments = Arguments,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                },
-                EnableRaisingEvents = true
-            };
-
-            process.Start();
-            process.WaitForExit();
-        }
-        private static Task RunProcessAsync(String Filename, String Arguments)
-        {
-            var tcs = new TaskCompletionSource<Boolean>();
-
-            var process = new Process
-            {
-                StartInfo =
-                {
-                    FileName = Filename,
-                    Arguments = Arguments,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                },
-                EnableRaisingEvents = true
-            };
-
-            process.Exited += (Sender, Args) =>
-            {
-                tcs.SetResult(true);
-                process.Dispose();
-            };
-
-            process.Start();
-
-            return tcs.Task;
         }
         #endregion
     }

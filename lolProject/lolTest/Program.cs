@@ -65,14 +65,14 @@
         private static async Task RunAsync()
         {
             // create class
-            var gm = new GameUpdater(_platformId, _accountId, _authorizationKey);
+            var gm = new GameCloudUpdater(_platformId, _accountId, _authorizationKey);
             // set parameters
             gm.LoadFile(_inputJsonFile);
             gm.SetUpdateStep(20);
             gm.SetTemporaryDirectory(_temporaryPath);
             gm.SetDeleteTemporaryJson(DeleteTemporaryJson: _deleteTemporaryFile);
             // work
-            //await gm.UpdateGamesFromCloud();
+            await gm.UpdateGamesFromCloud();
             if(_gameDetails) await gm.UpdateDetailsFromCloud();
             // export
             if (_gameDetails)
