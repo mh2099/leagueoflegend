@@ -17,6 +17,14 @@
         public String gameVersion { get; set; }
         public String gameMode { get; set; }
         public String gameType { get; set; }
+        // Player
+        public Int32 accountId { get; set; }
+        public String summonerName { get; set; }
+        public Int32 summonerId { get; set; }
+        public String currentPlatformId { get; set; }
+        public Int32 currentAccountId { get; set; }
+        public String matchHistoryUri { get; set; }
+        public Int32 profileIcon { get; set; }
         // Team
         public String win { get; set; }
         public Boolean firstBlood { get; set; }

@@ -36,7 +36,7 @@
             ga.Analyze();
             ga.ExportAnalyze(_ouputDirectory, SeparateForEachPlayer: _separateForEachPlayer, SeparateForEachGame: _separateForEachGame, IndentedJson: _indentedJson);
             // end
-            Console.WriteLine("done!");
+            //Console.WriteLine("done!");
         }
     }
 }

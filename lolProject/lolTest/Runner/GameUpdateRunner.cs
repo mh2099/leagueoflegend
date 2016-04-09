@@ -53,7 +53,7 @@
             else
                 gm.GenerateGameJson(_ouputJsonFile, IndentedJson: _indentedJson);
             // end
-            Console.WriteLine("done!");
+            //Console.WriteLine("done!");
         }
     }
 }

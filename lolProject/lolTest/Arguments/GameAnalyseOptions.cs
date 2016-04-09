@@ -3,7 +3,7 @@
     using System;
     using CommandLine;
 
-    [Verb("analyze", HelpText = "analyze for each player game list")]
+    [Verb("analyze", HelpText = "analyze game list for each player")]
     public class GameAnalyseOptions
     {
         [Option('i', "inputJSONFile", HelpText = "Input JSON file")]

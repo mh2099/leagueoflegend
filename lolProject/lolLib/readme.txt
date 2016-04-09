@@ -1,4 +1,6 @@
-﻿_Class
+﻿[lolLib]
+
+_Class
  GameManagerProcess.cs : classe de données pour une encapsulation ave IProgress<T>
 
 _DTO

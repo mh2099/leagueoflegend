@@ -33,7 +33,7 @@
             // work
             gs.Sync();
             // end
-            Console.WriteLine("done!");
+            //Console.WriteLine("done!");
         }
     }
 }

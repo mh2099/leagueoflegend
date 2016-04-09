@@ -37,7 +37,7 @@
         #endregion
         #region Set Parameters
         /// <summary>
-        ///     Set update step (by default: 20)
+        /// Set update step (by default: 20)
         /// </summary>
         /// <param name="UpdateStep">update step between 1 and 20</param>
         /// <returns></returns>
@@ -49,7 +49,7 @@
         }
 
         /// <summary>
-        ///     Set a delete temporary JSON directory ( needed for update from cloud )
+        /// Set a delete temporary JSON directory ( needed for update from cloud )
         /// </summary>
         /// <param name="TemporaryDirectory"></param>
         /// <returns></returns>
@@ -62,7 +62,7 @@
         }
 
         /// <summary>
-        ///     Set if temporary JSON file are automatically deleted ( needed for update from cloud )
+        /// Set if temporary JSON file are automatically deleted ( needed for update from cloud )
         /// </summary>
         /// <param name="DeleteTemporaryJson"></param>
         public void SetDeleteTemporaryJson(Boolean DeleteTemporaryJson)
@@ -72,7 +72,7 @@
         #endregion
         #region Public Methods
         /// <summary>
-        ///     Reset game list
+        /// Reset game list
         /// </summary>
         public void Reset()
         {
@@ -83,7 +83,7 @@
         }
 
         /// <summary>
-        ///     Load a game list from a JSON file
+        /// Load a game list from a JSON file
         /// </summary>
         /// <param name="Filename">JSON file</param>
         public void LoadFile(String Filename, Boolean ClearBefore = true)
@@ -102,7 +102,7 @@
         }
 
         /// <summary>
-        ///     Update games from cloud (https://acs.leagueoflegends.com/)
+        /// Update games from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         public async Task UpdateGamesFromCloud()
         {
@@ -154,9 +154,9 @@
 
             await Task.WhenAll(tasks);
         }
-
+        
         /// <summary>
-        ///     Update details to existing game from cloud (https://acs.leagueoflegends.com/)
+        /// Update details to existing game from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         /// <returns></returns>
         public async Task UpdateDetailsFromCloud()
@@ -194,7 +194,7 @@
         }
 
         /// <summary>
-        ///     Export game list to JSON file
+        /// Export game list to JSON file
         /// </summary>
         /// <param name="Filename">JSON file</param>
         /// <param name="IndentedJson">Indented or not JSON file</param>
@@ -209,7 +209,7 @@
         }
 
         /// <summary>
-        ///     Export details game to JSON file
+        /// Export details game to JSON file
         /// </summary>
         /// <param name="Filename"></param>
         /// <param name="IndentedJson"></param>

@@ -19,14 +19,16 @@
                     TemporaryDirectory: @"d:\test_lol", InputJsonFile: @"d:\lol_1.json", OutputJsonFile: @"d:\lol_2.json",
                     GameDetails: true, DeleteTemporaryFile: true, IndentedJson: true);*/
 
-                GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_complete.json", OutputDirectory: @"d:\test_lol",
-                    SeparateForEachPlayer: false, SeparateForEachGame: true, IndentedJson: true);
+                /*GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_complete.json", OutputDirectory: @"d:\test_lol",
+                    SeparateForEachPlayer: false, SeparateForEachGame: false, IndentedJson: true);*/
+
+                GameInfosRunner.Run(InputJsonFile: @"d:\lol_complete.json");
 
                 return 0;
             }
             else
             {
-                var exitCode = Parser.Default.ParseArguments<GameUpdateOptions, GameAnalyseOptions, GameDbSyncOptions>(Args)
+                var exitCode = Parser.Default.ParseArguments<GameUpdateOptions, GameAnalyseOptions, GameDbSyncOptions, GameInfosOptions>(Args)
                     .MapResult(
                         (GameUpdateOptions o) => GameUpdateRunner.Run(o.PlatformId, o.AccoundId, o.AuthorizationKey,
                             o.TemporaryDirectory, o.InputJsonFile, o.OutputJsonFile,
@@ -36,6 +38,7 @@
                             o.IndentedJson),
                         (GameDbSyncOptions o) => GameDbSyncRunner.Run(o.Host, o.Port,
                             o.Username, o.Password, o.Table),
+                        (GameInfosOptions o) => GameInfosRunner.Run(o.InputJsonFile),
                         errs => 1);
 
                 return exitCode;
