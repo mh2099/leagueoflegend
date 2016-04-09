@@ -32,7 +32,8 @@
         /// <summary>
         /// Load a game list from a JSON file
         /// </summary>
-        /// <param name="Filename"></param>
+        /// <param name="Filename">JSON file</param>
+        /// <param name="ClearBefore">Clear game list before file loading</param>
         public void LoadFile(String Filename, Boolean ClearBefore = true)
         {
             // check if file exist

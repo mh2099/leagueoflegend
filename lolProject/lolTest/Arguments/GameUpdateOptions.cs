@@ -12,22 +12,25 @@
         [Option('a', "accountId", Required = true, HelpText = "Accound id for cloud updates")]
         public String AccoundId { get; set; }
 
-        [Option('k', "authorizationKey", Required = true, HelpText = "Authorization key (get it from firebug)")]
+        [Option('k', "authorizationKey", HelpText = "Authorization key (get it from firebug)")]
         public String AuthorizationKey { get; set; }
 
-        [Option('t', "temporaryDirectory", HelpText = "Set a delete temporary JSON directory ( needed for update from cloud )")]
+        [Option('t', "temporaryDirectory", HelpText = "Set a delete temporary JSON directory (needed for update from cloud)")]
         public String TemporaryDirectory { get; set; }
 
-        [Option('i', "inputJSONFile", HelpText = "Input JSON file (can be the same from output)")]
+        [Option('i', "inputJSONFile", HelpText = "Input JSON file (can be the same as output)")]
         public String InputJsonFile { get; set; }
 
-        [Option('o', "outputJSONFile", Required = true, HelpText = "Output JSON file (can be the same from input)")]
+        [Option('o', "outputJSONFile", Required = true, HelpText = "Output JSON file (can be the same as input)")]
         public String OutputJsonFile { get; set; }
 
-        [Option('d', "gameDetails", HelpText = "Scan details for each game")]
-        public Boolean GameDetails { get; set; }
+        [Option('c', "cloudUpdate", Default = false, HelpText = "Update game from cloud")]
+        public Boolean CloudUpdate { get; set; }
 
-        [Option('d', "deleteTemporaryFile", Default = true, HelpText = "Set if temporary JSON file are automatically deleted ( needed for update from cloud )")]
+        [Option('d', "detailsUpdate", Default = false, HelpText = "Update game details for each game")]
+        public Boolean DetailsUpdate { get; set; }
+
+        [Option('d', "deleteTemporaryFile", Default = true, HelpText = "Set if temporary JSON file are automatically deleted (needed for update from cloud)")]
         public Boolean DeleteTemporaryFile { get; set; }
 
         [Option('j', "indentedJson", Default = true, HelpText = "Indent or not output JSON file")]

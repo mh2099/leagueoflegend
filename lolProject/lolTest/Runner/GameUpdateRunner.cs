@@ -12,13 +12,15 @@
         private static String _temporaryDirectory;
         private static String _inputJsonFile;
         private static String _ouputJsonFile;
-        private static Boolean _gameDetails;
+        private static Boolean _cloudUpdate;
+        private static Boolean _detailsUpdate;
         private static Boolean _deleteTemporaryFile;
         private static Boolean _indentedJson;
 
         public static Int32 Run(String PlatformId, String AccountId, String AuthorizationKey,
             String TemporaryDirectory, String InputJsonFile, String OutputJsonFile,
-            Boolean GameDetails, Boolean DeleteTemporaryFile, Boolean IndentedJson)
+            Boolean CloudUpdate, Boolean DetailsUpdate,
+            Boolean DeleteTemporaryFile, Boolean IndentedJson)
         {
             _platformId = PlatformId;
             _accountId = AccountId;
@@ -26,7 +28,8 @@
             _temporaryDirectory = TemporaryDirectory;
             _inputJsonFile = InputJsonFile;
             _ouputJsonFile = OutputJsonFile;
-            _gameDetails = GameDetails;
+            _cloudUpdate = CloudUpdate;
+            _detailsUpdate = DetailsUpdate;
             _deleteTemporaryFile = DeleteTemporaryFile;
             _indentedJson = IndentedJson;
 
@@ -45,10 +48,10 @@
             gm.SetTemporaryDirectory(_temporaryDirectory);
             gm.SetDeleteTemporaryJson(DeleteTemporaryJson: _deleteTemporaryFile);
             // work
-            await gm.UpdateGamesFromCloud();
-            if (_gameDetails) await gm.UpdateDetailsFromCloud();
+            if(_cloudUpdate) await gm.UpdateGamesFromCloud();
+            if (_detailsUpdate) await gm.UpdateDetailsFromCloud();
             // export
-            if (_gameDetails)
+            if (_detailsUpdate)
                 gm.GenerateGameDetailsJson(_ouputJsonFile, IndentedJson: _indentedJson);
             else
                 gm.GenerateGameJson(_ouputJsonFile, IndentedJson: _indentedJson);
