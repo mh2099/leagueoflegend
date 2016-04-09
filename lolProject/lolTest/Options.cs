@@ -5,7 +5,7 @@
 
     public class Options
     {
-        [Option('p', "platformId", Required = true, Default = "EUW1", HelpText = "Platform for cloud updates")]
+        [Option('p', "platformId", Default = "EUW1", HelpText = "Platform for cloud updates")]
         public String PlatformId { get; set; }
 
         [Option('a', "accountId", Required = true, HelpText = "Accound id for cloud updates")]
@@ -14,7 +14,7 @@
         [Option('k', "authorizationKey", Required = true, HelpText = "Authorization key (get it from firebug)")]
         public String AuthorizationKey { get; set; }
 
-        [Option('t', "temporaryDirectory", Required = true, HelpText = "Set a delete temporary JSON directory ( needed for update from cloud )")]
+        [Option('t', "temporaryDirectory", HelpText = "Set a delete temporary JSON directory ( needed for update from cloud )")]
         public String TemporaryDirectory { get; set; }
 
         [Option('i', "inputJSONFile", HelpText = "Input JSON file (can be the same from output)")]

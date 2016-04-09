@@ -1,0 +1,4 @@
+TODO
+2016/04/09
+: concevoir la classe GameManager.cs
+: modéliser la base de données

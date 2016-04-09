@@ -21,14 +21,18 @@
         private BlockingCollection<Game> _games = new BlockingCollection<Game>();
         private BlockingCollection<Game> _dGames = new BlockingCollection<Game>(); 
         private Int32 _updateStep;
-        private String _temporaryDirectory = String.Empty;
-        private Boolean _deleteTemporaryJson = true;
+        private String _temporaryDirectory;
+        private Boolean _deleteTemporaryJson;
 
         public GameCloudUpdater(String PlatformId, String AccountId, String AuthorizationKey)
         {
             _plateformId = PlatformId;
             _accountId = AccountId;
             _authorizationKey = AuthorizationKey;
+
+            SetUpdateStep(20);
+            SetTemporaryDirectory(Path.Combine(Directory.GetCurrentDirectory(), "temp"));
+            SetDeleteTemporaryJson(true);
         }
         #endregion
         #region Set Parameters
