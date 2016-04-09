@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Runtime.InteropServices;
     using Analyse;
     using Class;
     using Newtonsoft.Json;
@@ -179,7 +180,7 @@
         /// <param name="SeparateForEachGame"></param>
         /// <param name="IndentedJson"></param>
         public void ExportAnalyze(String OutputDirectory,
-            Boolean SeparateForEachPlayer = true, Boolean SeparateForEachGame = true,
+            Boolean PlayerExportSeparatePlayer, Boolean GameExportSeparatePlayer, Boolean GameExportSeparateGame,
             Boolean IndentedJson = true)
         {
             if (!Directory.Exists(OutputDirectory))
@@ -189,7 +190,7 @@
 
             // export players
             if (_aPlayers?.Count > 0)
-                if (SeparateForEachPlayer)
+                if (PlayerExportSeparatePlayer)
                     foreach (var player in _aPlayers)
                     {
                         var aPlayerJson = JsonConvert.SerializeObject(player, IndentedJson ? Formatting.Indented : Formatting.None);
@@ -202,21 +203,40 @@
                     var aPlayersFile = Path.Combine(OutputDirectory, "players.json");
                     File.WriteAllText(aPlayersFile, aPlayersJson);
                 }
+
             // export games for each players
             if (_aGameForThisPlayers?.Count > 0)
-                if (SeparateForEachGame)
+            {
+                // One file by game player
+                if (GameExportSeparateGame && GameExportSeparatePlayer)
+                {
                     foreach (var game in _aGameForThisPlayers)
                     {
                         var aGameJson = JsonConvert.SerializeObject(game, IndentedJson ? Formatting.Indented : Formatting.None);
-                        var aGameFile = Path.Combine(OutputDirectory, $"game_{game.gameId}.json");
+                        var aGameFile = Path.Combine(OutputDirectory, $"game_{game.gameId}_player_{game.accountId}.json");
                         File.WriteAllText(aGameFile, aGameJson);
                     }
-                else
+                }
+                // One file
+                else if (!GameExportSeparateGame && !GameExportSeparatePlayer)
                 {
                     var aGamesJson = JsonConvert.SerializeObject(_aGameForThisPlayers, IndentedJson ? Formatting.Indented : Formatting.None);
                     var aGamesFile = Path.Combine(OutputDirectory, "games.json");
                     File.WriteAllText(aGamesFile, aGamesJson);
                 }
+                // One file by game for each by player
+                else
+                {
+                    foreach (var player in _aPlayers)
+                    {
+                        var aGamePlayer = _aGameForThisPlayers.Where(a => a.accountId == player.accountId).ToList();
+                        var aGamePlayerJson = JsonConvert.SerializeObject(aGamePlayer, IndentedJson ? Formatting.Indented : Formatting.None);
+                        var aGamePlayerFile = Path.Combine(OutputDirectory, $"games_player_{player.accountId}.json");
+                        File.WriteAllText(aGamePlayerFile, aGamePlayerJson);
+                    }
+                }
+            }
+
         }
         #endregion
     }

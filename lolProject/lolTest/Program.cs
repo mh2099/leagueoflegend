@@ -17,12 +17,13 @@
                     TemporaryDirectory: @"d:\test_lol", InputJsonFile: @"d:\lol_1.json", OutputJsonFile: @"d:\lol_2.json",
                     GameDetails: true, DeleteTemporaryFile: true, IndentedJson: true);*/
 
-                GameUpdateRunner.Run(PlatformId: "EUW1", AccountId: "34292008", AuthorizationKey: key,
+                /*GameUpdateRunner.Run(PlatformId: "EUW1", AccountId: "34292008", AuthorizationKey: key,
                                     InputJsonFile: "", OutputJsonFile: @"d:\lol_new.json",
-                                    CloudUpdate: true, DetailsUpdate: true, IndentedJson: true);
+                                    CloudUpdate: true, DetailsUpdate: true, IndentedJson: true);*/
 
-                /*GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_complete.json", OutputDirectory: @"d:\test_lol",
-                    SeparateForEachPlayer: false, SeparateForEachGame: false, IndentedJson: true);*/
+                /*GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_new.json", OutputDirectory: @"d:\test_lol",
+                    PlayerExportSeparatePlayer: false, GameExportSeparatePlayer : true, GameExportSeparateGame: false,
+                    IndentedJson: true);*/
 
                 //GameInfosRunner.Run(InputJsonFile: @"d:\lol_complete.json");
 
@@ -35,7 +36,7 @@
                         (GameUpdateOptions o) => GameUpdateRunner.Run(o.PlatformId, o.AccoundId, o.AuthorizationKey,
                             o.InputJsonFile, o.OutputJsonFile, o.CloudUpdate, o.DetailsUpdate, o.IndentedJson),
                         (GameAnalyseOptions o) => GameAnalyzeRunner.Run(o.InputJsonFile, o.OutputDirectory,
-                            o.SeparateForEachPlayer, o.SeparateForEachGame,
+                            o.PlayerExportSeparatePlayer, o.GameExportSeparatePlayer, o.GameExportSeparateGame,
                             o.IndentedJson),
                         (GameDbSyncOptions o) => GameDbSyncRunner.Run(o.Host, o.Port,
                             o.Username, o.Password, o.Table),

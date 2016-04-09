@@ -12,11 +12,14 @@
         [Option('o', "outputDirectory", Required = true, HelpText = "Output directory (JSON files are exported in")]
         public String OutputDirectory { get; set; }
 
-        [Option('p', "separateForEachPlayer", HelpText="Separate JSON files for each player")]
-        public Boolean SeparateForEachPlayer { get; set; }
+        [Option('p', "playerExportSeparatePlayer", HelpText="In players export, separate JSON files for each player")]
+        public Boolean PlayerExportSeparatePlayer { get; set; }
 
-        [Option('g', "separateForEachGame", HelpText = "Separate JSON files for each game")]
-        public Boolean SeparateForEachGame { get; set; }
+        [Option('g', "gameExportSeparatePlayer", HelpText = "In games export, separate JSON files for each player")]
+        public Boolean GameExportSeparatePlayer { get; set; }
+
+        [Option('G', "gameExportSeparateGame", HelpText = "In games export, separate JSON files for each game")]
+        public Boolean GameExportSeparateGame { get; set; }
 
         [Option('j', "indentedJson", Default = true, HelpText = "Indent or not output JSON file")]
         public Boolean IndentedJson { get; set; }

@@ -12,7 +12,7 @@
         [Option('a', "accountId", Required = true, HelpText = "Accound id for cloud updates")]
         public String AccoundId { get; set; }
 
-        [Option('k', "authorizationKey", HelpText = "Authorization key (get it from firebug)")]
+        [Option('k', "authorizationKey", HelpText = "Authorization key (get it from firebug) (without get only ranked game)")]
         public String AuthorizationKey { get; set; }
 
         [Option('i', "inputJSONFile", HelpText = "Input JSON file (can be the same as output)")]
