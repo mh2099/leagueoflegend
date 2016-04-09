@@ -3,6 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using lolLib;
+    using lolLib.Class;
 
     public static class GameUpdateRunner
     {
@@ -39,9 +40,12 @@
             // set parameters
             gm.LoadFile(_inputJsonFile);
             gm.SetUpdateStep(20);
+            // progress bar
+            var progress = new Progress<SyncProgress>();
+            progress.ProgressChanged += (Sender, Progress) => { Console.Write($"\r {Progress.GetInfos()} {Progress.GetPercentage()} % "); };
             // work
-            if(_cloudUpdate) await gm.UpdateGamesFromCloud();
-            if (_detailsUpdate) await gm.UpdateDetailsFromCloud();
+            if(_cloudUpdate) await gm.UpdateGamesFromCloud(progress);
+            if (_detailsUpdate) await gm.UpdateDetailsFromCloud(progress);
             // export
             if (_detailsUpdate)
                 gm.GenerateGameDetailsJson(_ouputJsonFile, IndentedJson: _indentedJson);

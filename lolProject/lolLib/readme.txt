@@ -2,7 +2,7 @@
 
 _Class
  GameForThisPlayer.cs : classe permettant la concaténation de Game.cs / Player.cs / Team.cs
- GameManagerProcess.cs : classe de données pour une encapsulation ave IProgress<T>
+ SyncProgress.cs : classe de données pour une encapsulation ave IProgress<T>
 
 _DTO
  Classes DTO relatif à la gestion des données issues des parties de League Of Legend

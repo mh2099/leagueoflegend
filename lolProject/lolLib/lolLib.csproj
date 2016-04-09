@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <AssemblyVersion>2016.4.9.2127</AssemblyVersion>
+    <AssemblyVersion>2016.4.9.2202</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\GameForThisPlayer.cs" />
-    <Compile Include="Class\GameManagerProgress.cs" />
+    <Compile Include="Class\SyncProgress.cs" />
     <Compile Include="DTO\Ban.cs" />
     <Compile Include="DTO\CsDiffPerMinDeltas.cs" />
     <Compile Include="DTO\DamageTakenDiffPerMinDeltas.cs" />

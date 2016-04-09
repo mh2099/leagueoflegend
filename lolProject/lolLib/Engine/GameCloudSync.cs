@@ -77,8 +77,10 @@
         /// <summary>
         /// Update games from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
-        public async Task UpdateGamesFromCloud()
+        public async Task UpdateGamesFromCloud(IProgress<SyncProgress> progress)
         {
+            // sync progress init
+            SyncProgress.New("update game from cloud");
             // init firstIndex and lastIndex variables
             var firstIndex = 0;
             var lastIndex = _updateStep;
@@ -95,6 +97,10 @@
             // calculate task count
             var taskCount = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(count) - Convert.ToDouble(_updateStep))/Convert.ToDouble(_updateStep)));
             var tasks = new Task[taskCount];
+            // sync progress max
+            SyncProgress.SetProgressMax(taskCount);
+            // progress update
+            progress.Report(new SyncProgress());
             // prepare and execute parallel tasks
             for (var i = 0; i < taskCount; i++)
             {
@@ -113,6 +119,8 @@
                     foreach (var game in tMatchHistory.games.games)
                         if (!_games.Any(a => a.gameId == game.gameId))
                             _games.Add(game);
+                    // progressupdate
+                    progress.Report(new SyncProgress());
                 });
             }
 
@@ -122,11 +130,15 @@
         /// Update details to existing game from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         /// <returns></returns>
-        public async Task UpdateDetailsFromCloud()
+        public async Task UpdateDetailsFromCloud(IProgress<SyncProgress> progress)
         {
+            // sync progress init
+            SyncProgress.New("update details from cloud");
             // calculate task count
             var taskCount = _games.Count;
             var tasks = new Task[taskCount];
+            // sync progress max
+            SyncProgress.SetProgressMax(taskCount);
             // prepare and execute parallel tasks
             var i = 0;
             foreach (var game in _games)
@@ -144,6 +156,8 @@
                     var tGameDetail = JsonConvert.DeserializeObject<Game>(json);
                     // replace game by detail game
                     _dGames.Add(tGameDetail);
+                    // progressupdate
+                    progress.Report(new SyncProgress());
                 });
 
                 i++;
