@@ -18,9 +18,8 @@
                     GameDetails: true, DeleteTemporaryFile: true, IndentedJson: true);*/
 
                 GameUpdateRunner.Run(PlatformId: "EUW1", AccountId: "34292008", AuthorizationKey: key,
-                                    TemporaryDirectory: @"d:\test_lol", InputJsonFile: "", OutputJsonFile: @"d:\lol_new.json",
-                                    CloudUpdate: true, DetailsUpdate: false,
-                                    DeleteTemporaryFile: true, IndentedJson: true);
+                                    InputJsonFile: "", OutputJsonFile: @"d:\lol_new.json",
+                                    CloudUpdate: true, DetailsUpdate: true, IndentedJson: true);
 
                 /*GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_complete.json", OutputDirectory: @"d:\test_lol",
                     SeparateForEachPlayer: false, SeparateForEachGame: false, IndentedJson: true);*/
@@ -34,9 +33,7 @@
                 var exitCode = Parser.Default.ParseArguments<GameUpdateOptions, GameAnalyseOptions, GameDbSyncOptions, GameInfosOptions>(Args)
                     .MapResult(
                         (GameUpdateOptions o) => GameUpdateRunner.Run(o.PlatformId, o.AccoundId, o.AuthorizationKey,
-                            o.TemporaryDirectory, o.InputJsonFile, o.OutputJsonFile,
-                            o.CloudUpdate, o.DetailsUpdate,
-                            o.DeleteTemporaryFile, o.IndentedJson),
+                            o.InputJsonFile, o.OutputJsonFile, o.CloudUpdate, o.DetailsUpdate, o.IndentedJson),
                         (GameAnalyseOptions o) => GameAnalyzeRunner.Run(o.InputJsonFile, o.OutputDirectory,
                             o.SeparateForEachPlayer, o.SeparateForEachGame,
                             o.IndentedJson),

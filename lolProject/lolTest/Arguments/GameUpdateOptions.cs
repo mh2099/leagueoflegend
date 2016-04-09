@@ -15,9 +15,6 @@
         [Option('k', "authorizationKey", HelpText = "Authorization key (get it from firebug)")]
         public String AuthorizationKey { get; set; }
 
-        [Option('t', "temporaryDirectory", HelpText = "Set a delete temporary JSON directory (needed for update from cloud)")]
-        public String TemporaryDirectory { get; set; }
-
         [Option('i', "inputJSONFile", HelpText = "Input JSON file (can be the same as output)")]
         public String InputJsonFile { get; set; }
 
@@ -29,9 +26,6 @@
 
         [Option('d', "detailsUpdate", Default = false, HelpText = "Update game details for each game")]
         public Boolean DetailsUpdate { get; set; }
-
-        [Option('d', "deleteTemporaryFile", Default = true, HelpText = "Set if temporary JSON file are automatically deleted (needed for update from cloud)")]
-        public Boolean DeleteTemporaryFile { get; set; }
 
         [Option('j', "indentedJson", Default = true, HelpText = "Indent or not output JSON file")]
         public Boolean IndentedJson { get; set; }

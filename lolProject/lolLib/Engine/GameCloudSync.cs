@@ -18,8 +18,6 @@
         private readonly String _authorizationKey;
         private readonly String _plateformId;
         private Int32 _updateStep;
-        private String _temporaryDirectory;
-        private Boolean _deleteTemporaryJson;
         // Working variables
         private BlockingCollection<Game> _games = new BlockingCollection<Game>();
         private BlockingCollection<Game> _dGames = new BlockingCollection<Game>();
@@ -31,8 +29,6 @@
             _authorizationKey = AuthorizationKey;
 
             SetUpdateStep(20);
-            SetTemporaryDirectory(Path.Combine(Directory.GetCurrentDirectory(), "temp"));
-            SetDeleteTemporaryJson(true);
         }
         #endregion
         #region Set Parameters
@@ -46,26 +42,6 @@
             if (UpdateStep <= 1 || UpdateStep > 20) return false;
             _updateStep = UpdateStep;
             return true;
-        }
-        /// <summary>
-        /// Set a delete temporary JSON directory ( needed for update from cloud )
-        /// </summary>
-        /// <param name="TemporaryDirectory"></param>
-        /// <returns></returns>
-        public Boolean SetTemporaryDirectory(String TemporaryDirectory)
-        {
-            Directory.CreateDirectory(TemporaryDirectory);
-            if (!Directory.Exists(TemporaryDirectory)) return false;
-            _temporaryDirectory = TemporaryDirectory;
-            return true;
-        }
-        /// <summary>
-        /// Set if temporary JSON file are automatically deleted ( needed for update from cloud )
-        /// </summary>
-        /// <param name="DeleteTemporaryJson"></param>
-        public void SetDeleteTemporaryJson(Boolean DeleteTemporaryJson)
-        {
-            _deleteTemporaryJson = DeleteTemporaryJson;
         }
         #endregion
         #region Public Methods
@@ -103,9 +79,6 @@
         /// </summary>
         public async Task UpdateGamesFromCloud()
         {
-            // check if temporary directory exist
-            if (_temporaryDirectory == String.Empty) throw new DirectoryNotFoundException("temporary directory not set!");
-            if (!Directory.Exists(_temporaryDirectory)) throw new DirectoryNotFoundException($"{_temporaryDirectory} not found!");
             // init firstIndex and lastIndex variables
             var firstIndex = 0;
             var lastIndex = _updateStep;
