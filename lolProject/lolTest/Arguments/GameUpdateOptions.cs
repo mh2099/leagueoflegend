@@ -1,9 +1,10 @@
-﻿namespace lolTest
+﻿namespace lolTest.Arguments
 {
     using System;
     using CommandLine;
 
-    public class Options
+    [Verb("update", HelpText = "load, update and export game list")]
+    public class GameUpdateOptions
     {
         [Option('p', "platformId", Default = "EUW1", HelpText = "Platform for cloud updates")]
         public String PlatformId { get; set; }

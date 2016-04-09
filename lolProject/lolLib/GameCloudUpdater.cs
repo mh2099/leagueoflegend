@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -14,15 +13,16 @@
     public class GameCloudUpdater
     {
         #region Constructor
+        // Definition variables
         private readonly String _accountId;
         private readonly String _authorizationKey;
         private readonly String _plateformId;
-        
-        private BlockingCollection<Game> _games = new BlockingCollection<Game>();
-        private BlockingCollection<Game> _dGames = new BlockingCollection<Game>(); 
         private Int32 _updateStep;
         private String _temporaryDirectory;
         private Boolean _deleteTemporaryJson;
+        // Working variables
+        private BlockingCollection<Game> _games = new BlockingCollection<Game>();
+        private BlockingCollection<Game> _dGames = new BlockingCollection<Game>(); 
 
         public GameCloudUpdater(String PlatformId, String AccountId, String AuthorizationKey)
         {
@@ -83,10 +83,12 @@
         /// Load a game list from a JSON file
         /// </summary>
         /// <param name="Filename">JSON file</param>
-        public void LoadFile(String Filename)
+        public void LoadFile(String Filename, Boolean ClearBefore = true)
         {
             // check if file exist
             if (!File.Exists(Filename)) return;
+            // clear _games
+            if (ClearBefore) Reset();
             // read file and deserialize json
             var json = File.ReadAllText(Filename);
             var games = JsonConvert.DeserializeObject<List<Game>>(json);
