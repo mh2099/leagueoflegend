@@ -146,6 +146,11 @@
 
             await Task.WhenAll(tasks);
         }
+
+        public async Task UpdateDetailsFromCloud()
+        {
+            
+        }
         /// <summary>
         /// Export game list to JSON file
         /// </summary>
