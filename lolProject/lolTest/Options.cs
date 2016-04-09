@@ -23,6 +23,9 @@
         [Option('o', "outputJSONFile", Required = true, HelpText = "Output JSON file (can be the same from input)")]
         public String OutputJsonFile { get; set; }
 
+        [Option('d', "gameDetails", HelpText = "Scan details for each game")]
+        public Boolean GameDetails { get; set; }
+
         [Option('d', "deleteTemporaryFile", Default = true, HelpText = "Set if temporary JSON file are automatically deleted ( needed for update from cloud )")]
         public Boolean DeleteTemporaryFile { get; set; }
 

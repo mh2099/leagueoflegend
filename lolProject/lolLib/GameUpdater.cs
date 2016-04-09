@@ -6,6 +6,7 @@
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
     using Class;
     using Newtonsoft.Json;
@@ -24,6 +25,7 @@
         private readonly String _plateformId;
         
         private BlockingCollection<Game> _games = new BlockingCollection<Game>();
+        private BlockingCollection<Game> _dGames = new BlockingCollection<Game>(); 
         private Int32 _updateStep;
         private String _temporaryDirectory = String.Empty;
         private Boolean _deleteTemporaryJson = true;
@@ -146,25 +148,69 @@
 
             await Task.WhenAll(tasks);
         }
+
         /// <summary>
         /// Update details to existing game from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         /// <returns></returns>
         public async Task UpdateDetailsFromCloud()
         {
-            
+            // calculate task count
+            var taskCount = _games.Count;
+            var tasks = new Task[taskCount];
+            // prepare and execute parallel tasks
+            var i = 0;
+            foreach (var game in _games)
+            {
+                var tId = i;
+                var gameId = game.gameId;
+
+                tasks[i] = Task.Factory.StartNew(() =>
+                {
+                    using (var wc = new WebClient())
+                    {
+                        // prepare uri
+                        var tGameDetailUri = $"https://acs.leagueoflegends.com/v1/stats/game/{_plateformId}/{gameId}";
+                        Console.WriteLine(tGameDetailUri);
+                        // download json
+                        var json = wc.DownloadString(tGameDetailUri);
+                        // deserialize result
+                        var tGameDetail = JsonConvert.DeserializeObject<Game>(json);
+                        // replace game by detail game
+                        _dGames.Add(tGameDetail);
+                    }
+                });
+
+                i++;
+            }
+
+            await Task.WhenAll(tasks);
         }
         /// <summary>
         /// Export game list to JSON file
         /// </summary>
         /// <param name="Filename">JSON file</param>
         /// <param name="Indented">Indented or not JSON file</param>
-        public void GenerateJson(String Filename, Boolean Indented = true)
+        public void GenerateGameJson(String Filename, Boolean Indented = true)
         {
             if(File.Exists(Filename))
                 File.Delete(Filename);
             
             var json = JsonConvert.SerializeObject(_games, Indented ? Formatting.Indented : Formatting.None);
+
+            File.WriteAllText(Filename, json);
+        }
+        /// <summary>
+        /// Export details game to JSON file
+        /// </summary>
+        /// <param name="Filename"></param>
+        /// <param name="Indented"></param>
+        public void GenerateGameDetailsJson(String Filename, Boolean Indented = true)
+        {
+            if(File.Exists(Filename))
+                File.Delete(Filename);
+
+            var json = JsonConvert.SerializeObject(_dGames, Indented ? Formatting.Indented : Formatting.None);
 
             File.WriteAllText(Filename, json);
         }
