@@ -22,7 +22,7 @@
             // create class
             var ga = new GameAnalyse();
             // set parameters
-            ga.LoadFile(_inputJsonFile);
+            ga.LoadFile(Filename: _inputJsonFile);
             // work
             ga.Analyze(ShowInfos: true);
             // end

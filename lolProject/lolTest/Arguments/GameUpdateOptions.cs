@@ -27,6 +27,9 @@
         [Option('d', "detailsUpdate", Default = false, HelpText = "Update game details for each game")]
         public Boolean DetailsUpdate { get; set; }
 
+        [Option('f', "addFrame", Default = false, HelpText = "Update game frame for each game (only if detailsUpdate is enabled)")]
+        public Boolean AddFrame { get; set; }
+
         [Option('j', "indentedJson", Default = true, HelpText = "Indent or not output JSON file")]
         public Boolean IndentedJson { get; set; }
     }

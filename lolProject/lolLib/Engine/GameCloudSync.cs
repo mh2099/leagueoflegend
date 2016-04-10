@@ -77,10 +77,10 @@
         /// <summary>
         /// Update games from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
-        public async Task UpdateGamesFromCloud(IProgress<SyncProgress> Progress)
+        public async Task UpdateGamesFromCloud(IProgress<SyncProgress> Progress = null)
         {
             // sync progress init
-            SyncProgress.New("update game from cloud");
+            if(Progress != null) SyncProgress.New("update game from cloud");
             // init firstIndex and lastIndex variables
             var firstIndex = 0;
             var lastIndex = _updateStep;
@@ -97,10 +97,13 @@
             // calculate task count
             var taskCount = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(count) - Convert.ToDouble(_updateStep))/Convert.ToDouble(_updateStep)));
             var tasks = new Task[taskCount];
-            // sync progress max
-            SyncProgress.SetProgressMax(taskCount);
-            // progress update
-            Progress.Report(new SyncProgress());
+            if (Progress != null)
+            {
+                // sync progress max
+                SyncProgress.SetProgressMax(taskCount);
+                // progress update
+                Progress.Report(new SyncProgress());
+            }
             // prepare and execute parallel tasks
             for (var i = 0; i < taskCount; i++)
             {
@@ -120,7 +123,7 @@
                         if (!_games.Any(a => a.gameId == game.gameId))
                             _games.Add(game);
                     // progressupdate
-                    Progress.Report(new SyncProgress());
+                    if (Progress != null) Progress.Report(new SyncProgress());
                 });
             }
 
@@ -130,34 +133,46 @@
         /// Update details to existing game from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         /// <returns></returns>
-        public async Task UpdateDetailsFromCloud(IProgress<SyncProgress> Progress)
+        public async Task UpdateDetailsFromCloud(Boolean AddFrame = false, IProgress<SyncProgress> Progress = null)
         {
             // sync progress init
-            SyncProgress.New("update details from cloud");
+            if (Progress != null) SyncProgress.New("update details from cloud");
             // calculate task count
             var taskCount = _games.Count;
             var tasks = new Task[taskCount];
             // sync progress max
-            SyncProgress.SetProgressMax(taskCount);
+            if (Progress != null) SyncProgress.SetProgressMax(taskCount);
             // prepare and execute parallel tasks
             var i = 0;
             foreach (var game in _games)
             {
-                var tId = i;
                 var gameId = game.gameId;
 
                 tasks[i] = Task.Factory.StartNew(() =>
                 {
                     // prepare uri
                     var tGameDetailUri = new Uri($"https://acs.leagueoflegends.com/v1/stats/game/{_plateformId}/{gameId}");
+                    var tGameFrameUri = new Uri($"https://acs.leagueoflegends.com/v1/stats/game/{_plateformId}/{gameId}/timeline");
                     // download json
-                    var json = Download(tGameDetailUri);
-                    // deserialize result
-                    var tGameDetail = JsonConvert.DeserializeObject<Game>(json);
-                    // replace game by detail game
-                    _dGames.Add(tGameDetail);
+                    var jsonD = Download(tGameDetailUri);
+                    var jsonF = String.Empty;
+                    if (AddFrame) jsonF = Download(tGameFrameUri);
+                    if (jsonD.Length > 0 && jsonF.Length > 0)
+                    {
+                        // deserialize game
+                        var tGameDetail = JsonConvert.DeserializeObject<Game>(jsonD);
+                        if (AddFrame)
+                        {
+                            // deserialize gameFrame
+                            var tGameFrame = JsonConvert.DeserializeObject<GameFrame>(jsonF);
+                            // add game frame in game
+                            tGameDetail.gameFrame = tGameFrame;
+                        }
+                        // replace game by detail game
+                        _dGames.Add(tGameDetail);
+                    }
                     // progressupdate
-                    Progress.Report(new SyncProgress());
+                    if (Progress != null) Progress.Report(new SyncProgress());
                 });
 
                 i++;
@@ -214,8 +229,13 @@
                 wc.Headers.Add("Referer", "http://matchhistory.euw.leagueoflegends.com/en/");
                 wc.Headers.Add("Origin", "http://matchhistory.euw.leagueoflegends.com");
 
-                var result = wc.DownloadString(Uri);
-                return result;
+                try {
+                    var result = wc.DownloadString(Uri);
+                    return result;
+                }
+                catch (Exception) {
+                    return String.Empty;
+                }
             }
         }
         /// <summary>
@@ -236,8 +256,15 @@
                 wc.Headers.Add("Referer", "http://matchhistory.euw.leagueoflegends.com/en/");
                 wc.Headers.Add("Origin", "http://matchhistory.euw.leagueoflegends.com");
 
-                var result = await wc.DownloadStringTaskAsync(Uri);
-                return result;
+                try
+                {
+                    var result = await wc.DownloadStringTaskAsync(Uri);
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return String.Empty;
+                }
             }
         }
         #endregion
