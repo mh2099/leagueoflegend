@@ -1,9 +1,9 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
     using System.Collections.Generic;
 
-    public class MatchHistory
+    public class MatchHistory : IDTO
     {
         public String platformId { get; set; }
         public Int32 accountId { get; set; }

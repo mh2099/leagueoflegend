@@ -1,9 +1,9 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
     using System.Collections.Generic;
 
-    public class Games
+    public class Games : IDTO
     {
         public Int32 gameIndexBegin { get; set; }
         public Int32 gameIndexEnd { get; set; }

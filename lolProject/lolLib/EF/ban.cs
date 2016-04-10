@@ -12,7 +12,7 @@ namespace lolLib.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class ban
+    public partial class ban : IEntity
     {
         public int championId { get; set; }
         public Nullable<int> pickTurn { get; set; }

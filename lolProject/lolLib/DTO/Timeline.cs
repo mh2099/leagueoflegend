@@ -1,8 +1,8 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
 
-    public class Timeline
+    public class Timeline : IDTO
     {
         public Int32 participantId { get; set; }
         public CreepsPerMinDeltas creepsPerMinDeltas { get; set; }

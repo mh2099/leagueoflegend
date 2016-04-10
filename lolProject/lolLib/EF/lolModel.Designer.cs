@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'D:\gitRepo\leagueoflegend\lolProject\lolLib\EF\lolModel.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'D:\GitRepo\LeagueOfLegend\lolProject\lolLib\EF\lolModel.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.

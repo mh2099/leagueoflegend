@@ -16,8 +16,11 @@ namespace lolLib.EF
     public partial class lolEntities : DbContext
     {
         public lolEntities()
-            : base("name=lolEntities")
+            : base(DBConnection.ShowConnectionString())
         {
+    		Configuration.ProxyCreationEnabled = false;
+    
+    		((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 200;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

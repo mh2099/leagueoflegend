@@ -12,7 +12,7 @@ namespace lolLib.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class timeline
+    public partial class timeline : IEntity
     {
         public long gameId { get; set; }
         public int participantId { get; set; }

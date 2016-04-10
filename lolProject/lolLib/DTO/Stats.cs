@@ -1,8 +1,8 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
 
-    public class Stats
+    public class Stats : IDTO
     {
         public Int32 participantId { get; set; }
         public Boolean win { get; set; }

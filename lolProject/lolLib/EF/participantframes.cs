@@ -12,7 +12,7 @@ namespace lolLib.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class participantframes
+    public partial class participantframes : IEntity
     {
         public int participantFramesId { get; set; }
         public int participantFrame1 { get; set; }

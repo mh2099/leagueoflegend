@@ -57,8 +57,11 @@ using System.Linq;
 <#=Accessibility.ForType(container)#> partial class <#=code.Escape(container)#> : DbContext
 {
     public <#=code.Escape(container)#>()
-        : base("name=<#=container.Name#>")
+        : base(DBConnection.ShowConnectionString())
     {
+		Configuration.ProxyCreationEnabled = false;
+
+		((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 200;
 <#
 if (!loader.IsLazyLoadingEnabled(container))
 {

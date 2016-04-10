@@ -1,9 +1,9 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
     using Newtonsoft.Json;
 
-    public class ParticipantFrames
+    public class ParticipantFrames : IDTO
     {
         [JsonProperty(PropertyName = "1")]
         public ParticipantFrame ParticipantFrame1 { get; set; }

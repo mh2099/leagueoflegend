@@ -8,6 +8,7 @@
     using System.Net;
     using System.Threading.Tasks;
     using Class;
+    using DTO;
     using Newtonsoft.Json;
 
     public class GameCloudSync

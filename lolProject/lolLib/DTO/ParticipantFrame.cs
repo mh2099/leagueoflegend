@@ -1,8 +1,8 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
 
-    public class ParticipantFrame
+    public class ParticipantFrame : IDTO
     {
         public Int32 participantId { get; set; }
         public Position position { get; set; }

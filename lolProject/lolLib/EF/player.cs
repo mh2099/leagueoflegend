@@ -12,7 +12,7 @@ namespace lolLib.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class player
+    public partial class player : IEntity
     {
         public player()
         {

@@ -1,9 +1,9 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
     using Newtonsoft.Json;
 
-    public class XpPerMinDeltas
+    public class XpPerMinDeltas : IDTO
     {
         [JsonProperty(PropertyName = "0-10")]
         public Double FirstQuarter { get; set; }

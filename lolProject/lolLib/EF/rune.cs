@@ -12,7 +12,7 @@ namespace lolLib.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class rune
+    public partial class rune : IEntity
     {
         public int runeId { get; set; }
         public int participantId { get; set; }

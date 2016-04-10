@@ -5,9 +5,8 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Runtime.InteropServices;
     using Analyse;
-    using Class;
+    using DTO;
     using Newtonsoft.Json;
 
     public class GameAnalyse

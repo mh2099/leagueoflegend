@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using Class;
-    
-    public class GameForThisPlayer
+    using DTO;
+
+    public class GameForThisPlayer : IDTO
     {
         // Global
         public Int64 gameId { get; set; }

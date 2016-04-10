@@ -1,9 +1,9 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
     using System.Collections.Generic;
 
-    public class Participant
+    public class Participant : IDTO
     {
         public Int32 participantId { get; set; }
         public Int32 teamId { get; set; }

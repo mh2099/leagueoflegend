@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <AssemblyVersion>2016.4.10.2115</AssemblyVersion>
+    <AssemblyVersion>2016.4.10.2259</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,6 +67,7 @@
     <Compile Include="DTO\GameFrame.cs" />
     <Compile Include="DTO\GoldPerMinDeltas.cs" />
     <Compile Include="DTO\CreepsPerMinDeltas.cs" />
+    <Compile Include="DTO\IDTO.cs" />
     <Compile Include="DTO\Mastery.cs" />
     <Compile Include="DTO\MatchHistory.cs" />
     <Compile Include="DTO\Participant.cs" />
@@ -84,6 +85,8 @@
     <Compile Include="EF\ban.cs">
       <DependentUpon>lolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\DBConnection.cs" />
+    <Compile Include="EF\EntityManager.cs" />
     <Compile Include="EF\frame.cs">
       <DependentUpon>lolModel.tt</DependentUpon>
     </Compile>
@@ -96,6 +99,7 @@
     <Compile Include="EF\game_player.cs">
       <DependentUpon>lolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\IEntity.cs" />
     <Compile Include="EF\lolModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

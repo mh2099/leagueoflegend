@@ -12,7 +12,7 @@ namespace lolLib.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class mastery
+    public partial class mastery : IEntity
     {
         public int masteryId { get; set; }
         public long gameId { get; set; }

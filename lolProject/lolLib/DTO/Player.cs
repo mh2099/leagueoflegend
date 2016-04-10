@@ -1,8 +1,8 @@
-﻿namespace lolLib.Class
+﻿namespace lolLib.DTO
 {
     using System;
 
-    public class Player
+    public class Player : IDTO
     {
         public String platformId { get; set; }
         public Int32 accountId { get; set; }
