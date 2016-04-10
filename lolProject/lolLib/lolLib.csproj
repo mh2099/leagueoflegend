@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <AssemblyVersion>2016.4.10.1138</AssemblyVersion>
+    <AssemblyVersion>2016.4.10.1306</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,7 +55,7 @@
     <Compile Include="DTO\Frame.cs" />
     <Compile Include="DTO\Game.cs" />
     <Compile Include="DTO\Games.cs" />
-    <Compile Include="DTO\GameTimeline.cs" />
+    <Compile Include="DTO\GameFrame.cs" />
     <Compile Include="DTO\GoldPerMinDeltas.cs" />
     <Compile Include="DTO\CreepsPerMinDeltas.cs" />
     <Compile Include="DTO\Mastery.cs" />

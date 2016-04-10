@@ -77,7 +77,7 @@
         /// <summary>
         /// Update games from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
-        public async Task UpdateGamesFromCloud(IProgress<SyncProgress> progress)
+        public async Task UpdateGamesFromCloud(IProgress<SyncProgress> Progress)
         {
             // sync progress init
             SyncProgress.New("update game from cloud");
@@ -100,7 +100,7 @@
             // sync progress max
             SyncProgress.SetProgressMax(taskCount);
             // progress update
-            progress.Report(new SyncProgress());
+            Progress.Report(new SyncProgress());
             // prepare and execute parallel tasks
             for (var i = 0; i < taskCount; i++)
             {
@@ -120,7 +120,7 @@
                         if (!_games.Any(a => a.gameId == game.gameId))
                             _games.Add(game);
                     // progressupdate
-                    progress.Report(new SyncProgress());
+                    Progress.Report(new SyncProgress());
                 });
             }
 
@@ -130,7 +130,7 @@
         /// Update details to existing game from cloud (https://acs.leagueoflegends.com/)
         /// </summary>
         /// <returns></returns>
-        public async Task UpdateDetailsFromCloud(IProgress<SyncProgress> progress)
+        public async Task UpdateDetailsFromCloud(IProgress<SyncProgress> Progress)
         {
             // sync progress init
             SyncProgress.New("update details from cloud");
@@ -157,7 +157,7 @@
                     // replace game by detail game
                     _dGames.Add(tGameDetail);
                     // progressupdate
-                    progress.Report(new SyncProgress());
+                    Progress.Report(new SyncProgress());
                 });
 
                 i++;

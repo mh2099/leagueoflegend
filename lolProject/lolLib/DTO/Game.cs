@@ -18,5 +18,6 @@
         public List<Team> teams { get; set; }
         public List<Participant> participants { get; set; }
         public List<ParticipantIdentity> participantIdentities { get; set; }
+        public GameFrame gameFrame { get; set; }
     }
 }
