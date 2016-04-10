@@ -21,10 +21,10 @@
                                     InputJsonFile: "", OutputJsonFile: @"d:\lol_new.json",
                                     CloudUpdate: true, DetailsUpdate: true, IndentedJson: true);*/
 
-                /*GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_new.json", OutputDirectory: @"d:\test_lol",
+                GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_new.json", OutputDirectory: @"d:\test_lol",
                     PlayerExportSeparatePlayer: false, GameExportSeparatePlayer : true, GameExportSeparateGame: false,
-                    IndentedJson: true);*/
-
+                    IndentedJson: true);
+ 
                 //GameInfosRunner.Run(InputJsonFile: @"d:\lol_complete.json");
 
                 return 0;
