@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -44,7 +48,11 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\GameForThisPlayer.cs" />
@@ -73,6 +81,66 @@
     <Compile Include="DTO\Timeline.cs" />
     <Compile Include="DTO\XpDiffPerMinDeltas.cs" />
     <Compile Include="DTO\XpPerMinDeltas.cs" />
+    <Compile Include="EF\ban.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\frame.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\game.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\gameframe.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\game_player.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\lolModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lolModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\lolModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\lolModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lolModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\mastery.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\participant.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\participantframe.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\participantframes.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\participantidentities.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\player.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\rune.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\stat.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\team.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\timeline.cs">
+      <DependentUpon>lolModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ExMethod\ExBlockingCollection.cs" />
     <Compile Include="Engine\GameDbSync.cs" />
     <Compile Include="Engine\GameCloudSync.cs" />
@@ -81,13 +149,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="EF\lolModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>lolModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="EF\lolModel.edmx.diagram">
+      <DependentUpon>lolModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EF\lolModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>lolModel.edmx</DependentUpon>
+      <LastGenOutput>lolModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\lolModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>lolModel.edmx</DependentUpon>
+      <LastGenOutput>lolModel.cs</LastGenOutput>
+    </Content>
     <Content Include="readme.txt" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="EF\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

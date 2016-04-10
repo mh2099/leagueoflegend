@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="70e379b13db646babd0ee2dd8735378f" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="lolModel.ban" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.frame" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.game" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.game_player" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.gameframe" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.mastery" Width="1.5" PointX="9.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.participant" Width="1.5" PointX="7.5" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.participantframe" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.participantframes" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.participantidentities" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.player" Width="1.5" PointX="8.25" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.rune" Width="1.5" PointX="9.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.stat" Width="1.5" PointX="9.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.team" Width="1.5" PointX="7.5" PointY="58.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.timeline" Width="1.5" PointX="9.75" PointY="31.625" IsExpanded="true" />
+        <AssociationConnector Association="lolModel.fk_Frame_ParticipantFrames1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_game_frame_game1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_game_player_game" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_participant_game1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_participantIdentities_game1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_team_game1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_game_player_player1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_mastery_participant1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_rune_participant1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_stat_participant1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_timeline_participant1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame2" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame3" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame4" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame5" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame6" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame7" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_ParticipantFrames_ParticipantFrame8" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.fk_participantIdentities_player1" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.frames" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
