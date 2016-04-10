@@ -21,9 +21,9 @@
                                     InputJsonFile: "", OutputJsonFile: @"d:\lol_new.json",
                                     CloudUpdate: true, DetailsUpdate: true, IndentedJson: true);*/
 
-                GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_new.json", OutputDirectory: @"d:\test_lol",
-                    PlayerExportSeparatePlayer: false, GameExportSeparatePlayer : true, GameExportSeparateGame: false,
-                    IndentedJson: true);
+                GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_new.json", OutputDirectory: @"d:\test_lol\",
+                    PlayerExportSeparatePlayer: false, GameExportSeparatePlayer : false, GameExportSeparateGame: false,
+                    SelectPlayer: 34292008, SelectGame: 0, IndentedJson: true);
  
                 //GameInfosRunner.Run(InputJsonFile: @"d:\lol_complete.json");
 
@@ -37,7 +37,7 @@
                             o.InputJsonFile, o.OutputJsonFile, o.CloudUpdate, o.DetailsUpdate, o.IndentedJson),
                         (GameAnalyseOptions o) => GameAnalyzeRunner.Run(o.InputJsonFile, o.OutputDirectory,
                             o.PlayerExportSeparatePlayer, o.GameExportSeparatePlayer, o.GameExportSeparateGame,
-                            o.IndentedJson),
+                            o.SelectPlayer, o.SelectGame, o.IndentedJson),
                         (GameDbSyncOptions o) => GameDbSyncRunner.Run(o.Host, o.Port,
                             o.Username, o.Password, o.Table),
                         (GameInfosOptions o) => GameInfosRunner.Run(o.InputJsonFile),

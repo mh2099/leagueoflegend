@@ -11,16 +11,21 @@
         private static Boolean _playerExportSeparatePlayer;
         private static Boolean _gameExportSeparatePlayer;
         private static Boolean _gameExportSeparateGame;
+        private static Int32 _selectPlayer;
+        private static Int64 _selectGame;
         private static Boolean _indentedJson;
 
         public static Int32 Run(String InputJsonFile, String OutputDirectory,
-            Boolean PlayerExportSeparatePlayer, Boolean GameExportSeparatePlayer, Boolean GameExportSeparateGame, Boolean IndentedJson)
+            Boolean PlayerExportSeparatePlayer, Boolean GameExportSeparatePlayer, Boolean GameExportSeparateGame,
+            Int32 SelectPlayer, Int64 SelectGame, Boolean IndentedJson)
         {
             _inputJsonFile = InputJsonFile;
             _ouputDirectory = OutputDirectory;
             _playerExportSeparatePlayer = PlayerExportSeparatePlayer;
             _gameExportSeparatePlayer = GameExportSeparatePlayer;
             _gameExportSeparateGame = GameExportSeparateGame;
+            _selectPlayer = SelectPlayer;
+            _selectGame = SelectGame;
             _indentedJson = IndentedJson;
 
             RunAsync();
@@ -38,7 +43,7 @@
             ga.Analyze();
             ga.ExportAnalyze(_ouputDirectory, PlayerExportSeparatePlayer: _playerExportSeparatePlayer,
                 GameExportSeparatePlayer: _gameExportSeparatePlayer, GameExportSeparateGame: _gameExportSeparateGame,
-                IndentedJson: _indentedJson);
+                SelectPlayer: _selectPlayer, SelectGame: _selectGame, IndentedJson: _indentedJson);
             // end
             //Console.WriteLine("done!");
         }

@@ -21,6 +21,12 @@
         [Option('G', "gameExportSeparateGame", Default = false, HelpText = "In games export, separate JSON files for each game")]
         public Boolean GameExportSeparateGame { get; set; }
 
+        [Option('x', "selectPlayer", HelpText = "Select only one player (AccountId)")]
+        public Int32 SelectPlayer { get; set; }
+
+        [Option('y', "SelectGame", HelpText = "Select only one game (GameId)")]
+        public Int64 SelectGame { get; set; }
+
         [Option('j', "indentedJson", Default = true, HelpText = "Indent or not output JSON file")]
         public Boolean IndentedJson { get; set; }
     }
