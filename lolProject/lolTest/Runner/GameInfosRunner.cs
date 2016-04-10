@@ -25,6 +25,8 @@
             ga.LoadFile(Filename: _inputJsonFile);
             // work
             ga.Analyze(ShowInfos: true);
+            //
+            await Task.Delay(1);
             // end
             //Console.WriteLine("done!");
         }
