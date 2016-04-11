@@ -5,7 +5,7 @@
     using lolLib;
     using lolLib.Class;
 
-    public static class GameUpdateRunner
+    public static class GameCloudSyncRunner
     {
         private static String _platformId;
         private static String _accountId;

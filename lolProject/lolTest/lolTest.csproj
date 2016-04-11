@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <AssemblyVersion>2016.4.10.2259</AssemblyVersion>
+    <AssemblyVersion>2016.4.11.1159</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -47,16 +47,16 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arguments\GameInfosOptions.cs" />
+    <Compile Include="Arguments\GameFileInfosOptions.cs" />
     <Compile Include="Arguments\GameDbSyncOptions.cs" />
-    <Compile Include="Arguments\GameAnalyseOptions.cs" />
-    <Compile Include="Arguments\GameUpdateOptions.cs" />
+    <Compile Include="Arguments\GameFileAnalyseOptions.cs" />
+    <Compile Include="Arguments\GameCloudSyncOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Runner\GameDbSyncRunner.cs" />
-    <Compile Include="Runner\GameAnalyseRunner.cs" />
+    <Compile Include="Runner\GameFileAnalyseRunner.cs" />
     <Compile Include="Runner\GameInfosRunner.cs" />
-    <Compile Include="Runner\GameUpdateRunner.cs" />
+    <Compile Include="Runner\GameCloudSyncRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

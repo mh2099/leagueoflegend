@@ -9,7 +9,7 @@
     using DTO;
     using Newtonsoft.Json;
 
-    public class GameAnalyse
+    public class GameFileAnalyse
     {
         #region Constructor
         // Input variables

@@ -36,7 +36,7 @@
         private static void RunAsync()
         {
             // create class
-            var ga = new GameAnalyse();
+            var ga = new GameFileAnalyse();
             // set parameters
             ga.LoadFile(Filename: _inputJsonFile);
             // work

@@ -3,9 +3,12 @@
     using System;
     using CommandLine;
 
-    [Verb("db", HelpText = "game synchronization with database")]
+    [Verb("db-sync", HelpText = "(NOT WORKING YET!) game synchronization with database")]
     public class GameDbSyncOptions
     {
+        [Option('i', "inputJSONFile", HelpText = "Input JSON file")]
+        public String InputJsonFile { get; set; }
+
         [Option('h', "host", Required = true, HelpText = "Host address")]
         public String Host { get; set; }
 

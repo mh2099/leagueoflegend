@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <AssemblyVersion>2016.4.10.2259</AssemblyVersion>
+    <AssemblyVersion>2016.4.11.1155</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -148,7 +148,7 @@
     <Compile Include="ExMethod\ExBlockingCollection.cs" />
     <Compile Include="Engine\GameDbSync.cs" />
     <Compile Include="Engine\GameCloudSync.cs" />
-    <Compile Include="Engine\GameAnalyze.cs" />
+    <Compile Include="Engine\GameFileAnalyze.cs" />
     <Compile Include="RunProcess\RunProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

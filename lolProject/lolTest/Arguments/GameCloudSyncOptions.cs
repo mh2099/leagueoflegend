@@ -3,8 +3,8 @@
     using System;
     using CommandLine;
 
-    [Verb("update", HelpText = "load, update and export game list")]
-    public class GameUpdateOptions
+    [Verb("cloud-sync", HelpText = "load, update and export game list")]
+    public class GameCloudSyncOptions
     {
         [Option('p', "platformId", Default = "EUW1", HelpText = "Platform for cloud updates")]
         public String PlatformId { get; set; }

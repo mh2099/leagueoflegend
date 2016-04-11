@@ -3,8 +3,8 @@
     using System;
     using CommandLine;
 
-    [Verb("analyze", HelpText = "analyze game list for each player")]
-    public class GameAnalyseOptions
+    [Verb("file-analyze", HelpText = "analyze game list for each player")]
+    public class GameFileAnalyseOptions
     {
         [Option('i', "inputJSONFile", HelpText = "Input JSON file")]
         public String InputJsonFile { get; set; }
