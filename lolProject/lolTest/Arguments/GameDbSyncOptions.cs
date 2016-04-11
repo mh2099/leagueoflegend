@@ -18,7 +18,7 @@
         [Option('u', "username", Required = true, HelpText = "Database username")]
         public String Username { get; set; }
 
-        [Option('u', "password", Required = true, HelpText = "Database password")]
+        [Option('p', "password", Required = true, HelpText = "Database password")]
         public String Password { get; set; }
 
         [Option('t', "table", Required = true, HelpText = "Database table")]
