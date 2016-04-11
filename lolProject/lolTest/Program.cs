@@ -38,8 +38,8 @@
                         (GameFileAnalyseOptions o) => GameAnalyzeRunner.Run(o.InputJsonFile, o.OutputDirectory,
                             o.PlayerExportSeparatePlayer, o.GameExportSeparatePlayer, o.GameExportSeparateGame,
                             o.SelectPlayer, o.SelectGame, o.IndentedJson),
-                        (GameDbSyncOptions o) => GameDbSyncRunner.Run(o.Host, o.Port,
-                            o.Username, o.Password, o.Table),
+                        (GameDbSyncOptions o) => GameDbSyncRunner.Run(o.InputJsonFile, o.Host, o.Port,
+                            o.Username, o.Password, o.Table, o.ForceReload),
                         (GameFileInfosOptions o) => GameInfosRunner.Run(o.InputJsonFile),
                         errs => 1);
 

@@ -6,7 +6,7 @@
     [Verb("db-sync", HelpText = "(NOT WORKING YET!) game synchronization with database")]
     public class GameDbSyncOptions
     {
-        [Option('i', "inputJSONFile", HelpText = "Input JSON file")]
+        [Option('i', "inputJSONFile", Required = true, HelpText = "Input JSON file")]
         public String InputJsonFile { get; set; }
 
         [Option('h', "host", Required = true, HelpText = "Host address")]
@@ -23,5 +23,8 @@
 
         [Option('t', "table", Required = true, HelpText = "Database table")]
         public String Table { get; set; }
+
+        [Option('r', "forceReload", Default = false, HelpText = "Force reload (if entity exist, delete it and recreate it)")]
+        public Boolean ForceReload { get; set; }
     }
 }
