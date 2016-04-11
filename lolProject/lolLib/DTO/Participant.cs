@@ -6,7 +6,7 @@
     public class Participant : IDTO
     {
         public Int32 participantId { get; set; }
-        public SByte teamId { get; set; }
+        public Int16 teamId { get; set; }
         public Int16 championId { get; set; }
         public Int32 spell1Id { get; set; }
         public Int32 spell2Id { get; set; }

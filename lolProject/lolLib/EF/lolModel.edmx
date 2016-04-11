@@ -71,7 +71,7 @@
           </Key>
           <Property Name="participantId" Type="int" Nullable="false" />
           <Property Name="gameId" Type="bigint" Nullable="false" />
-          <Property Name="teamId" Type="tinyint" />
+          <Property Name="teamId" Type="smallint" />
           <Property Name="championId" Type="smallint" />
           <Property Name="spell1Id" Type="mediumint" />
           <Property Name="spell2Id" Type="mediumint" />
@@ -165,23 +165,23 @@
           <Property Name="quadraKills" Type="smallint" />
           <Property Name="pentaKills" Type="smallint" />
           <Property Name="unrealKills" Type="smallint" />
-          <Property Name="totalDamageDealt" Type="smallint" />
-          <Property Name="magicDamageDealt" Type="smallint" />
-          <Property Name="physicalDamageDealt" Type="smallint" />
-          <Property Name="trueDamageDealt" Type="smallint" />
-          <Property Name="largestCriticalStrike" Type="smallint" />
-          <Property Name="totalDamageDealtToChampions" Type="smallint" />
-          <Property Name="magicDamageDealtToChampions" Type="smallint" />
-          <Property Name="physicalDamageDealtToChampions" Type="smallint" />
-          <Property Name="trueDamageDealtToChampions" Type="smallint" />
-          <Property Name="totalHeal" Type="smallint" />
-          <Property Name="totalUnitsHealed" Type="smallint" />
-          <Property Name="totalDamageTaken" Type="smallint" />
-          <Property Name="magicalDamageTaken" Type="smallint" />
-          <Property Name="physicalDamageTaken" Type="smallint" />
-          <Property Name="trueDamageTaken" Type="smallint" />
-          <Property Name="goldEarned" Type="smallint" />
-          <Property Name="goldSpent" Type="smallint" />
+          <Property Name="totalDamageDealt" Type="mediumint" />
+          <Property Name="magicDamageDealt" Type="mediumint" />
+          <Property Name="physicalDamageDealt" Type="mediumint" />
+          <Property Name="trueDamageDealt" Type="mediumint" />
+          <Property Name="largestCriticalStrike" Type="mediumint" />
+          <Property Name="totalDamageDealtToChampions" Type="mediumint" />
+          <Property Name="magicDamageDealtToChampions" Type="mediumint" />
+          <Property Name="physicalDamageDealtToChampions" Type="mediumint" />
+          <Property Name="trueDamageDealtToChampions" Type="mediumint" />
+          <Property Name="totalHeal" Type="mediumint" />
+          <Property Name="totalUnitsHealed" Type="mediumint" />
+          <Property Name="totalDamageTaken" Type="mediumint" />
+          <Property Name="magicalDamageTaken" Type="mediumint" />
+          <Property Name="physicalDamageTaken" Type="mediumint" />
+          <Property Name="trueDamageTaken" Type="mediumint" />
+          <Property Name="goldEarned" Type="mediumint" />
+          <Property Name="goldSpent" Type="mediumint" />
           <Property Name="turretKills" Type="smallint" />
           <Property Name="inhibitorKills" Type="smallint" />
           <Property Name="totalMinionsKilled" Type="smallint" />
@@ -797,7 +797,7 @@
           </Key>
           <Property Name="participantId" Type="Int32" Nullable="false" />
           <Property Name="gameId" Type="Int64" Nullable="false" />
-          <Property Name="teamId" Type="SByte" />
+          <Property Name="teamId" Type="Int16" />
           <Property Name="championId" Type="Int16" />
           <Property Name="spell1Id" Type="Int32" />
           <Property Name="spell2Id" Type="Int32" />
@@ -917,23 +917,23 @@
           <Property Name="quadraKills" Type="Int16" />
           <Property Name="pentaKills" Type="Int16" />
           <Property Name="unrealKills" Type="Int16" />
-          <Property Name="totalDamageDealt" Type="Int16" />
-          <Property Name="magicDamageDealt" Type="Int16" />
-          <Property Name="physicalDamageDealt" Type="Int16" />
-          <Property Name="trueDamageDealt" Type="Int16" />
-          <Property Name="largestCriticalStrike" Type="Int16" />
-          <Property Name="totalDamageDealtToChampions" Type="Int16" />
-          <Property Name="magicDamageDealtToChampions" Type="Int16" />
-          <Property Name="physicalDamageDealtToChampions" Type="Int16" />
-          <Property Name="trueDamageDealtToChampions" Type="Int16" />
-          <Property Name="totalHeal" Type="Int16" />
-          <Property Name="totalUnitsHealed" Type="Int16" />
-          <Property Name="totalDamageTaken" Type="Int16" />
-          <Property Name="magicalDamageTaken" Type="Int16" />
-          <Property Name="physicalDamageTaken" Type="Int16" />
-          <Property Name="trueDamageTaken" Type="Int16" />
-          <Property Name="goldEarned" Type="Int16" />
-          <Property Name="goldSpent" Type="Int16" />
+          <Property Name="totalDamageDealt" Type="Int32" />
+          <Property Name="magicDamageDealt" Type="Int32" />
+          <Property Name="physicalDamageDealt" Type="Int32" />
+          <Property Name="trueDamageDealt" Type="Int32" />
+          <Property Name="largestCriticalStrike" Type="Int32" />
+          <Property Name="totalDamageDealtToChampions" Type="Int32" />
+          <Property Name="magicDamageDealtToChampions" Type="Int32" />
+          <Property Name="physicalDamageDealtToChampions" Type="Int32" />
+          <Property Name="trueDamageDealtToChampions" Type="Int32" />
+          <Property Name="totalHeal" Type="Int32" />
+          <Property Name="totalUnitsHealed" Type="Int32" />
+          <Property Name="totalDamageTaken" Type="Int32" />
+          <Property Name="magicalDamageTaken" Type="Int32" />
+          <Property Name="physicalDamageTaken" Type="Int32" />
+          <Property Name="trueDamageTaken" Type="Int32" />
+          <Property Name="goldEarned" Type="Int32" />
+          <Property Name="goldSpent" Type="Int32" />
           <Property Name="turretKills" Type="Int16" />
           <Property Name="inhibitorKills" Type="Int16" />
           <Property Name="totalMinionsKilled" Type="Int16" />
@@ -1264,7 +1264,7 @@
           <End Type="lolModel.frame" Role="frame" Multiplicity="*" />
           <End Type="lolModel.gameframe" Role="gameframe" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

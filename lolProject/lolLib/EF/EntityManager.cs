@@ -52,6 +52,35 @@
             }
         }
         #endregion
+        #region Game
+        public static Boolean GameExist(Int64 GameId)
+        {
+            using (var nE = new lolEntities())
+            {
+                var count = nE.game.Any(a => a.gameId == GameId);
+                return count;
+            }
+        }
+        public static void GameDelete(Int64 GameId)
+        {
+            using (var nE = new lolEntities())
+            {
+                var game = nE.game.FirstOrDefault(a => a.gameId == GameId);
+                if (game != null)
+                    nE.game.Remove(game);
+            }
+        }
+        public static void GameAdd(Game Game)
+        {
+            using (var nE = new lolEntities())
+            {
+                var entity = new game();
+                MapTo.MappingToEntity(Game, ref entity);
+                nE.game.Add(entity);
+                nE.SaveChanges();
+            }
+        }
+        #endregion
     }
 
     public static class EntityManager<TEntity, TDTO>

@@ -21,7 +21,24 @@
                 return;
             }
             // Game DTO
-            if (mapType == typeof (Game)) { }
+            if (mapType == typeof (Game))
+            {
+                var d = dto as Game;
+                var e = entity as game;
+                if (d == null || e == null) return;
+                e.gameId = d.gameId;
+                e.platformId = d.platformId;
+                e.gameCreation = d.gameCreation;
+                e.gameDuration = d.gameDuration;
+                e.queueId = d.queueId;
+                e.mapId = d.mapId;
+                e.seasonId = d.seasonId;
+                e.gameVersion = d.gameVersion;
+                e.gameMode = d.gameMode;
+                e.gameType = d.gameType;
+                // TODO
+                return;
+            }
             // Mastery DTO
             if (mapType == typeof (Mastery))
             {

@@ -25,23 +25,23 @@
         public Int16 quadraKills { get; set; }
         public Int16 pentaKills { get; set; }
         public Int16 unrealKills { get; set; }
-        public Int16 totalDamageDealt { get; set; }
-        public Int16 magicDamageDealt { get; set; }
-        public Int16 physicalDamageDealt { get; set; }
-        public Int16 trueDamageDealt { get; set; }
-        public Int16 largestCriticalStrike { get; set; }
-        public Int16 totalDamageDealtToChampions { get; set; }
-        public Int16 magicDamageDealtToChampions { get; set; }
-        public Int16 physicalDamageDealtToChampions { get; set; }
-        public Int16 trueDamageDealtToChampions { get; set; }
-        public Int16 totalHeal { get; set; }
-        public Int16 totalUnitsHealed { get; set; }
-        public Int16 totalDamageTaken { get; set; }
-        public Int16 magicalDamageTaken { get; set; }
-        public Int16 physicalDamageTaken { get; set; }
-        public Int16 trueDamageTaken { get; set; }
-        public Int16 goldEarned { get; set; }
-        public Int16 goldSpent { get; set; }
+        public Int32 totalDamageDealt { get; set; }
+        public Int32 magicDamageDealt { get; set; }
+        public Int32 physicalDamageDealt { get; set; }
+        public Int32 trueDamageDealt { get; set; }
+        public Int32 largestCriticalStrike { get; set; }
+        public Int32 totalDamageDealtToChampions { get; set; }
+        public Int32 magicDamageDealtToChampions { get; set; }
+        public Int32 physicalDamageDealtToChampions { get; set; }
+        public Int32 trueDamageDealtToChampions { get; set; }
+        public Int32 totalHeal { get; set; }
+        public Int32 totalUnitsHealed { get; set; }
+        public Int32 totalDamageTaken { get; set; }
+        public Int32 magicalDamageTaken { get; set; }
+        public Int32 physicalDamageTaken { get; set; }
+        public Int32 trueDamageTaken { get; set; }
+        public Int32 goldEarned { get; set; }
+        public Int32 goldSpent { get; set; }
         public Int16 turretKills { get; set; }
         public Int16 inhibitorKills { get; set; }
         public Int16 totalMinionsKilled { get; set; }

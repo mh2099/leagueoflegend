@@ -35,23 +35,23 @@ namespace lolLib.EF
         public Nullable<short> quadraKills { get; set; }
         public Nullable<short> pentaKills { get; set; }
         public Nullable<short> unrealKills { get; set; }
-        public Nullable<short> totalDamageDealt { get; set; }
-        public Nullable<short> magicDamageDealt { get; set; }
-        public Nullable<short> physicalDamageDealt { get; set; }
-        public Nullable<short> trueDamageDealt { get; set; }
-        public Nullable<short> largestCriticalStrike { get; set; }
-        public Nullable<short> totalDamageDealtToChampions { get; set; }
-        public Nullable<short> magicDamageDealtToChampions { get; set; }
-        public Nullable<short> physicalDamageDealtToChampions { get; set; }
-        public Nullable<short> trueDamageDealtToChampions { get; set; }
-        public Nullable<short> totalHeal { get; set; }
-        public Nullable<short> totalUnitsHealed { get; set; }
-        public Nullable<short> totalDamageTaken { get; set; }
-        public Nullable<short> magicalDamageTaken { get; set; }
-        public Nullable<short> physicalDamageTaken { get; set; }
-        public Nullable<short> trueDamageTaken { get; set; }
-        public Nullable<short> goldEarned { get; set; }
-        public Nullable<short> goldSpent { get; set; }
+        public Nullable<int> totalDamageDealt { get; set; }
+        public Nullable<int> magicDamageDealt { get; set; }
+        public Nullable<int> physicalDamageDealt { get; set; }
+        public Nullable<int> trueDamageDealt { get; set; }
+        public Nullable<int> largestCriticalStrike { get; set; }
+        public Nullable<int> totalDamageDealtToChampions { get; set; }
+        public Nullable<int> magicDamageDealtToChampions { get; set; }
+        public Nullable<int> physicalDamageDealtToChampions { get; set; }
+        public Nullable<int> trueDamageDealtToChampions { get; set; }
+        public Nullable<int> totalHeal { get; set; }
+        public Nullable<int> totalUnitsHealed { get; set; }
+        public Nullable<int> totalDamageTaken { get; set; }
+        public Nullable<int> magicalDamageTaken { get; set; }
+        public Nullable<int> physicalDamageTaken { get; set; }
+        public Nullable<int> trueDamageTaken { get; set; }
+        public Nullable<int> goldEarned { get; set; }
+        public Nullable<int> goldSpent { get; set; }
         public Nullable<short> turretKills { get; set; }
         public Nullable<short> inhibitorKills { get; set; }
         public Nullable<short> totalMinionsKilled { get; set; }

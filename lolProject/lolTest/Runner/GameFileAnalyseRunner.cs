@@ -38,7 +38,7 @@
             // create class
             var ga = new GameFileAnalyse();
             // set parameters
-            ga.LoadFile(Filename: _inputJsonFile);
+            ga.LoadFile(Filename: _inputJsonFile, ClearBefore: false);
             // work
             ga.Analyze();
             ga.ExportAnalyze(_ouputDirectory, PlayerExportSeparatePlayer: _playerExportSeparatePlayer,
