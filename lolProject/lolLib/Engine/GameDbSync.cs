@@ -59,7 +59,17 @@
                     _games.Add(game);
         }
         /// <summary>
-        ///  Clear database
+        /// Create database
+        /// </summary>
+        public void CreateDataBase()
+        {
+            // db connect
+            DBConnection.SetConnection(_host, _port, _username, _password, _table);
+            // db create
+            EntityManager.CreateDataBase();
+        }
+        /// <summary>
+        /// Clear database
         /// </summary>
         public Boolean Clear()
         {

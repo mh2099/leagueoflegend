@@ -3,11 +3,24 @@
     using System;
     using System.Linq;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using DTO;
 
     public static class EntityManager
     {
-        #region Clear
+        #region Manage
+        public static void CreateDataBase()
+        {
+            //Database.SetInitializer<lolEntities>(new DropCreateDatabaseIfModelChanges<lolEntities>());
+
+            using (var nE = new lolEntities())
+            {
+                nE.Database.Delete();
+                nE.Database.Create();
+                //nE.Database.CreateIfNotExists();
+                //nE.Database.Initialize(force: true);
+            }
+        }
         public static void ClearAll()
         {
             using (var nE = new lolEntities())

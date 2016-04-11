@@ -1,9 +1,9 @@
 ﻿namespace lolTest.Runner
 {
-    using System;
+    using System;    
     using lolLib;
 
-    public static class GameDbClearRunner
+    public static class GameDbCreateRunner
     {
         private static String _host;
         private static UInt16 _port;
@@ -30,7 +30,7 @@
             // create class
             var gs = new GameDbSync(_host, _port, _username, _password, _table);
             // work
-            gs.Clear();
+            gs.CreateDataBase();
             // end
             //Console.WriteLine("done!");
         }

@@ -18,7 +18,7 @@
                     CloudUpdate: true, DetailsUpdate: true, AddFrame: true, IndentedJson: true);*/
 
                 GameDbSyncRunner.Run(InputJsonFile: @"d:\lol_new.json", Host: "127.0.0.1", Port: 3306,
-                    Username: "root", Password: "", Table: "lolDB", ForceReload: false);
+                    Username: "root", Password: "", Table: "loldb", ForceReload: false);
 
                 /*GameAnalyzeRunner.Run(InputJsonFile: @"d:\lol_new.json", OutputDirectory: @"d:\test_lol\",
                     PlayerExportSeparatePlayer: false, GameExportSeparatePlayer : false, GameExportSeparateGame: false,
@@ -30,12 +30,14 @@
             }
             else
             {
-                var exitCode = Parser.Default.ParseArguments<GameCloudSyncOptions, GameDbSyncOptions, GameDbClearOptions, GameFileAnalyseOptions, GameFileInfosOptions>(Args)
+                var exitCode = Parser.Default.ParseArguments<GameCloudSyncOptions, GameDbSyncOptions, GameDbCreateOptions, GameDbClearOptions, GameFileAnalyseOptions, GameFileInfosOptions>(Args)
                     .MapResult(
                         (GameCloudSyncOptions o) => GameCloudSyncRunner.Run(o.PlatformId, o.AccoundId, o.AuthorizationKey,
                             o.InputJsonFile, o.OutputJsonFile, o.CloudUpdate, o.DetailsUpdate, o.AddFrame, o.IndentedJson),
                         (GameDbSyncOptions o) => GameDbSyncRunner.Run(o.InputJsonFile, o.Host, o.Port,
                             o.Username, o.Password, o.Table, o.ForceReload),
+                        (GameDbCreateOptions o) => GameDbCreateRunner.Run(o.Host, o.Port,
+                            o.Username, o.Password, o.Table),
                         (GameDbClearOptions o) => GameDbClearRunner.Run(o.Host, o.Port,
                             o.Username, o.Password, o.Table),
                         (GameFileAnalyseOptions o) => GameAnalyzeRunner.Run(o.InputJsonFile, o.OutputDirectory,
