@@ -13,13 +13,13 @@
         public Boolean firstBaron { get; set; }
         public Boolean firstDragon { get; set; }
         public Boolean firstRiftHerald { get; set; }
-        public Int32 towerKills { get; set; }
-        public Int32 inhibitorKills { get; set; }
-        public Int32 baronKills { get; set; }
-        public Int32 dragonKills { get; set; }
-        public Int32 vilemawKills { get; set; }
-        public Int32 riftHeraldKills { get; set; }
-        public Int32 dominionVictoryScore { get; set; }
+        public Int16 towerKills { get; set; }
+        public Int16 inhibitorKills { get; set; }
+        public Int16 baronKills { get; set; }
+        public Int16 dragonKills { get; set; }
+        public Int16 vilemawKills { get; set; }
+        public Int16 riftHeraldKills { get; set; }
+        public Int16 dominionVictoryScore { get; set; }
         public List<Ban> bans { get; set; }
     }
 }

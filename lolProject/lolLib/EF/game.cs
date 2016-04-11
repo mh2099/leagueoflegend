@@ -16,7 +16,6 @@ namespace lolLib.EF
     {
         public game()
         {
-            this.game_player = new HashSet<game_player>();
             this.participant = new HashSet<participant>();
             this.participantidentities = new HashSet<participantidentities>();
             this.team = new HashSet<team>();
@@ -26,15 +25,14 @@ namespace lolLib.EF
         public string platformId { get; set; }
         public long gameCreation { get; set; }
         public int gameDuration { get; set; }
-        public int queueId { get; set; }
-        public int mapId { get; set; }
-        public int seasonId { get; set; }
+        public short queueId { get; set; }
+        public short mapId { get; set; }
+        public short seasonId { get; set; }
         public string gameVersion { get; set; }
         public string gameMode { get; set; }
         public string gameType { get; set; }
     
         public virtual gameframe gameframe { get; set; }
-        public virtual ICollection<game_player> game_player { get; set; }
         public virtual ICollection<participant> participant { get; set; }
         public virtual ICollection<participantidentities> participantidentities { get; set; }
         public virtual ICollection<team> team { get; set; }

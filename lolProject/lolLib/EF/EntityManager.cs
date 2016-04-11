@@ -7,9 +7,34 @@
 
     public static class EntityManager
     {
-        /*
         #region Clear
-        public static void ClearAll() {}
+        public static void ClearAll()
+        {
+            using (var nE = new lolEntities())
+            {
+                var sqlList = new List<String>()
+                {
+                    "SET foreign_key_checks = 0",
+                    "DELETE FROM Ban",
+                    "DELETE FROM Frame",
+                    "DELETE FROM Game",
+                    "DELETE FROM Gameframe",
+                    "DELETE FROM Mastery",
+                    "DELETE FROM Participant",
+                    "DELETE FROM ParticipantFrame",
+                    "DELETE FROM ParticipantFrames",
+                    "DELETE FROM Player",
+                    "DELETE FROM Rune",
+                    "DELETE FROM Stat",
+                    "DELETE FROM Team",
+                    "DELETE FROM Timeline",
+                    "SET foreign_key_checks = 1",
+                };
+
+                foreach (var sql in sqlList)
+                    nE.Database.ExecuteSqlCommand(sql);
+            }
+        }
         #endregion
         #region Ping
         public static Boolean Ping()
@@ -27,7 +52,6 @@
             }
         }
         #endregion
-        */
     }
 
     public static class EntityManager<TEntity, TDTO>

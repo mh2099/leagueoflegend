@@ -31,7 +31,6 @@ namespace lolLib.EF
         public DbSet<ban> ban { get; set; }
         public DbSet<frame> frame { get; set; }
         public DbSet<game> game { get; set; }
-        public DbSet<game_player> game_player { get; set; }
         public DbSet<gameframe> gameframe { get; set; }
         public DbSet<mastery> mastery { get; set; }
         public DbSet<participant> participant { get; set; }

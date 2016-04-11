@@ -45,8 +45,8 @@
                 var e = entity as ban;
                 return new Ban
                 {
-                    championId = e.championId,
-                    pickTurn = Convert.ToInt32(e.pickTurn)
+                    championId = e.championId.GetValueOrDefault(),
+                    pickTurn = e.pickTurn.GetValueOrDefault()
                 };
             }
             // game
@@ -75,7 +75,7 @@
                 return new Mastery
                 {
                     masteryId = e.masteryId,
-                    rank = Convert.ToInt32(e.rank)
+                    rank = e.rank.GetValueOrDefault()
                 };
             }
             //

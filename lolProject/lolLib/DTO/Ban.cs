@@ -4,7 +4,7 @@
 
     public class Ban : IDTO
     {
-        public Int32 championId { get; set; }
-        public Int32 pickTurn { get; set; }
+        public Int16 championId { get; set; }
+        public Int16 pickTurn { get; set; }
     }
 }

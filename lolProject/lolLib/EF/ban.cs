@@ -14,7 +14,11 @@ namespace lolLib.EF
     
     public partial class ban : IEntity
     {
-        public int championId { get; set; }
-        public Nullable<int> pickTurn { get; set; }
+        public long gameId { get; set; }
+        public int teamId { get; set; }
+        public Nullable<short> championId { get; set; }
+        public Nullable<short> pickTurn { get; set; }
+    
+        public virtual team team { get; set; }
     }
 }

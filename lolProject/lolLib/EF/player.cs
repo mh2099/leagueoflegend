@@ -16,7 +16,6 @@ namespace lolLib.EF
     {
         public player()
         {
-            this.game_player = new HashSet<game_player>();
             this.participantidentities = new HashSet<participantidentities>();
         }
     
@@ -28,7 +27,6 @@ namespace lolLib.EF
         public string matchHistoryUri { get; set; }
         public int profileIcon { get; set; }
     
-        public virtual ICollection<game_player> game_player { get; set; }
         public virtual ICollection<participantidentities> participantidentities { get; set; }
     }
 }

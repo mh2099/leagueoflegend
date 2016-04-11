@@ -16,7 +16,7 @@ namespace lolLib.EF
     {
         public long gameId { get; set; }
         public int accountId { get; set; }
-        public Nullable<int> participantId { get; set; }
+        public Nullable<sbyte> participantId { get; set; }
     
         public virtual game game { get; set; }
         public virtual player player { get; set; }

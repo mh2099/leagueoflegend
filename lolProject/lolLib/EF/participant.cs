@@ -22,8 +22,8 @@ namespace lolLib.EF
     
         public int participantId { get; set; }
         public long gameId { get; set; }
-        public Nullable<int> teamId { get; set; }
-        public Nullable<int> championId { get; set; }
+        public Nullable<sbyte> teamId { get; set; }
+        public Nullable<short> championId { get; set; }
         public Nullable<int> spell1Id { get; set; }
         public Nullable<int> spell2Id { get; set; }
         public string highestAchievedSeasonTier { get; set; }

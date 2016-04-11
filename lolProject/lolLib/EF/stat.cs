@@ -17,54 +17,53 @@ namespace lolLib.EF
         public long gameId { get; set; }
         public int participantId { get; set; }
         public Nullable<bool> win { get; set; }
-        public Nullable<int> item0 { get; set; }
-        public Nullable<int> item1 { get; set; }
-        public Nullable<int> item2 { get; set; }
-        public Nullable<int> item3 { get; set; }
-        public Nullable<int> item4 { get; set; }
-        public Nullable<int> item5 { get; set; }
-        public Nullable<int> item6 { get; set; }
-        public Nullable<int> kills { get; set; }
-        public Nullable<int> deaths { get; set; }
-        public Nullable<int> assists { get; set; }
-        public Nullable<int> largestKillingSpree { get; set; }
-        public Nullable<int> largestMultiKill { get; set; }
-        public Nullable<int> killingSprees { get; set; }
-        public Nullable<int> longestTimeSpentLiving { get; set; }
-        public Nullable<int> doubleKills { get; set; }
-        public Nullable<int> tripleKills { get; set; }
-        public Nullable<int> quadraKills { get; set; }
-        public Nullable<int> pentaKills { get; set; }
-        public Nullable<int> unrealKills { get; set; }
-        public Nullable<int> totalDamageDealt { get; set; }
-        public Nullable<int> magicDamageDealt { get; set; }
-        public Nullable<int> physicalDamageDealt { get; set; }
-        public Nullable<int> trueDamageDealt { get; set; }
-        public Nullable<int> largestCriticalStrike { get; set; }
-        public Nullable<int> totalDamageDealtToChampions { get; set; }
-        public Nullable<int> magicDamageDealtToChampions { get; set; }
-        public Nullable<int> physicalDamageDealtToChampions { get; set; }
-        public Nullable<int> trueDamageDealtToChampions { get; set; }
-        public Nullable<int> totalHeal { get; set; }
-        public Nullable<int> totalUnitsHealed { get; set; }
-        public Nullable<int> totalDamageTaken { get; set; }
-        public Nullable<int> magicalDamageTaken { get; set; }
-        public Nullable<int> physicalDamageTaken { get; set; }
-        public Nullable<int> trueDamageTaken { get; set; }
-        public Nullable<int> goldEarned { get; set; }
-        public Nullable<int> goldSpent { get; set; }
-        public Nullable<int> turretKills { get; set; }
-        public Nullable<int> inhibitorKills { get; set; }
-        public Nullable<int> totalMinionsKilled { get; set; }
-        public Nullable<int> neutralMinionsKilled { get; set; }
-        public Nullable<int> neutralMinionsKilledTeamJungle { get; set; }
-        public Nullable<int> neutralMinionsKilledEnemyJungle { get; set; }
-        public Nullable<int> totalTimeCrowdControlDealt { get; set; }
-        public Nullable<int> champLevel { get; set; }
-        public Nullable<int> visionWardsBoughtInGame { get; set; }
-        public Nullable<int> sightWardsBoughtInGame { get; set; }
-        public Nullable<int> wardsPlaced { get; set; }
-        public Nullable<int> wardsKilled { get; set; }
+        public Nullable<short> item0 { get; set; }
+        public Nullable<short> item1 { get; set; }
+        public Nullable<short> item3 { get; set; }
+        public Nullable<short> item4 { get; set; }
+        public Nullable<short> item5 { get; set; }
+        public Nullable<short> item6 { get; set; }
+        public Nullable<short> kills { get; set; }
+        public Nullable<short> deaths { get; set; }
+        public Nullable<short> assists { get; set; }
+        public Nullable<short> largestKillingSpree { get; set; }
+        public Nullable<short> largestMultiKill { get; set; }
+        public Nullable<short> killingSprees { get; set; }
+        public Nullable<short> longestTimeSpentLiving { get; set; }
+        public Nullable<short> doubleKills { get; set; }
+        public Nullable<short> tripleKills { get; set; }
+        public Nullable<short> quadraKills { get; set; }
+        public Nullable<short> pentaKills { get; set; }
+        public Nullable<short> unrealKills { get; set; }
+        public Nullable<short> totalDamageDealt { get; set; }
+        public Nullable<short> magicDamageDealt { get; set; }
+        public Nullable<short> physicalDamageDealt { get; set; }
+        public Nullable<short> trueDamageDealt { get; set; }
+        public Nullable<short> largestCriticalStrike { get; set; }
+        public Nullable<short> totalDamageDealtToChampions { get; set; }
+        public Nullable<short> magicDamageDealtToChampions { get; set; }
+        public Nullable<short> physicalDamageDealtToChampions { get; set; }
+        public Nullable<short> trueDamageDealtToChampions { get; set; }
+        public Nullable<short> totalHeal { get; set; }
+        public Nullable<short> totalUnitsHealed { get; set; }
+        public Nullable<short> totalDamageTaken { get; set; }
+        public Nullable<short> magicalDamageTaken { get; set; }
+        public Nullable<short> physicalDamageTaken { get; set; }
+        public Nullable<short> trueDamageTaken { get; set; }
+        public Nullable<short> goldEarned { get; set; }
+        public Nullable<short> goldSpent { get; set; }
+        public Nullable<short> turretKills { get; set; }
+        public Nullable<short> inhibitorKills { get; set; }
+        public Nullable<short> totalMinionsKilled { get; set; }
+        public Nullable<short> neutralMinionsKilled { get; set; }
+        public Nullable<short> neutralMinionsKilledTeamJungle { get; set; }
+        public Nullable<short> neutralMinionsKilledEnemyJungle { get; set; }
+        public Nullable<short> totalTimeCrowdControlDealt { get; set; }
+        public Nullable<short> champLevel { get; set; }
+        public Nullable<short> visionWardsBoughtInGame { get; set; }
+        public Nullable<short> sightWardsBoughtInGame { get; set; }
+        public Nullable<short> wardsPlaced { get; set; }
+        public Nullable<short> wardsKilled { get; set; }
         public Nullable<bool> firstBloodKill { get; set; }
         public Nullable<bool> firstBloodAssist { get; set; }
         public Nullable<bool> firstTowerKill { get; set; }
@@ -75,6 +74,7 @@ namespace lolLib.EF
         public Nullable<int> objectivePlayerScore { get; set; }
         public Nullable<int> totalPlayerScore { get; set; }
         public Nullable<int> totalScoreRank { get; set; }
+        public Nullable<short> item2 { get; set; }
     
         public virtual participant participant { get; set; }
     }

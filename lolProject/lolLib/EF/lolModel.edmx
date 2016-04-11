@@ -4,13 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="lolModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="lolModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ban">
           <Key>
-            <PropertyRef Name="championId" />
+            <PropertyRef Name="gameId" />
+            <PropertyRef Name="teamId" />
           </Key>
-          <Property Name="championId" Type="int" Nullable="false" />
-          <Property Name="pickTurn" Type="int" />
+          <Property Name="gameId" Type="bigint" Nullable="false" />
+          <Property Name="teamId" Type="int" Nullable="false" />
+          <Property Name="championId" Type="smallint" />
+          <Property Name="pickTurn" Type="smallint" />
         </EntityType>
         <EntityType Name="frame">
           <Key>
@@ -35,95 +38,20 @@
           <Property Name="gameId" Type="bigint" Nullable="false" />
           <Property Name="platformId" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="gameCreation" Type="bigint" Nullable="false" />
-          <Property Name="gameDuration" Type="int" Nullable="false" />
-          <Property Name="queueId" Type="int" Nullable="false" />
-          <Property Name="mapId" Type="int" Nullable="false" />
-          <Property Name="seasonId" Type="int" Nullable="false" />
+          <Property Name="gameDuration" Type="mediumint" Nullable="false" />
+          <Property Name="queueId" Type="smallint" Nullable="false" />
+          <Property Name="mapId" Type="smallint" Nullable="false" />
+          <Property Name="seasonId" Type="smallint" Nullable="false" />
           <Property Name="gameVersion" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="gameMode" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="gameType" Type="varchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <EntityType Name="game_player">
-          <Key>
-            <PropertyRef Name="gameplayerId" />
-          </Key>
-          <Property Name="gameplayerId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="gameId" Type="bigint" Nullable="false" />
-          <Property Name="accountId" Type="int" Nullable="false" />
-          <Property Name="participantId" Type="int" Nullable="false" />
-          <Property Name="teamId" Type="int" Nullable="false" />
-          <Property Name="championId" Type="int" Nullable="false" />
-          <Property Name="spell1Id" Type="int" Nullable="false" />
-          <Property Name="spell2Id" Type="int" Nullable="false" />
-          <Property Name="masteries" Type="text" Nullable="false" />
-          <Property Name="runes" Type="text" Nullable="false" />
-          <Property Name="highestAchievedSeasonTier" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="win" Type="bool" Nullable="false" />
-          <Property Name="item0" Type="int" Nullable="false" />
-          <Property Name="item1" Type="int" Nullable="false" />
-          <Property Name="item2" Type="int" Nullable="false" />
-          <Property Name="item3" Type="int" Nullable="false" />
-          <Property Name="item4" Type="int" Nullable="false" />
-          <Property Name="item5" Type="int" Nullable="false" />
-          <Property Name="item6" Type="int" Nullable="false" />
-          <Property Name="kills" Type="int" Nullable="false" />
-          <Property Name="deaths" Type="int" Nullable="false" />
-          <Property Name="assists" Type="int" Nullable="false" />
-          <Property Name="largestKillingSpree" Type="int" Nullable="false" />
-          <Property Name="largestMultiKill" Type="int" Nullable="false" />
-          <Property Name="killingSprees" Type="int" Nullable="false" />
-          <Property Name="longestTimeSpentLiving" Type="int" Nullable="false" />
-          <Property Name="doubleKills" Type="int" Nullable="false" />
-          <Property Name="tripleKills" Type="int" Nullable="false" />
-          <Property Name="quadrupleKills" Type="int" Nullable="false" />
-          <Property Name="pentaKills" Type="int" Nullable="false" />
-          <Property Name="unrealKills" Type="int" Nullable="false" />
-          <Property Name="totalDamageBalt" Type="int" Nullable="false" />
-          <Property Name="magicDamageBalt" Type="int" Nullable="false" />
-          <Property Name="physicalDamageDealt" Type="int" Nullable="false" />
-          <Property Name="trueDamageDealt" Type="int" Nullable="false" />
-          <Property Name="largestCriticalStrike" Type="int" Nullable="false" />
-          <Property Name="totalDamageDealtToChampions" Type="int" Nullable="false" />
-          <Property Name="magicDamageDealtToChampions" Type="int" Nullable="false" />
-          <Property Name="physicalDamageDealtToChampions" Type="int" Nullable="false" />
-          <Property Name="trueDamageDealtToChampions" Type="int" Nullable="false" />
-          <Property Name="totalHeal" Type="int" Nullable="false" />
-          <Property Name="totalUnitsHealed" Type="int" Nullable="false" />
-          <Property Name="totalDamageTaken" Type="int" Nullable="false" />
-          <Property Name="magicalDamageTaken" Type="int" Nullable="false" />
-          <Property Name="physicalDamageTaken" Type="int" Nullable="false" />
-          <Property Name="trueDamageTaken" Type="int" Nullable="false" />
-          <Property Name="goldEarned" Type="int" Nullable="false" />
-          <Property Name="goldSpent" Type="int" Nullable="false" />
-          <Property Name="turretKill" Type="int" Nullable="false" />
-          <Property Name="inhibitorKills" Type="int" Nullable="false" />
-          <Property Name="totalMinionsKilled" Type="int" Nullable="false" />
-          <Property Name="neutralMinionsKilled" Type="int" Nullable="false" />
-          <Property Name="neutralMinionsKilledTeamJungle" Type="int" Nullable="false" />
-          <Property Name="neutralMinionsKilledEnemyJungle" Type="int" Nullable="false" />
-          <Property Name="totalTimeCrowdControlDealt" Type="int" Nullable="false" />
-          <Property Name="champLevel" Type="int" Nullable="false" />
-          <Property Name="visionWardsBoughtInGame" Type="int" Nullable="false" />
-          <Property Name="sightWardsBoughtInGame" Type="int" Nullable="false" />
-          <Property Name="wardsPlaced" Type="int" Nullable="false" />
-          <Property Name="wardsKilled" Type="int" Nullable="false" />
-          <Property Name="firstBloodKill" Type="bool" Nullable="false" />
-          <Property Name="firstBloodAssist" Type="bool" Nullable="false" />
-          <Property Name="firstTowerKill" Type="bool" Nullable="false" />
-          <Property Name="firstTowerAssist" Type="bool" Nullable="false" />
-          <Property Name="firstInhibitorKill" Type="bool" Nullable="false" />
-          <Property Name="firstInhibitorAssist" Type="bool" Nullable="false" />
-          <Property Name="combatPlayerScore" Type="int" Nullable="false" />
-          <Property Name="objectivePlayerScore" Type="int" Nullable="false" />
-          <Property Name="totalPlayerScore" Type="int" Nullable="false" />
-          <Property Name="totalScoreRank" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="gameframe">
           <Key>
             <PropertyRef Name="gameId" />
           </Key>
           <Property Name="gameId" Type="bigint" Nullable="false" />
-          <Property Name="frameInterval" Type="int" />
+          <Property Name="frameInterval" Type="mediumint" />
         </EntityType>
         <EntityType Name="mastery">
           <Key>
@@ -134,7 +62,7 @@
           <Property Name="masteryId" Type="int" Nullable="false" />
           <Property Name="gameId" Type="bigint" Nullable="false" />
           <Property Name="participantId" Type="int" Nullable="false" />
-          <Property Name="rank" Type="int" />
+          <Property Name="rank" Type="tinyint" />
         </EntityType>
         <EntityType Name="participant">
           <Key>
@@ -143,10 +71,10 @@
           </Key>
           <Property Name="participantId" Type="int" Nullable="false" />
           <Property Name="gameId" Type="bigint" Nullable="false" />
-          <Property Name="teamId" Type="int" />
-          <Property Name="championId" Type="int" />
-          <Property Name="spell1Id" Type="int" />
-          <Property Name="spell2Id" Type="int" />
+          <Property Name="teamId" Type="tinyint" />
+          <Property Name="championId" Type="smallint" />
+          <Property Name="spell1Id" Type="mediumint" />
+          <Property Name="spell2Id" Type="mediumint" />
           <Property Name="highestAchievedSeasonTier" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="participantframe">
@@ -154,16 +82,16 @@
             <PropertyRef Name="participantId" />
           </Key>
           <Property Name="participantId" Type="int" Nullable="false" />
-          <Property Name="position_x" Type="int" />
-          <Property Name="position_y" Type="int" />
-          <Property Name="currentGold" Type="int" />
-          <Property Name="totalGold" Type="int" />
-          <Property Name="level" Type="int" />
-          <Property Name="xp" Type="int" />
-          <Property Name="minionsKilled" Type="int" />
-          <Property Name="jungleMinionsKilled" Type="int" />
-          <Property Name="dominionScore" Type="int" />
-          <Property Name="teamScore" Type="int" />
+          <Property Name="position_x" Type="mediumint" />
+          <Property Name="position_y" Type="mediumint" />
+          <Property Name="currentGold" Type="mediumint" />
+          <Property Name="totalGold" Type="mediumint" />
+          <Property Name="level" Type="tinyint" />
+          <Property Name="xp" Type="mediumint" />
+          <Property Name="minionsKilled" Type="tinyint" />
+          <Property Name="jungleMinionsKilled" Type="tinyint" />
+          <Property Name="dominionScore" Type="mediumint" />
+          <Property Name="teamScore" Type="mediumint" />
         </EntityType>
         <EntityType Name="participantframes">
           <Key>
@@ -186,7 +114,7 @@
           </Key>
           <Property Name="gameId" Type="bigint" Nullable="false" />
           <Property Name="accountId" Type="int" Nullable="false" />
-          <Property Name="participantId" Type="int" />
+          <Property Name="participantId" Type="tinyint" />
         </EntityType>
         <EntityType Name="player">
           <Key>
@@ -209,7 +137,7 @@
           <Property Name="runeId" Type="int" Nullable="false" />
           <Property Name="participantId" Type="int" Nullable="false" />
           <Property Name="gameId" Type="bigint" Nullable="false" />
-          <Property Name="rank" Type="int" />
+          <Property Name="rank" Type="tinyint" />
         </EntityType>
         <EntityType Name="stat">
           <Key>
@@ -219,54 +147,53 @@
           <Property Name="gameId" Type="bigint" Nullable="false" />
           <Property Name="participantId" Type="int" Nullable="false" />
           <Property Name="win" Type="bool" />
-          <Property Name="item0" Type="int" />
-          <Property Name="item1" Type="int" />
-          <Property Name="item2" Type="int" />
-          <Property Name="item3" Type="int" />
-          <Property Name="item4" Type="int" />
-          <Property Name="item5" Type="int" />
-          <Property Name="item6" Type="int" />
-          <Property Name="kills" Type="int" />
-          <Property Name="deaths" Type="int" />
-          <Property Name="assists" Type="int" />
-          <Property Name="largestKillingSpree" Type="int" />
-          <Property Name="largestMultiKill" Type="int" />
-          <Property Name="killingSprees" Type="int" />
-          <Property Name="longestTimeSpentLiving" Type="int" />
-          <Property Name="doubleKills" Type="int" />
-          <Property Name="tripleKills" Type="int" />
-          <Property Name="quadraKills" Type="int" />
-          <Property Name="pentaKills" Type="int" />
-          <Property Name="unrealKills" Type="int" />
-          <Property Name="totalDamageDealt" Type="int" />
-          <Property Name="magicDamageDealt" Type="int" />
-          <Property Name="physicalDamageDealt" Type="int" />
-          <Property Name="trueDamageDealt" Type="int" />
-          <Property Name="largestCriticalStrike" Type="int" />
-          <Property Name="totalDamageDealtToChampions" Type="int" />
-          <Property Name="magicDamageDealtToChampions" Type="int" />
-          <Property Name="physicalDamageDealtToChampions" Type="int" />
-          <Property Name="trueDamageDealtToChampions" Type="int" />
-          <Property Name="totalHeal" Type="int" />
-          <Property Name="totalUnitsHealed" Type="int" />
-          <Property Name="totalDamageTaken" Type="int" />
-          <Property Name="magicalDamageTaken" Type="int" />
-          <Property Name="physicalDamageTaken" Type="int" />
-          <Property Name="trueDamageTaken" Type="int" />
-          <Property Name="goldEarned" Type="int" />
-          <Property Name="goldSpent" Type="int" />
-          <Property Name="turretKills" Type="int" />
-          <Property Name="inhibitorKills" Type="int" />
-          <Property Name="totalMinionsKilled" Type="int" />
-          <Property Name="neutralMinionsKilled" Type="int" />
-          <Property Name="neutralMinionsKilledTeamJungle" Type="int" />
-          <Property Name="neutralMinionsKilledEnemyJungle" Type="int" />
-          <Property Name="totalTimeCrowdControlDealt" Type="int" />
-          <Property Name="champLevel" Type="int" />
-          <Property Name="visionWardsBoughtInGame" Type="int" />
-          <Property Name="sightWardsBoughtInGame" Type="int" />
-          <Property Name="wardsPlaced" Type="int" />
-          <Property Name="wardsKilled" Type="int" />
+          <Property Name="item0" Type="smallint" />
+          <Property Name="item1" Type="smallint" />
+          <Property Name="item3" Type="smallint" />
+          <Property Name="item4" Type="smallint" />
+          <Property Name="item5" Type="smallint" />
+          <Property Name="item6" Type="smallint" />
+          <Property Name="kills" Type="smallint" />
+          <Property Name="deaths" Type="smallint" />
+          <Property Name="assists" Type="smallint" />
+          <Property Name="largestKillingSpree" Type="smallint" />
+          <Property Name="largestMultiKill" Type="smallint" />
+          <Property Name="killingSprees" Type="smallint" />
+          <Property Name="longestTimeSpentLiving" Type="smallint" />
+          <Property Name="doubleKills" Type="smallint" />
+          <Property Name="tripleKills" Type="smallint" />
+          <Property Name="quadraKills" Type="smallint" />
+          <Property Name="pentaKills" Type="smallint" />
+          <Property Name="unrealKills" Type="smallint" />
+          <Property Name="totalDamageDealt" Type="smallint" />
+          <Property Name="magicDamageDealt" Type="smallint" />
+          <Property Name="physicalDamageDealt" Type="smallint" />
+          <Property Name="trueDamageDealt" Type="smallint" />
+          <Property Name="largestCriticalStrike" Type="smallint" />
+          <Property Name="totalDamageDealtToChampions" Type="smallint" />
+          <Property Name="magicDamageDealtToChampions" Type="smallint" />
+          <Property Name="physicalDamageDealtToChampions" Type="smallint" />
+          <Property Name="trueDamageDealtToChampions" Type="smallint" />
+          <Property Name="totalHeal" Type="smallint" />
+          <Property Name="totalUnitsHealed" Type="smallint" />
+          <Property Name="totalDamageTaken" Type="smallint" />
+          <Property Name="magicalDamageTaken" Type="smallint" />
+          <Property Name="physicalDamageTaken" Type="smallint" />
+          <Property Name="trueDamageTaken" Type="smallint" />
+          <Property Name="goldEarned" Type="smallint" />
+          <Property Name="goldSpent" Type="smallint" />
+          <Property Name="turretKills" Type="smallint" />
+          <Property Name="inhibitorKills" Type="smallint" />
+          <Property Name="totalMinionsKilled" Type="smallint" />
+          <Property Name="neutralMinionsKilled" Type="smallint" />
+          <Property Name="neutralMinionsKilledTeamJungle" Type="smallint" />
+          <Property Name="neutralMinionsKilledEnemyJungle" Type="smallint" />
+          <Property Name="totalTimeCrowdControlDealt" Type="smallint" />
+          <Property Name="champLevel" Type="smallint" />
+          <Property Name="visionWardsBoughtInGame" Type="smallint" />
+          <Property Name="sightWardsBoughtInGame" Type="smallint" />
+          <Property Name="wardsPlaced" Type="smallint" />
+          <Property Name="wardsKilled" Type="smallint" />
           <Property Name="firstBloodKill" Type="bool" />
           <Property Name="firstBloodAssist" Type="bool" />
           <Property Name="firstTowerKill" Type="bool" />
@@ -277,6 +204,7 @@
           <Property Name="objectivePlayerScore" Type="int" />
           <Property Name="totalPlayerScore" Type="int" />
           <Property Name="totalScoreRank" Type="int" />
+          <Property Name="item2" Type="smallint" />
         </EntityType>
         <EntityType Name="team">
           <Key>
@@ -285,20 +213,20 @@
           </Key>
           <Property Name="teamId" Type="int" Nullable="false" />
           <Property Name="gameId" Type="bigint" Nullable="false" />
-          <Property Name="win" Type="varchar" MaxLength="5" />
+          <Property Name="win" Type="bool" />
           <Property Name="firstBlood" Type="bool" />
           <Property Name="firstTower" Type="bool" />
           <Property Name="firstInhibitor" Type="bool" />
           <Property Name="firstBaron" Type="bool" />
           <Property Name="firstDragon" Type="bool" />
           <Property Name="firstRiftHerald" Type="bool" />
-          <Property Name="towerKills" Type="int" />
-          <Property Name="inhibitorKills" Type="int" />
-          <Property Name="baronKills" Type="int" />
-          <Property Name="dragonKills" Type="int" />
-          <Property Name="vilemawKills" Type="int" />
-          <Property Name="riftHeraldKills" Type="int" />
-          <Property Name="dominionVictoryScore" Type="int" />
+          <Property Name="towerKills" Type="smallint" />
+          <Property Name="inhibitorKills" Type="smallint" />
+          <Property Name="baronKills" Type="smallint" />
+          <Property Name="dragonKills" Type="smallint" />
+          <Property Name="vilemawKills" Type="smallint" />
+          <Property Name="riftHeraldKills" Type="smallint" />
+          <Property Name="dominionVictoryScore" Type="smallint" />
         </EntityType>
         <EntityType Name="timeline">
           <Key>
@@ -338,7 +266,21 @@
           <Property Name="damageTakenDiffPerMinDeltas_3" Type="double" />
           <Property Name="damageTakenDiffPerMinDeltas_4" Type="double" />
         </EntityType>
-        <Association Name="fk_Frame_ParticipantFrames1">
+        <Association Name="fk_Ban_Team">
+          <End Role="team" Type="Self.team" Multiplicity="1" />
+          <End Role="ban" Type="Self.ban" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="team">
+              <PropertyRef Name="teamId" />
+              <PropertyRef Name="gameId" />
+            </Principal>
+            <Dependent Role="ban">
+              <PropertyRef Name="teamId" />
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Frame_ParticipantFrames">
           <End Role="participantframes" Type="Self.participantframes" Multiplicity="1" />
           <End Role="frame" Type="Self.frame" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -350,7 +292,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Frames_Frame1">
+        <Association Name="fk_Frames_Frame">
           <End Role="frame" Type="Self.frame" Multiplicity="1" />
           <End Role="frames" Type="Self.frames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -362,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Frames_GameFrame1">
+        <Association Name="fk_Frames_GameFrame">
           <End Role="gameframe" Type="Self.gameframe" Multiplicity="1" />
           <End Role="frames" Type="Self.frames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -374,7 +316,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_game_frame_game1">
+        <Association Name="fk_game_frame_game">
           <End Role="game" Type="Self.game" Multiplicity="1" />
           <End Role="gameframe" Type="Self.gameframe" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -386,31 +328,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_game_player_game">
-          <End Role="game" Type="Self.game" Multiplicity="1" />
-          <End Role="game_player" Type="Self.game_player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="game">
-              <PropertyRef Name="gameId" />
-            </Principal>
-            <Dependent Role="game_player">
-              <PropertyRef Name="gameId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_game_player_player1">
-          <End Role="player" Type="Self.player" Multiplicity="1" />
-          <End Role="game_player" Type="Self.game_player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="player">
-              <PropertyRef Name="accountId" />
-            </Principal>
-            <Dependent Role="game_player">
-              <PropertyRef Name="accountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_mastery_participant1">
+        <Association Name="fk_mastery_participant">
           <End Role="participant" Type="Self.participant" Multiplicity="1" />
           <End Role="mastery" Type="Self.mastery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -424,7 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_participant_game1">
+        <Association Name="fk_participant_game">
           <End Role="game" Type="Self.game" Multiplicity="1" />
           <End Role="participant" Type="Self.participant" Multiplicity="*" />
           <ReferentialConstraint>
@@ -532,7 +450,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_participantIdentities_game1">
+        <Association Name="fk_participantIdentities_game">
           <End Role="game" Type="Self.game" Multiplicity="1" />
           <End Role="participantidentities" Type="Self.participantidentities" Multiplicity="*" />
           <ReferentialConstraint>
@@ -544,7 +462,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_participantIdentities_player1">
+        <Association Name="fk_participantIdentities_player">
           <End Role="player" Type="Self.player" Multiplicity="1" />
           <End Role="participantidentities" Type="Self.participantidentities" Multiplicity="*" />
           <ReferentialConstraint>
@@ -556,7 +474,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_rune_participant1">
+        <Association Name="fk_rune_participant">
           <End Role="participant" Type="Self.participant" Multiplicity="1" />
           <End Role="rune" Type="Self.rune" Multiplicity="*" />
           <ReferentialConstraint>
@@ -570,7 +488,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_stat_participant1">
+        <Association Name="fk_stat_participant">
           <End Role="participant" Type="Self.participant" Multiplicity="1" />
           <End Role="stat" Type="Self.stat" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -596,7 +514,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_timeline_participant1">
+        <Association Name="fk_timeline_participant">
           <End Role="participant" Type="Self.participant" Multiplicity="1" />
           <End Role="timeline" Type="Self.timeline" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -615,7 +533,6 @@
           <EntitySet Name="frame" EntityType="Self.frame" Schema="loldb" store:Type="Tables" />
           <EntitySet Name="frames" EntityType="Self.frames" Schema="loldb" store:Type="Tables" />
           <EntitySet Name="game" EntityType="Self.game" Schema="loldb" store:Type="Tables" />
-          <EntitySet Name="game_player" EntityType="Self.game_player" Schema="loldb" store:Type="Tables" />
           <EntitySet Name="gameframe" EntityType="Self.gameframe" Schema="loldb" store:Type="Tables" />
           <EntitySet Name="mastery" EntityType="Self.mastery" Schema="loldb" store:Type="Tables" />
           <EntitySet Name="participant" EntityType="Self.participant" Schema="loldb" store:Type="Tables" />
@@ -627,35 +544,31 @@
           <EntitySet Name="stat" EntityType="Self.stat" Schema="loldb" store:Type="Tables" />
           <EntitySet Name="team" EntityType="Self.team" Schema="loldb" store:Type="Tables" />
           <EntitySet Name="timeline" EntityType="Self.timeline" Schema="loldb" store:Type="Tables" />
-          <AssociationSet Name="fk_Frame_ParticipantFrames1" Association="Self.fk_Frame_ParticipantFrames1">
+          <AssociationSet Name="fk_Ban_Team" Association="Self.fk_Ban_Team">
+            <End Role="team" EntitySet="team" />
+            <End Role="ban" EntitySet="ban" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Frame_ParticipantFrames" Association="Self.fk_Frame_ParticipantFrames">
             <End Role="participantframes" EntitySet="participantframes" />
             <End Role="frame" EntitySet="frame" />
           </AssociationSet>
-          <AssociationSet Name="fk_Frames_Frame1" Association="Self.fk_Frames_Frame1">
+          <AssociationSet Name="fk_Frames_Frame" Association="Self.fk_Frames_Frame">
             <End Role="frame" EntitySet="frame" />
             <End Role="frames" EntitySet="frames" />
           </AssociationSet>
-          <AssociationSet Name="fk_Frames_GameFrame1" Association="Self.fk_Frames_GameFrame1">
+          <AssociationSet Name="fk_Frames_GameFrame" Association="Self.fk_Frames_GameFrame">
             <End Role="gameframe" EntitySet="gameframe" />
             <End Role="frames" EntitySet="frames" />
           </AssociationSet>
-          <AssociationSet Name="fk_game_frame_game1" Association="Self.fk_game_frame_game1">
+          <AssociationSet Name="fk_game_frame_game" Association="Self.fk_game_frame_game">
             <End Role="game" EntitySet="game" />
             <End Role="gameframe" EntitySet="gameframe" />
           </AssociationSet>
-          <AssociationSet Name="fk_game_player_game" Association="Self.fk_game_player_game">
-            <End Role="game" EntitySet="game" />
-            <End Role="game_player" EntitySet="game_player" />
-          </AssociationSet>
-          <AssociationSet Name="fk_game_player_player1" Association="Self.fk_game_player_player1">
-            <End Role="player" EntitySet="player" />
-            <End Role="game_player" EntitySet="game_player" />
-          </AssociationSet>
-          <AssociationSet Name="fk_mastery_participant1" Association="Self.fk_mastery_participant1">
+          <AssociationSet Name="fk_mastery_participant" Association="Self.fk_mastery_participant">
             <End Role="participant" EntitySet="participant" />
             <End Role="mastery" EntitySet="mastery" />
           </AssociationSet>
-          <AssociationSet Name="fk_participant_game1" Association="Self.fk_participant_game1">
+          <AssociationSet Name="fk_participant_game" Association="Self.fk_participant_game">
             <End Role="game" EntitySet="game" />
             <End Role="participant" EntitySet="participant" />
           </AssociationSet>
@@ -691,19 +604,19 @@
             <End Role="participantframe" EntitySet="participantframe" />
             <End Role="participantframes" EntitySet="participantframes" />
           </AssociationSet>
-          <AssociationSet Name="fk_participantIdentities_game1" Association="Self.fk_participantIdentities_game1">
+          <AssociationSet Name="fk_participantIdentities_game" Association="Self.fk_participantIdentities_game">
             <End Role="game" EntitySet="game" />
             <End Role="participantidentities" EntitySet="participantidentities" />
           </AssociationSet>
-          <AssociationSet Name="fk_participantIdentities_player1" Association="Self.fk_participantIdentities_player1">
+          <AssociationSet Name="fk_participantIdentities_player" Association="Self.fk_participantIdentities_player">
             <End Role="player" EntitySet="player" />
             <End Role="participantidentities" EntitySet="participantidentities" />
           </AssociationSet>
-          <AssociationSet Name="fk_rune_participant1" Association="Self.fk_rune_participant1">
+          <AssociationSet Name="fk_rune_participant" Association="Self.fk_rune_participant">
             <End Role="participant" EntitySet="participant" />
             <End Role="rune" EntitySet="rune" />
           </AssociationSet>
-          <AssociationSet Name="fk_stat_participant1" Association="Self.fk_stat_participant1">
+          <AssociationSet Name="fk_stat_participant" Association="Self.fk_stat_participant">
             <End Role="participant" EntitySet="participant" />
             <End Role="stat" EntitySet="stat" />
           </AssociationSet>
@@ -711,22 +624,121 @@
             <End Role="game" EntitySet="game" />
             <End Role="team" EntitySet="team" />
           </AssociationSet>
-          <AssociationSet Name="fk_timeline_participant1" Association="Self.fk_timeline_participant1">
+          <AssociationSet Name="fk_timeline_participant" Association="Self.fk_timeline_participant">
             <End Role="participant" EntitySet="participant" />
             <End Role="timeline" EntitySet="timeline" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="lolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="lolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ban" EntityType="lolModel.ban" />
+          <EntitySet Name="frame" EntityType="lolModel.frame" />
+          <EntitySet Name="game" EntityType="lolModel.game" />
+          <EntitySet Name="gameframe" EntityType="lolModel.gameframe" />
+          <EntitySet Name="mastery" EntityType="lolModel.mastery" />
+          <EntitySet Name="participant" EntityType="lolModel.participant" />
+          <EntitySet Name="participantframe" EntityType="lolModel.participantframe" />
+          <EntitySet Name="participantframes" EntityType="lolModel.participantframes" />
+          <EntitySet Name="participantidentities" EntityType="lolModel.participantidentities" />
+          <EntitySet Name="player" EntityType="lolModel.player" />
+          <EntitySet Name="rune" EntityType="lolModel.rune" />
+          <EntitySet Name="stat" EntityType="lolModel.stat" />
+          <EntitySet Name="team" EntityType="lolModel.team" />
+          <EntitySet Name="timeline" EntityType="lolModel.timeline" />
+          <AssociationSet Name="fk_Ban_Team" Association="lolModel.fk_Ban_Team">
+            <End Role="team" EntitySet="team" />
+            <End Role="ban" EntitySet="ban" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Frame_ParticipantFrames" Association="lolModel.fk_Frame_ParticipantFrames">
+            <End Role="participantframes" EntitySet="participantframes" />
+            <End Role="frame" EntitySet="frame" />
+          </AssociationSet>
+          <AssociationSet Name="fk_game_frame_game" Association="lolModel.fk_game_frame_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="gameframe" EntitySet="gameframe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_participant_game" Association="lolModel.fk_participant_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="participant" EntitySet="participant" />
+          </AssociationSet>
+          <AssociationSet Name="fk_participantIdentities_game" Association="lolModel.fk_participantIdentities_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="participantidentities" EntitySet="participantidentities" />
+          </AssociationSet>
+          <AssociationSet Name="fk_team_game1" Association="lolModel.fk_team_game1">
+            <End Role="game" EntitySet="game" />
+            <End Role="team" EntitySet="team" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mastery_participant" Association="lolModel.fk_mastery_participant">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="mastery" EntitySet="mastery" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rune_participant" Association="lolModel.fk_rune_participant">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="rune" EntitySet="rune" />
+          </AssociationSet>
+          <AssociationSet Name="fk_stat_participant" Association="lolModel.fk_stat_participant">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="stat" EntitySet="stat" />
+          </AssociationSet>
+          <AssociationSet Name="fk_timeline_participant" Association="lolModel.fk_timeline_participant">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="timeline" EntitySet="timeline" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame1" Association="lolModel.fk_ParticipantFrames_ParticipantFrame1">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame2" Association="lolModel.fk_ParticipantFrames_ParticipantFrame2">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame3" Association="lolModel.fk_ParticipantFrames_ParticipantFrame3">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame4" Association="lolModel.fk_ParticipantFrames_ParticipantFrame4">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame5" Association="lolModel.fk_ParticipantFrames_ParticipantFrame5">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame6" Association="lolModel.fk_ParticipantFrames_ParticipantFrame6">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame7" Association="lolModel.fk_ParticipantFrames_ParticipantFrame7">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame8" Association="lolModel.fk_ParticipantFrames_ParticipantFrame8">
+            <End Role="participantframe" EntitySet="participantframe" />
+            <End Role="participantframes" EntitySet="participantframes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_participantIdentities_player" Association="lolModel.fk_participantIdentities_player">
+            <End Role="player" EntitySet="player" />
+            <End Role="participantidentities" EntitySet="participantidentities" />
+          </AssociationSet>
+          <AssociationSet Name="frames" Association="lolModel.frames">
+            <End Role="frame" EntitySet="frame" />
+            <End Role="gameframe" EntitySet="gameframe" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="ban">
           <Key>
-            <PropertyRef Name="championId" />
+            <PropertyRef Name="gameId" />
+            <PropertyRef Name="teamId" />
           </Key>
-          <Property Name="championId" Type="Int32" Nullable="false" />
-          <Property Name="pickTurn" Type="Int32" />
+          <Property Name="gameId" Type="Int64" Nullable="false" />
+          <Property Name="teamId" Type="Int32" Nullable="false" />
+          <Property Name="championId" Type="Int16" />
+          <Property Name="pickTurn" Type="Int16" />
+          <NavigationProperty Name="team" Relationship="lolModel.fk_Ban_Team" FromRole="ban" ToRole="team" />
         </EntityType>
         <EntityType Name="frame">
           <Key>
@@ -735,105 +747,27 @@
           <Property Name="participantFramesId" Type="Int32" Nullable="false" />
           <Property Name="events" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="timestamp" Type="Int32" />
-          <NavigationProperty Name="participantframes" Relationship="Self.fk_Frame_ParticipantFrames1" FromRole="frame" ToRole="participantframes" />
-          <NavigationProperty Name="gameframe" Relationship="Self.frames" FromRole="frame" ToRole="gameframe" />
+          <NavigationProperty Name="participantframes" Relationship="lolModel.fk_Frame_ParticipantFrames" FromRole="frame" ToRole="participantframes" />
+          <NavigationProperty Name="gameframe" Relationship="lolModel.frames" FromRole="frame" ToRole="gameframe" />
         </EntityType>
         <EntityType Name="game">
           <Key>
             <PropertyRef Name="gameId" />
           </Key>
           <Property Name="gameId" Type="Int64" Nullable="false" />
-          <Property Name="platformId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="platformId" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="gameCreation" Type="Int64" Nullable="false" />
           <Property Name="gameDuration" Type="Int32" Nullable="false" />
-          <Property Name="queueId" Type="Int32" Nullable="false" />
-          <Property Name="mapId" Type="Int32" Nullable="false" />
-          <Property Name="seasonId" Type="Int32" Nullable="false" />
-          <Property Name="gameVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="gameMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="gameType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="gameframe" Relationship="Self.fk_game_frame_game1" FromRole="game" ToRole="gameframe" />
-          <NavigationProperty Name="game_player" Relationship="Self.fk_game_player_game" FromRole="game" ToRole="game_player" />
-          <NavigationProperty Name="participant" Relationship="Self.fk_participant_game1" FromRole="game" ToRole="participant" />
-          <NavigationProperty Name="participantidentities" Relationship="Self.fk_participantIdentities_game1" FromRole="game" ToRole="participantidentities" />
-          <NavigationProperty Name="team" Relationship="Self.fk_team_game1" FromRole="game" ToRole="team" />
-        </EntityType>
-        <EntityType Name="game_player">
-          <Key>
-            <PropertyRef Name="gameplayerId" />
-          </Key>
-          <Property Name="gameplayerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="gameId" Type="Int64" Nullable="false" />
-          <Property Name="accountId" Type="Int32" Nullable="false" />
-          <Property Name="participantId" Type="Int32" Nullable="false" />
-          <Property Name="teamId" Type="Int32" Nullable="false" />
-          <Property Name="championId" Type="Int32" Nullable="false" />
-          <Property Name="spell1Id" Type="Int32" Nullable="false" />
-          <Property Name="spell2Id" Type="Int32" Nullable="false" />
-          <Property Name="masteries" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="runes" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="highestAchievedSeasonTier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="win" Type="Boolean" Nullable="false" />
-          <Property Name="item0" Type="Int32" Nullable="false" />
-          <Property Name="item1" Type="Int32" Nullable="false" />
-          <Property Name="item2" Type="Int32" Nullable="false" />
-          <Property Name="item3" Type="Int32" Nullable="false" />
-          <Property Name="item4" Type="Int32" Nullable="false" />
-          <Property Name="item5" Type="Int32" Nullable="false" />
-          <Property Name="item6" Type="Int32" Nullable="false" />
-          <Property Name="kills" Type="Int32" Nullable="false" />
-          <Property Name="deaths" Type="Int32" Nullable="false" />
-          <Property Name="assists" Type="Int32" Nullable="false" />
-          <Property Name="largestKillingSpree" Type="Int32" Nullable="false" />
-          <Property Name="largestMultiKill" Type="Int32" Nullable="false" />
-          <Property Name="killingSprees" Type="Int32" Nullable="false" />
-          <Property Name="longestTimeSpentLiving" Type="Int32" Nullable="false" />
-          <Property Name="doubleKills" Type="Int32" Nullable="false" />
-          <Property Name="tripleKills" Type="Int32" Nullable="false" />
-          <Property Name="quadrupleKills" Type="Int32" Nullable="false" />
-          <Property Name="pentaKills" Type="Int32" Nullable="false" />
-          <Property Name="unrealKills" Type="Int32" Nullable="false" />
-          <Property Name="totalDamageBalt" Type="Int32" Nullable="false" />
-          <Property Name="magicDamageBalt" Type="Int32" Nullable="false" />
-          <Property Name="physicalDamageDealt" Type="Int32" Nullable="false" />
-          <Property Name="trueDamageDealt" Type="Int32" Nullable="false" />
-          <Property Name="largestCriticalStrike" Type="Int32" Nullable="false" />
-          <Property Name="totalDamageDealtToChampions" Type="Int32" Nullable="false" />
-          <Property Name="magicDamageDealtToChampions" Type="Int32" Nullable="false" />
-          <Property Name="physicalDamageDealtToChampions" Type="Int32" Nullable="false" />
-          <Property Name="trueDamageDealtToChampions" Type="Int32" Nullable="false" />
-          <Property Name="totalHeal" Type="Int32" Nullable="false" />
-          <Property Name="totalUnitsHealed" Type="Int32" Nullable="false" />
-          <Property Name="totalDamageTaken" Type="Int32" Nullable="false" />
-          <Property Name="magicalDamageTaken" Type="Int32" Nullable="false" />
-          <Property Name="physicalDamageTaken" Type="Int32" Nullable="false" />
-          <Property Name="trueDamageTaken" Type="Int32" Nullable="false" />
-          <Property Name="goldEarned" Type="Int32" Nullable="false" />
-          <Property Name="goldSpent" Type="Int32" Nullable="false" />
-          <Property Name="turretKill" Type="Int32" Nullable="false" />
-          <Property Name="inhibitorKills" Type="Int32" Nullable="false" />
-          <Property Name="totalMinionsKilled" Type="Int32" Nullable="false" />
-          <Property Name="neutralMinionsKilled" Type="Int32" Nullable="false" />
-          <Property Name="neutralMinionsKilledTeamJungle" Type="Int32" Nullable="false" />
-          <Property Name="neutralMinionsKilledEnemyJungle" Type="Int32" Nullable="false" />
-          <Property Name="totalTimeCrowdControlDealt" Type="Int32" Nullable="false" />
-          <Property Name="champLevel" Type="Int32" Nullable="false" />
-          <Property Name="visionWardsBoughtInGame" Type="Int32" Nullable="false" />
-          <Property Name="sightWardsBoughtInGame" Type="Int32" Nullable="false" />
-          <Property Name="wardsPlaced" Type="Int32" Nullable="false" />
-          <Property Name="wardsKilled" Type="Int32" Nullable="false" />
-          <Property Name="firstBloodKill" Type="Boolean" Nullable="false" />
-          <Property Name="firstBloodAssist" Type="Boolean" Nullable="false" />
-          <Property Name="firstTowerKill" Type="Boolean" Nullable="false" />
-          <Property Name="firstTowerAssist" Type="Boolean" Nullable="false" />
-          <Property Name="firstInhibitorKill" Type="Boolean" Nullable="false" />
-          <Property Name="firstInhibitorAssist" Type="Boolean" Nullable="false" />
-          <Property Name="combatPlayerScore" Type="Int32" Nullable="false" />
-          <Property Name="objectivePlayerScore" Type="Int32" Nullable="false" />
-          <Property Name="totalPlayerScore" Type="Int32" Nullable="false" />
-          <Property Name="totalScoreRank" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="game" Relationship="Self.fk_game_player_game" FromRole="game_player" ToRole="game" />
-          <NavigationProperty Name="player" Relationship="Self.fk_game_player_player1" FromRole="game_player" ToRole="player" />
+          <Property Name="queueId" Type="Int16" Nullable="false" />
+          <Property Name="mapId" Type="Int16" Nullable="false" />
+          <Property Name="seasonId" Type="Int16" Nullable="false" />
+          <Property Name="gameVersion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gameMode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gameType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="gameframe" Relationship="lolModel.fk_game_frame_game" FromRole="game" ToRole="gameframe" />
+          <NavigationProperty Name="participant" Relationship="lolModel.fk_participant_game" FromRole="game" ToRole="participant" />
+          <NavigationProperty Name="participantidentities" Relationship="lolModel.fk_participantIdentities_game" FromRole="game" ToRole="participantidentities" />
+          <NavigationProperty Name="team" Relationship="lolModel.fk_team_game1" FromRole="game" ToRole="team" />
         </EntityType>
         <EntityType Name="gameframe">
           <Key>
@@ -841,8 +775,8 @@
           </Key>
           <Property Name="gameId" Type="Int64" Nullable="false" />
           <Property Name="frameInterval" Type="Int32" />
-          <NavigationProperty Name="game" Relationship="Self.fk_game_frame_game1" FromRole="gameframe" ToRole="game" />
-          <NavigationProperty Name="frame" Relationship="Self.frames" FromRole="gameframe" ToRole="frame" />
+          <NavigationProperty Name="game" Relationship="lolModel.fk_game_frame_game" FromRole="gameframe" ToRole="game" />
+          <NavigationProperty Name="frame" Relationship="lolModel.frames" FromRole="gameframe" ToRole="frame" />
         </EntityType>
         <EntityType Name="mastery">
           <Key>
@@ -853,8 +787,8 @@
           <Property Name="masteryId" Type="Int32" Nullable="false" />
           <Property Name="gameId" Type="Int64" Nullable="false" />
           <Property Name="participantId" Type="Int32" Nullable="false" />
-          <Property Name="rank" Type="Int32" />
-          <NavigationProperty Name="participant" Relationship="Self.fk_mastery_participant1" FromRole="mastery" ToRole="participant" />
+          <Property Name="rank" Type="SByte" />
+          <NavigationProperty Name="participant" Relationship="lolModel.fk_mastery_participant" FromRole="mastery" ToRole="participant" />
         </EntityType>
         <EntityType Name="participant">
           <Key>
@@ -863,16 +797,16 @@
           </Key>
           <Property Name="participantId" Type="Int32" Nullable="false" />
           <Property Name="gameId" Type="Int64" Nullable="false" />
-          <Property Name="teamId" Type="Int32" />
-          <Property Name="championId" Type="Int32" />
+          <Property Name="teamId" Type="SByte" />
+          <Property Name="championId" Type="Int16" />
           <Property Name="spell1Id" Type="Int32" />
           <Property Name="spell2Id" Type="Int32" />
           <Property Name="highestAchievedSeasonTier" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="game" Relationship="Self.fk_participant_game1" FromRole="participant" ToRole="game" />
-          <NavigationProperty Name="mastery" Relationship="Self.fk_mastery_participant1" FromRole="participant" ToRole="mastery" />
-          <NavigationProperty Name="rune" Relationship="Self.fk_rune_participant1" FromRole="participant" ToRole="rune" />
-          <NavigationProperty Name="stat" Relationship="Self.fk_stat_participant1" FromRole="participant" ToRole="stat" />
-          <NavigationProperty Name="timeline" Relationship="Self.fk_timeline_participant1" FromRole="participant" ToRole="timeline" />
+          <NavigationProperty Name="game" Relationship="lolModel.fk_participant_game" FromRole="participant" ToRole="game" />
+          <NavigationProperty Name="mastery" Relationship="lolModel.fk_mastery_participant" FromRole="participant" ToRole="mastery" />
+          <NavigationProperty Name="rune" Relationship="lolModel.fk_rune_participant" FromRole="participant" ToRole="rune" />
+          <NavigationProperty Name="stat" Relationship="lolModel.fk_stat_participant" FromRole="participant" ToRole="stat" />
+          <NavigationProperty Name="timeline" Relationship="lolModel.fk_timeline_participant" FromRole="participant" ToRole="timeline" />
         </EntityType>
         <EntityType Name="participantframe">
           <Key>
@@ -883,20 +817,20 @@
           <Property Name="position_y" Type="Int32" />
           <Property Name="currentGold" Type="Int32" />
           <Property Name="totalGold" Type="Int32" />
-          <Property Name="level" Type="Int32" />
+          <Property Name="level" Type="SByte" />
           <Property Name="xp" Type="Int32" />
-          <Property Name="minionsKilled" Type="Int32" />
-          <Property Name="jungleMinionsKilled" Type="Int32" />
+          <Property Name="minionsKilled" Type="SByte" />
+          <Property Name="jungleMinionsKilled" Type="SByte" />
           <Property Name="dominionScore" Type="Int32" />
           <Property Name="teamScore" Type="Int32" />
-          <NavigationProperty Name="participantframes" Relationship="Self.fk_ParticipantFrames_ParticipantFrame1" FromRole="participantframe" ToRole="participantframes" />
-          <NavigationProperty Name="participantframes1" Relationship="Self.fk_ParticipantFrames_ParticipantFrame2" FromRole="participantframe" ToRole="participantframes" />
-          <NavigationProperty Name="participantframes2" Relationship="Self.fk_ParticipantFrames_ParticipantFrame3" FromRole="participantframe" ToRole="participantframes" />
-          <NavigationProperty Name="participantframes3" Relationship="Self.fk_ParticipantFrames_ParticipantFrame4" FromRole="participantframe" ToRole="participantframes" />
-          <NavigationProperty Name="participantframes4" Relationship="Self.fk_ParticipantFrames_ParticipantFrame5" FromRole="participantframe" ToRole="participantframes" />
-          <NavigationProperty Name="participantframes5" Relationship="Self.fk_ParticipantFrames_ParticipantFrame6" FromRole="participantframe" ToRole="participantframes" />
-          <NavigationProperty Name="participantframes6" Relationship="Self.fk_ParticipantFrames_ParticipantFrame7" FromRole="participantframe" ToRole="participantframes" />
-          <NavigationProperty Name="participantframes7" Relationship="Self.fk_ParticipantFrames_ParticipantFrame8" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame1" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes1" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame2" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes2" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame3" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes3" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame4" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes4" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame5" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes5" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame6" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes6" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame7" FromRole="participantframe" ToRole="participantframes" />
+          <NavigationProperty Name="participantframes7" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame8" FromRole="participantframe" ToRole="participantframes" />
         </EntityType>
         <EntityType Name="participantframes">
           <Key>
@@ -911,15 +845,15 @@
           <Property Name="participantFrame6" Type="Int32" Nullable="false" />
           <Property Name="participantFrame7" Type="Int32" Nullable="false" />
           <Property Name="participantFrame8" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="frame" Relationship="Self.fk_Frame_ParticipantFrames1" FromRole="participantframes" ToRole="frame" />
-          <NavigationProperty Name="participantframe" Relationship="Self.fk_ParticipantFrames_ParticipantFrame1" FromRole="participantframes" ToRole="participantframe" />
-          <NavigationProperty Name="participantframe9" Relationship="Self.fk_ParticipantFrames_ParticipantFrame2" FromRole="participantframes" ToRole="participantframe" />
-          <NavigationProperty Name="participantframe10" Relationship="Self.fk_ParticipantFrames_ParticipantFrame3" FromRole="participantframes" ToRole="participantframe" />
-          <NavigationProperty Name="participantframe11" Relationship="Self.fk_ParticipantFrames_ParticipantFrame4" FromRole="participantframes" ToRole="participantframe" />
-          <NavigationProperty Name="participantframe12" Relationship="Self.fk_ParticipantFrames_ParticipantFrame5" FromRole="participantframes" ToRole="participantframe" />
-          <NavigationProperty Name="participantframe13" Relationship="Self.fk_ParticipantFrames_ParticipantFrame6" FromRole="participantframes" ToRole="participantframe" />
-          <NavigationProperty Name="participantframe14" Relationship="Self.fk_ParticipantFrames_ParticipantFrame7" FromRole="participantframes" ToRole="participantframe" />
-          <NavigationProperty Name="participantframe15" Relationship="Self.fk_ParticipantFrames_ParticipantFrame8" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="frame" Relationship="lolModel.fk_Frame_ParticipantFrames" FromRole="participantframes" ToRole="frame" />
+          <NavigationProperty Name="participantframe" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame1" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="participantframe9" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame2" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="participantframe10" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame3" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="participantframe11" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame4" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="participantframe12" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame5" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="participantframe13" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame6" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="participantframe14" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame7" FromRole="participantframes" ToRole="participantframe" />
+          <NavigationProperty Name="participantframe15" Relationship="lolModel.fk_ParticipantFrames_ParticipantFrame8" FromRole="participantframes" ToRole="participantframe" />
         </EntityType>
         <EntityType Name="participantidentities">
           <Key>
@@ -928,23 +862,22 @@
           </Key>
           <Property Name="gameId" Type="Int64" Nullable="false" />
           <Property Name="accountId" Type="Int32" Nullable="false" />
-          <Property Name="participantId" Type="Int32" />
-          <NavigationProperty Name="game" Relationship="Self.fk_participantIdentities_game1" FromRole="participantidentities" ToRole="game" />
-          <NavigationProperty Name="player" Relationship="Self.fk_participantIdentities_player1" FromRole="participantidentities" ToRole="player" />
+          <Property Name="participantId" Type="SByte" />
+          <NavigationProperty Name="game" Relationship="lolModel.fk_participantIdentities_game" FromRole="participantidentities" ToRole="game" />
+          <NavigationProperty Name="player" Relationship="lolModel.fk_participantIdentities_player" FromRole="participantidentities" ToRole="player" />
         </EntityType>
         <EntityType Name="player">
           <Key>
             <PropertyRef Name="accountId" />
           </Key>
           <Property Name="accountId" Type="Int32" Nullable="false" />
-          <Property Name="summonerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="summonerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="summonerId" Type="Int32" Nullable="false" />
-          <Property Name="currentPlatformId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="currentPlatformId" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="currentAccountId" Type="Int32" Nullable="false" />
-          <Property Name="matchHistoryUri" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matchHistoryUri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="profileIcon" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="game_player" Relationship="Self.fk_game_player_player1" FromRole="player" ToRole="game_player" />
-          <NavigationProperty Name="participantidentities" Relationship="Self.fk_participantIdentities_player1" FromRole="player" ToRole="participantidentities" />
+          <NavigationProperty Name="participantidentities" Relationship="lolModel.fk_participantIdentities_player" FromRole="player" ToRole="participantidentities" />
         </EntityType>
         <EntityType Name="rune">
           <Key>
@@ -955,8 +888,8 @@
           <Property Name="runeId" Type="Int32" Nullable="false" />
           <Property Name="participantId" Type="Int32" Nullable="false" />
           <Property Name="gameId" Type="Int64" Nullable="false" />
-          <Property Name="rank" Type="Int32" />
-          <NavigationProperty Name="participant" Relationship="Self.fk_rune_participant1" FromRole="rune" ToRole="participant" />
+          <Property Name="rank" Type="SByte" />
+          <NavigationProperty Name="participant" Relationship="lolModel.fk_rune_participant" FromRole="rune" ToRole="participant" />
         </EntityType>
         <EntityType Name="stat">
           <Key>
@@ -966,54 +899,53 @@
           <Property Name="gameId" Type="Int64" Nullable="false" />
           <Property Name="participantId" Type="Int32" Nullable="false" />
           <Property Name="win" Type="Boolean" />
-          <Property Name="item0" Type="Int32" />
-          <Property Name="item1" Type="Int32" />
-          <Property Name="item2" Type="Int32" />
-          <Property Name="item3" Type="Int32" />
-          <Property Name="item4" Type="Int32" />
-          <Property Name="item5" Type="Int32" />
-          <Property Name="item6" Type="Int32" />
-          <Property Name="kills" Type="Int32" />
-          <Property Name="deaths" Type="Int32" />
-          <Property Name="assists" Type="Int32" />
-          <Property Name="largestKillingSpree" Type="Int32" />
-          <Property Name="largestMultiKill" Type="Int32" />
-          <Property Name="killingSprees" Type="Int32" />
-          <Property Name="longestTimeSpentLiving" Type="Int32" />
-          <Property Name="doubleKills" Type="Int32" />
-          <Property Name="tripleKills" Type="Int32" />
-          <Property Name="quadraKills" Type="Int32" />
-          <Property Name="pentaKills" Type="Int32" />
-          <Property Name="unrealKills" Type="Int32" />
-          <Property Name="totalDamageDealt" Type="Int32" />
-          <Property Name="magicDamageDealt" Type="Int32" />
-          <Property Name="physicalDamageDealt" Type="Int32" />
-          <Property Name="trueDamageDealt" Type="Int32" />
-          <Property Name="largestCriticalStrike" Type="Int32" />
-          <Property Name="totalDamageDealtToChampions" Type="Int32" />
-          <Property Name="magicDamageDealtToChampions" Type="Int32" />
-          <Property Name="physicalDamageDealtToChampions" Type="Int32" />
-          <Property Name="trueDamageDealtToChampions" Type="Int32" />
-          <Property Name="totalHeal" Type="Int32" />
-          <Property Name="totalUnitsHealed" Type="Int32" />
-          <Property Name="totalDamageTaken" Type="Int32" />
-          <Property Name="magicalDamageTaken" Type="Int32" />
-          <Property Name="physicalDamageTaken" Type="Int32" />
-          <Property Name="trueDamageTaken" Type="Int32" />
-          <Property Name="goldEarned" Type="Int32" />
-          <Property Name="goldSpent" Type="Int32" />
-          <Property Name="turretKills" Type="Int32" />
-          <Property Name="inhibitorKills" Type="Int32" />
-          <Property Name="totalMinionsKilled" Type="Int32" />
-          <Property Name="neutralMinionsKilled" Type="Int32" />
-          <Property Name="neutralMinionsKilledTeamJungle" Type="Int32" />
-          <Property Name="neutralMinionsKilledEnemyJungle" Type="Int32" />
-          <Property Name="totalTimeCrowdControlDealt" Type="Int32" />
-          <Property Name="champLevel" Type="Int32" />
-          <Property Name="visionWardsBoughtInGame" Type="Int32" />
-          <Property Name="sightWardsBoughtInGame" Type="Int32" />
-          <Property Name="wardsPlaced" Type="Int32" />
-          <Property Name="wardsKilled" Type="Int32" />
+          <Property Name="item0" Type="Int16" />
+          <Property Name="item1" Type="Int16" />
+          <Property Name="item3" Type="Int16" />
+          <Property Name="item4" Type="Int16" />
+          <Property Name="item5" Type="Int16" />
+          <Property Name="item6" Type="Int16" />
+          <Property Name="kills" Type="Int16" />
+          <Property Name="deaths" Type="Int16" />
+          <Property Name="assists" Type="Int16" />
+          <Property Name="largestKillingSpree" Type="Int16" />
+          <Property Name="largestMultiKill" Type="Int16" />
+          <Property Name="killingSprees" Type="Int16" />
+          <Property Name="longestTimeSpentLiving" Type="Int16" />
+          <Property Name="doubleKills" Type="Int16" />
+          <Property Name="tripleKills" Type="Int16" />
+          <Property Name="quadraKills" Type="Int16" />
+          <Property Name="pentaKills" Type="Int16" />
+          <Property Name="unrealKills" Type="Int16" />
+          <Property Name="totalDamageDealt" Type="Int16" />
+          <Property Name="magicDamageDealt" Type="Int16" />
+          <Property Name="physicalDamageDealt" Type="Int16" />
+          <Property Name="trueDamageDealt" Type="Int16" />
+          <Property Name="largestCriticalStrike" Type="Int16" />
+          <Property Name="totalDamageDealtToChampions" Type="Int16" />
+          <Property Name="magicDamageDealtToChampions" Type="Int16" />
+          <Property Name="physicalDamageDealtToChampions" Type="Int16" />
+          <Property Name="trueDamageDealtToChampions" Type="Int16" />
+          <Property Name="totalHeal" Type="Int16" />
+          <Property Name="totalUnitsHealed" Type="Int16" />
+          <Property Name="totalDamageTaken" Type="Int16" />
+          <Property Name="magicalDamageTaken" Type="Int16" />
+          <Property Name="physicalDamageTaken" Type="Int16" />
+          <Property Name="trueDamageTaken" Type="Int16" />
+          <Property Name="goldEarned" Type="Int16" />
+          <Property Name="goldSpent" Type="Int16" />
+          <Property Name="turretKills" Type="Int16" />
+          <Property Name="inhibitorKills" Type="Int16" />
+          <Property Name="totalMinionsKilled" Type="Int16" />
+          <Property Name="neutralMinionsKilled" Type="Int16" />
+          <Property Name="neutralMinionsKilledTeamJungle" Type="Int16" />
+          <Property Name="neutralMinionsKilledEnemyJungle" Type="Int16" />
+          <Property Name="totalTimeCrowdControlDealt" Type="Int16" />
+          <Property Name="champLevel" Type="Int16" />
+          <Property Name="visionWardsBoughtInGame" Type="Int16" />
+          <Property Name="sightWardsBoughtInGame" Type="Int16" />
+          <Property Name="wardsPlaced" Type="Int16" />
+          <Property Name="wardsKilled" Type="Int16" />
           <Property Name="firstBloodKill" Type="Boolean" />
           <Property Name="firstBloodAssist" Type="Boolean" />
           <Property Name="firstTowerKill" Type="Boolean" />
@@ -1024,7 +956,8 @@
           <Property Name="objectivePlayerScore" Type="Int32" />
           <Property Name="totalPlayerScore" Type="Int32" />
           <Property Name="totalScoreRank" Type="Int32" />
-          <NavigationProperty Name="participant" Relationship="Self.fk_stat_participant1" FromRole="stat" ToRole="participant" />
+          <Property Name="item2" Type="Int16" />
+          <NavigationProperty Name="participant" Relationship="lolModel.fk_stat_participant" FromRole="stat" ToRole="participant" />
         </EntityType>
         <EntityType Name="team">
           <Key>
@@ -1033,21 +966,22 @@
           </Key>
           <Property Name="teamId" Type="Int32" Nullable="false" />
           <Property Name="gameId" Type="Int64" Nullable="false" />
-          <Property Name="win" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="win" Type="Boolean" />
           <Property Name="firstBlood" Type="Boolean" />
           <Property Name="firstTower" Type="Boolean" />
           <Property Name="firstInhibitor" Type="Boolean" />
           <Property Name="firstBaron" Type="Boolean" />
           <Property Name="firstDragon" Type="Boolean" />
           <Property Name="firstRiftHerald" Type="Boolean" />
-          <Property Name="towerKills" Type="Int32" />
-          <Property Name="inhibitorKills" Type="Int32" />
-          <Property Name="baronKills" Type="Int32" />
-          <Property Name="dragonKills" Type="Int32" />
-          <Property Name="vilemawKills" Type="Int32" />
-          <Property Name="riftHeraldKills" Type="Int32" />
-          <Property Name="dominionVictoryScore" Type="Int32" />
-          <NavigationProperty Name="game" Relationship="Self.fk_team_game1" FromRole="team" ToRole="game" />
+          <Property Name="towerKills" Type="Int16" />
+          <Property Name="inhibitorKills" Type="Int16" />
+          <Property Name="baronKills" Type="Int16" />
+          <Property Name="dragonKills" Type="Int16" />
+          <Property Name="vilemawKills" Type="Int16" />
+          <Property Name="riftHeraldKills" Type="Int16" />
+          <Property Name="dominionVictoryScore" Type="Int16" />
+          <NavigationProperty Name="ban" Relationship="lolModel.fk_Ban_Team" FromRole="team" ToRole="ban" />
+          <NavigationProperty Name="game" Relationship="lolModel.fk_team_game1" FromRole="team" ToRole="game" />
         </EntityType>
         <EntityType Name="timeline">
           <Key>
@@ -1086,11 +1020,25 @@
           <Property Name="damageTakenDiffPerMinDeltas_2" Type="Double" />
           <Property Name="damageTakenDiffPerMinDeltas_3" Type="Double" />
           <Property Name="damageTakenDiffPerMinDeltas_4" Type="Double" />
-          <NavigationProperty Name="participant" Relationship="Self.fk_timeline_participant1" FromRole="timeline" ToRole="participant" />
+          <NavigationProperty Name="participant" Relationship="lolModel.fk_timeline_participant" FromRole="timeline" ToRole="participant" />
         </EntityType>
-        <Association Name="fk_Frame_ParticipantFrames1">
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="1" />
-          <End Role="frame" Type="Self.frame" Multiplicity="0..1" />
+        <Association Name="fk_Ban_Team">
+          <End Type="lolModel.team" Role="team" Multiplicity="1" />
+          <End Type="lolModel.ban" Role="ban" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="team">
+              <PropertyRef Name="teamId" />
+              <PropertyRef Name="gameId" />
+            </Principal>
+            <Dependent Role="ban">
+              <PropertyRef Name="teamId" />
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Frame_ParticipantFrames">
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="1" />
+          <End Type="lolModel.frame" Role="frame" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="participantframes">
               <PropertyRef Name="participantFramesId" />
@@ -1100,9 +1048,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_game_frame_game1">
-          <End Role="game" Type="Self.game" Multiplicity="1" />
-          <End Role="gameframe" Type="Self.gameframe" Multiplicity="0..1" />
+        <Association Name="fk_game_frame_game">
+          <End Type="lolModel.game" Role="game" Multiplicity="1" />
+          <End Type="lolModel.gameframe" Role="gameframe" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="game">
               <PropertyRef Name="gameId" />
@@ -1112,21 +1060,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_game_player_game">
-          <End Role="game" Type="Self.game" Multiplicity="1" />
-          <End Role="game_player" Type="Self.game_player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="game">
-              <PropertyRef Name="gameId" />
-            </Principal>
-            <Dependent Role="game_player">
-              <PropertyRef Name="gameId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_participant_game1">
-          <End Role="game" Type="Self.game" Multiplicity="1" />
-          <End Role="participant" Type="Self.participant" Multiplicity="*" />
+        <Association Name="fk_participant_game">
+          <End Type="lolModel.game" Role="game" Multiplicity="1" />
+          <End Type="lolModel.participant" Role="participant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="game">
               <PropertyRef Name="gameId" />
@@ -1136,9 +1072,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_participantIdentities_game1">
-          <End Role="game" Type="Self.game" Multiplicity="1" />
-          <End Role="participantidentities" Type="Self.participantidentities" Multiplicity="*" />
+        <Association Name="fk_participantIdentities_game">
+          <End Type="lolModel.game" Role="game" Multiplicity="1" />
+          <End Type="lolModel.participantidentities" Role="participantidentities" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="game">
               <PropertyRef Name="gameId" />
@@ -1149,8 +1085,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_team_game1">
-          <End Role="game" Type="Self.game" Multiplicity="1" />
-          <End Role="team" Type="Self.team" Multiplicity="*" />
+          <End Type="lolModel.game" Role="game" Multiplicity="1" />
+          <End Type="lolModel.team" Role="team" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="game">
               <PropertyRef Name="gameId" />
@@ -1160,21 +1096,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_game_player_player1">
-          <End Role="player" Type="Self.player" Multiplicity="1" />
-          <End Role="game_player" Type="Self.game_player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="player">
-              <PropertyRef Name="accountId" />
-            </Principal>
-            <Dependent Role="game_player">
-              <PropertyRef Name="accountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_mastery_participant1">
-          <End Role="participant" Type="Self.participant" Multiplicity="1" />
-          <End Role="mastery" Type="Self.mastery" Multiplicity="*" />
+        <Association Name="fk_mastery_participant">
+          <End Type="lolModel.participant" Role="participant" Multiplicity="1" />
+          <End Type="lolModel.mastery" Role="mastery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participant">
               <PropertyRef Name="participantId" />
@@ -1186,9 +1110,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_rune_participant1">
-          <End Role="participant" Type="Self.participant" Multiplicity="1" />
-          <End Role="rune" Type="Self.rune" Multiplicity="*" />
+        <Association Name="fk_rune_participant">
+          <End Type="lolModel.participant" Role="participant" Multiplicity="1" />
+          <End Type="lolModel.rune" Role="rune" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participant">
               <PropertyRef Name="participantId" />
@@ -1200,9 +1124,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_stat_participant1">
-          <End Role="participant" Type="Self.participant" Multiplicity="1" />
-          <End Role="stat" Type="Self.stat" Multiplicity="0..1" />
+        <Association Name="fk_stat_participant">
+          <End Type="lolModel.participant" Role="participant" Multiplicity="1" />
+          <End Type="lolModel.stat" Role="stat" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="participant">
               <PropertyRef Name="participantId" />
@@ -1214,9 +1138,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_timeline_participant1">
-          <End Role="participant" Type="Self.participant" Multiplicity="1" />
-          <End Role="timeline" Type="Self.timeline" Multiplicity="0..1" />
+        <Association Name="fk_timeline_participant">
+          <End Type="lolModel.participant" Role="participant" Multiplicity="1" />
+          <End Type="lolModel.timeline" Role="timeline" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="participant">
               <PropertyRef Name="participantId" />
@@ -1229,8 +1153,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame1">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1241,8 +1165,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame2">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1253,8 +1177,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame3">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1265,8 +1189,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame4">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1277,8 +1201,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame5">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1289,8 +1213,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame6">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1301,8 +1225,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame7">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1313,8 +1237,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ParticipantFrames_ParticipantFrame8">
-          <End Role="participantframe" Type="Self.participantframe" Multiplicity="1" />
-          <End Role="participantframes" Type="Self.participantframes" Multiplicity="*" />
+          <End Type="lolModel.participantframe" Role="participantframe" Multiplicity="1" />
+          <End Type="lolModel.participantframes" Role="participantframes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="participantframe">
               <PropertyRef Name="participantId" />
@@ -1324,9 +1248,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_participantIdentities_player1">
-          <End Role="player" Type="Self.player" Multiplicity="1" />
-          <End Role="participantidentities" Type="Self.participantidentities" Multiplicity="*" />
+        <Association Name="fk_participantIdentities_player">
+          <End Type="lolModel.player" Role="player" Multiplicity="1" />
+          <End Type="lolModel.participantidentities" Role="participantidentities" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="player">
               <PropertyRef Name="accountId" />
@@ -1337,110 +1261,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="frames">
-          <End Role="frame" Type="Self.frame" Multiplicity="*" />
-          <End Role="gameframe" Type="Self.gameframe" Multiplicity="*" />
+          <End Type="lolModel.frame" Role="frame" Multiplicity="*" />
+          <End Type="lolModel.gameframe" Role="gameframe" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="lolEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ban" EntityType="Self.ban" />
-          <EntitySet Name="frame" EntityType="Self.frame" />
-          <EntitySet Name="game" EntityType="Self.game" />
-          <EntitySet Name="game_player" EntityType="Self.game_player" />
-          <EntitySet Name="gameframe" EntityType="Self.gameframe" />
-          <EntitySet Name="mastery" EntityType="Self.mastery" />
-          <EntitySet Name="participant" EntityType="Self.participant" />
-          <EntitySet Name="participantframe" EntityType="Self.participantframe" />
-          <EntitySet Name="participantframes" EntityType="Self.participantframes" />
-          <EntitySet Name="participantidentities" EntityType="Self.participantidentities" />
-          <EntitySet Name="player" EntityType="Self.player" />
-          <EntitySet Name="rune" EntityType="Self.rune" />
-          <EntitySet Name="stat" EntityType="Self.stat" />
-          <EntitySet Name="team" EntityType="Self.team" />
-          <EntitySet Name="timeline" EntityType="Self.timeline" />
-          <AssociationSet Name="fk_Frame_ParticipantFrames1" Association="Self.fk_Frame_ParticipantFrames1">
-            <End Role="participantframes" EntitySet="participantframes" />
-            <End Role="frame" EntitySet="frame" />
-          </AssociationSet>
-          <AssociationSet Name="fk_game_frame_game1" Association="Self.fk_game_frame_game1">
-            <End Role="game" EntitySet="game" />
-            <End Role="gameframe" EntitySet="gameframe" />
-          </AssociationSet>
-          <AssociationSet Name="fk_game_player_game" Association="Self.fk_game_player_game">
-            <End Role="game" EntitySet="game" />
-            <End Role="game_player" EntitySet="game_player" />
-          </AssociationSet>
-          <AssociationSet Name="fk_participant_game1" Association="Self.fk_participant_game1">
-            <End Role="game" EntitySet="game" />
-            <End Role="participant" EntitySet="participant" />
-          </AssociationSet>
-          <AssociationSet Name="fk_participantIdentities_game1" Association="Self.fk_participantIdentities_game1">
-            <End Role="game" EntitySet="game" />
-            <End Role="participantidentities" EntitySet="participantidentities" />
-          </AssociationSet>
-          <AssociationSet Name="fk_team_game1" Association="Self.fk_team_game1">
-            <End Role="game" EntitySet="game" />
-            <End Role="team" EntitySet="team" />
-          </AssociationSet>
-          <AssociationSet Name="fk_game_player_player1" Association="Self.fk_game_player_player1">
-            <End Role="player" EntitySet="player" />
-            <End Role="game_player" EntitySet="game_player" />
-          </AssociationSet>
-          <AssociationSet Name="fk_mastery_participant1" Association="Self.fk_mastery_participant1">
-            <End Role="participant" EntitySet="participant" />
-            <End Role="mastery" EntitySet="mastery" />
-          </AssociationSet>
-          <AssociationSet Name="fk_rune_participant1" Association="Self.fk_rune_participant1">
-            <End Role="participant" EntitySet="participant" />
-            <End Role="rune" EntitySet="rune" />
-          </AssociationSet>
-          <AssociationSet Name="fk_stat_participant1" Association="Self.fk_stat_participant1">
-            <End Role="participant" EntitySet="participant" />
-            <End Role="stat" EntitySet="stat" />
-          </AssociationSet>
-          <AssociationSet Name="fk_timeline_participant1" Association="Self.fk_timeline_participant1">
-            <End Role="participant" EntitySet="participant" />
-            <End Role="timeline" EntitySet="timeline" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame1" Association="Self.fk_ParticipantFrames_ParticipantFrame1">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame2" Association="Self.fk_ParticipantFrames_ParticipantFrame2">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame3" Association="Self.fk_ParticipantFrames_ParticipantFrame3">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame4" Association="Self.fk_ParticipantFrames_ParticipantFrame4">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame5" Association="Self.fk_ParticipantFrames_ParticipantFrame5">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame6" Association="Self.fk_ParticipantFrames_ParticipantFrame6">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame7" Association="Self.fk_ParticipantFrames_ParticipantFrame7">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ParticipantFrames_ParticipantFrame8" Association="Self.fk_ParticipantFrames_ParticipantFrame8">
-            <End Role="participantframe" EntitySet="participantframe" />
-            <End Role="participantframes" EntitySet="participantframes" />
-          </AssociationSet>
-          <AssociationSet Name="fk_participantIdentities_player1" Association="Self.fk_participantIdentities_player1">
-            <End Role="player" EntitySet="player" />
-            <End Role="participantidentities" EntitySet="participantidentities" />
-          </AssociationSet>
-          <AssociationSet Name="frames" Association="Self.frames">
-            <End Role="frame" EntitySet="frame" />
-            <End Role="gameframe" EntitySet="gameframe" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1450,340 +1273,266 @@
           <EntitySetMapping Name="ban">
             <EntityTypeMapping TypeName="lolModel.ban">
               <MappingFragment StoreEntitySet="ban">
-                <ScalarProperty Name="championId" ColumnName="championId" />
                 <ScalarProperty Name="pickTurn" ColumnName="pickTurn" />
+                <ScalarProperty Name="championId" ColumnName="championId" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="frame">
             <EntityTypeMapping TypeName="lolModel.frame">
               <MappingFragment StoreEntitySet="frame">
-                <ScalarProperty Name="participantFramesId" ColumnName="participantFramesId" />
-                <ScalarProperty Name="events" ColumnName="events" />
                 <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="events" ColumnName="events" />
+                <ScalarProperty Name="participantFramesId" ColumnName="participantFramesId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="game">
             <EntityTypeMapping TypeName="lolModel.game">
               <MappingFragment StoreEntitySet="game">
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="platformId" ColumnName="platformId" />
-                <ScalarProperty Name="gameCreation" ColumnName="gameCreation" />
-                <ScalarProperty Name="gameDuration" ColumnName="gameDuration" />
-                <ScalarProperty Name="queueId" ColumnName="queueId" />
-                <ScalarProperty Name="mapId" ColumnName="mapId" />
-                <ScalarProperty Name="seasonId" ColumnName="seasonId" />
-                <ScalarProperty Name="gameVersion" ColumnName="gameVersion" />
-                <ScalarProperty Name="gameMode" ColumnName="gameMode" />
                 <ScalarProperty Name="gameType" ColumnName="gameType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="game_player">
-            <EntityTypeMapping TypeName="lolModel.game_player">
-              <MappingFragment StoreEntitySet="game_player">
-                <ScalarProperty Name="gameplayerId" ColumnName="gameplayerId" />
+                <ScalarProperty Name="gameMode" ColumnName="gameMode" />
+                <ScalarProperty Name="gameVersion" ColumnName="gameVersion" />
+                <ScalarProperty Name="seasonId" ColumnName="seasonId" />
+                <ScalarProperty Name="mapId" ColumnName="mapId" />
+                <ScalarProperty Name="queueId" ColumnName="queueId" />
+                <ScalarProperty Name="gameDuration" ColumnName="gameDuration" />
+                <ScalarProperty Name="gameCreation" ColumnName="gameCreation" />
+                <ScalarProperty Name="platformId" ColumnName="platformId" />
                 <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="accountId" ColumnName="accountId" />
-                <ScalarProperty Name="participantId" ColumnName="participantId" />
-                <ScalarProperty Name="teamId" ColumnName="teamId" />
-                <ScalarProperty Name="championId" ColumnName="championId" />
-                <ScalarProperty Name="spell1Id" ColumnName="spell1Id" />
-                <ScalarProperty Name="spell2Id" ColumnName="spell2Id" />
-                <ScalarProperty Name="masteries" ColumnName="masteries" />
-                <ScalarProperty Name="runes" ColumnName="runes" />
-                <ScalarProperty Name="highestAchievedSeasonTier" ColumnName="highestAchievedSeasonTier" />
-                <ScalarProperty Name="win" ColumnName="win" />
-                <ScalarProperty Name="item0" ColumnName="item0" />
-                <ScalarProperty Name="item1" ColumnName="item1" />
-                <ScalarProperty Name="item2" ColumnName="item2" />
-                <ScalarProperty Name="item3" ColumnName="item3" />
-                <ScalarProperty Name="item4" ColumnName="item4" />
-                <ScalarProperty Name="item5" ColumnName="item5" />
-                <ScalarProperty Name="item6" ColumnName="item6" />
-                <ScalarProperty Name="kills" ColumnName="kills" />
-                <ScalarProperty Name="deaths" ColumnName="deaths" />
-                <ScalarProperty Name="assists" ColumnName="assists" />
-                <ScalarProperty Name="largestKillingSpree" ColumnName="largestKillingSpree" />
-                <ScalarProperty Name="largestMultiKill" ColumnName="largestMultiKill" />
-                <ScalarProperty Name="killingSprees" ColumnName="killingSprees" />
-                <ScalarProperty Name="longestTimeSpentLiving" ColumnName="longestTimeSpentLiving" />
-                <ScalarProperty Name="doubleKills" ColumnName="doubleKills" />
-                <ScalarProperty Name="tripleKills" ColumnName="tripleKills" />
-                <ScalarProperty Name="quadrupleKills" ColumnName="quadrupleKills" />
-                <ScalarProperty Name="pentaKills" ColumnName="pentaKills" />
-                <ScalarProperty Name="unrealKills" ColumnName="unrealKills" />
-                <ScalarProperty Name="totalDamageBalt" ColumnName="totalDamageBalt" />
-                <ScalarProperty Name="magicDamageBalt" ColumnName="magicDamageBalt" />
-                <ScalarProperty Name="physicalDamageDealt" ColumnName="physicalDamageDealt" />
-                <ScalarProperty Name="trueDamageDealt" ColumnName="trueDamageDealt" />
-                <ScalarProperty Name="largestCriticalStrike" ColumnName="largestCriticalStrike" />
-                <ScalarProperty Name="totalDamageDealtToChampions" ColumnName="totalDamageDealtToChampions" />
-                <ScalarProperty Name="magicDamageDealtToChampions" ColumnName="magicDamageDealtToChampions" />
-                <ScalarProperty Name="physicalDamageDealtToChampions" ColumnName="physicalDamageDealtToChampions" />
-                <ScalarProperty Name="trueDamageDealtToChampions" ColumnName="trueDamageDealtToChampions" />
-                <ScalarProperty Name="totalHeal" ColumnName="totalHeal" />
-                <ScalarProperty Name="totalUnitsHealed" ColumnName="totalUnitsHealed" />
-                <ScalarProperty Name="totalDamageTaken" ColumnName="totalDamageTaken" />
-                <ScalarProperty Name="magicalDamageTaken" ColumnName="magicalDamageTaken" />
-                <ScalarProperty Name="physicalDamageTaken" ColumnName="physicalDamageTaken" />
-                <ScalarProperty Name="trueDamageTaken" ColumnName="trueDamageTaken" />
-                <ScalarProperty Name="goldEarned" ColumnName="goldEarned" />
-                <ScalarProperty Name="goldSpent" ColumnName="goldSpent" />
-                <ScalarProperty Name="turretKill" ColumnName="turretKill" />
-                <ScalarProperty Name="inhibitorKills" ColumnName="inhibitorKills" />
-                <ScalarProperty Name="totalMinionsKilled" ColumnName="totalMinionsKilled" />
-                <ScalarProperty Name="neutralMinionsKilled" ColumnName="neutralMinionsKilled" />
-                <ScalarProperty Name="neutralMinionsKilledTeamJungle" ColumnName="neutralMinionsKilledTeamJungle" />
-                <ScalarProperty Name="neutralMinionsKilledEnemyJungle" ColumnName="neutralMinionsKilledEnemyJungle" />
-                <ScalarProperty Name="totalTimeCrowdControlDealt" ColumnName="totalTimeCrowdControlDealt" />
-                <ScalarProperty Name="champLevel" ColumnName="champLevel" />
-                <ScalarProperty Name="visionWardsBoughtInGame" ColumnName="visionWardsBoughtInGame" />
-                <ScalarProperty Name="sightWardsBoughtInGame" ColumnName="sightWardsBoughtInGame" />
-                <ScalarProperty Name="wardsPlaced" ColumnName="wardsPlaced" />
-                <ScalarProperty Name="wardsKilled" ColumnName="wardsKilled" />
-                <ScalarProperty Name="firstBloodKill" ColumnName="firstBloodKill" />
-                <ScalarProperty Name="firstBloodAssist" ColumnName="firstBloodAssist" />
-                <ScalarProperty Name="firstTowerKill" ColumnName="firstTowerKill" />
-                <ScalarProperty Name="firstTowerAssist" ColumnName="firstTowerAssist" />
-                <ScalarProperty Name="firstInhibitorKill" ColumnName="firstInhibitorKill" />
-                <ScalarProperty Name="firstInhibitorAssist" ColumnName="firstInhibitorAssist" />
-                <ScalarProperty Name="combatPlayerScore" ColumnName="combatPlayerScore" />
-                <ScalarProperty Name="objectivePlayerScore" ColumnName="objectivePlayerScore" />
-                <ScalarProperty Name="totalPlayerScore" ColumnName="totalPlayerScore" />
-                <ScalarProperty Name="totalScoreRank" ColumnName="totalScoreRank" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="gameframe">
             <EntityTypeMapping TypeName="lolModel.gameframe">
               <MappingFragment StoreEntitySet="gameframe">
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
                 <ScalarProperty Name="frameInterval" ColumnName="frameInterval" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mastery">
             <EntityTypeMapping TypeName="lolModel.mastery">
               <MappingFragment StoreEntitySet="mastery">
-                <ScalarProperty Name="masteryId" ColumnName="masteryId" />
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="participantId" ColumnName="participantId" />
                 <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="participantId" ColumnName="participantId" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="masteryId" ColumnName="masteryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="participant">
             <EntityTypeMapping TypeName="lolModel.participant">
               <MappingFragment StoreEntitySet="participant">
-                <ScalarProperty Name="participantId" ColumnName="participantId" />
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="teamId" ColumnName="teamId" />
-                <ScalarProperty Name="championId" ColumnName="championId" />
-                <ScalarProperty Name="spell1Id" ColumnName="spell1Id" />
-                <ScalarProperty Name="spell2Id" ColumnName="spell2Id" />
                 <ScalarProperty Name="highestAchievedSeasonTier" ColumnName="highestAchievedSeasonTier" />
+                <ScalarProperty Name="spell2Id" ColumnName="spell2Id" />
+                <ScalarProperty Name="spell1Id" ColumnName="spell1Id" />
+                <ScalarProperty Name="championId" ColumnName="championId" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="participantId" ColumnName="participantId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="participantframe">
             <EntityTypeMapping TypeName="lolModel.participantframe">
               <MappingFragment StoreEntitySet="participantframe">
-                <ScalarProperty Name="participantId" ColumnName="participantId" />
-                <ScalarProperty Name="position_x" ColumnName="position_x" />
-                <ScalarProperty Name="position_y" ColumnName="position_y" />
-                <ScalarProperty Name="currentGold" ColumnName="currentGold" />
-                <ScalarProperty Name="totalGold" ColumnName="totalGold" />
-                <ScalarProperty Name="level" ColumnName="level" />
-                <ScalarProperty Name="xp" ColumnName="xp" />
-                <ScalarProperty Name="minionsKilled" ColumnName="minionsKilled" />
-                <ScalarProperty Name="jungleMinionsKilled" ColumnName="jungleMinionsKilled" />
-                <ScalarProperty Name="dominionScore" ColumnName="dominionScore" />
                 <ScalarProperty Name="teamScore" ColumnName="teamScore" />
+                <ScalarProperty Name="dominionScore" ColumnName="dominionScore" />
+                <ScalarProperty Name="jungleMinionsKilled" ColumnName="jungleMinionsKilled" />
+                <ScalarProperty Name="minionsKilled" ColumnName="minionsKilled" />
+                <ScalarProperty Name="xp" ColumnName="xp" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="totalGold" ColumnName="totalGold" />
+                <ScalarProperty Name="currentGold" ColumnName="currentGold" />
+                <ScalarProperty Name="position_y" ColumnName="position_y" />
+                <ScalarProperty Name="position_x" ColumnName="position_x" />
+                <ScalarProperty Name="participantId" ColumnName="participantId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="participantframes">
             <EntityTypeMapping TypeName="lolModel.participantframes">
               <MappingFragment StoreEntitySet="participantframes">
-                <ScalarProperty Name="participantFramesId" ColumnName="participantFramesId" />
-                <ScalarProperty Name="participantFrame1" ColumnName="participantFrame1" />
-                <ScalarProperty Name="participantFrame2" ColumnName="participantFrame2" />
-                <ScalarProperty Name="participantFrame3" ColumnName="participantFrame3" />
-                <ScalarProperty Name="participantFrame4" ColumnName="participantFrame4" />
-                <ScalarProperty Name="participantFrame5" ColumnName="participantFrame5" />
-                <ScalarProperty Name="participantFrame6" ColumnName="participantFrame6" />
-                <ScalarProperty Name="participantFrame7" ColumnName="participantFrame7" />
                 <ScalarProperty Name="participantFrame8" ColumnName="participantFrame8" />
+                <ScalarProperty Name="participantFrame7" ColumnName="participantFrame7" />
+                <ScalarProperty Name="participantFrame6" ColumnName="participantFrame6" />
+                <ScalarProperty Name="participantFrame5" ColumnName="participantFrame5" />
+                <ScalarProperty Name="participantFrame4" ColumnName="participantFrame4" />
+                <ScalarProperty Name="participantFrame3" ColumnName="participantFrame3" />
+                <ScalarProperty Name="participantFrame2" ColumnName="participantFrame2" />
+                <ScalarProperty Name="participantFrame1" ColumnName="participantFrame1" />
+                <ScalarProperty Name="participantFramesId" ColumnName="participantFramesId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="participantidentities">
             <EntityTypeMapping TypeName="lolModel.participantidentities">
               <MappingFragment StoreEntitySet="participantidentities">
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="accountId" ColumnName="accountId" />
                 <ScalarProperty Name="participantId" ColumnName="participantId" />
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="player">
             <EntityTypeMapping TypeName="lolModel.player">
               <MappingFragment StoreEntitySet="player">
-                <ScalarProperty Name="accountId" ColumnName="accountId" />
-                <ScalarProperty Name="summonerName" ColumnName="summonerName" />
-                <ScalarProperty Name="summonerId" ColumnName="summonerId" />
-                <ScalarProperty Name="currentPlatformId" ColumnName="currentPlatformId" />
-                <ScalarProperty Name="currentAccountId" ColumnName="currentAccountId" />
-                <ScalarProperty Name="matchHistoryUri" ColumnName="matchHistoryUri" />
                 <ScalarProperty Name="profileIcon" ColumnName="profileIcon" />
+                <ScalarProperty Name="matchHistoryUri" ColumnName="matchHistoryUri" />
+                <ScalarProperty Name="currentAccountId" ColumnName="currentAccountId" />
+                <ScalarProperty Name="currentPlatformId" ColumnName="currentPlatformId" />
+                <ScalarProperty Name="summonerId" ColumnName="summonerId" />
+                <ScalarProperty Name="summonerName" ColumnName="summonerName" />
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rune">
             <EntityTypeMapping TypeName="lolModel.rune">
               <MappingFragment StoreEntitySet="rune">
-                <ScalarProperty Name="runeId" ColumnName="runeId" />
-                <ScalarProperty Name="participantId" ColumnName="participantId" />
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
                 <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="participantId" ColumnName="participantId" />
+                <ScalarProperty Name="runeId" ColumnName="runeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="stat">
             <EntityTypeMapping TypeName="lolModel.stat">
               <MappingFragment StoreEntitySet="stat">
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="participantId" ColumnName="participantId" />
-                <ScalarProperty Name="win" ColumnName="win" />
-                <ScalarProperty Name="item0" ColumnName="item0" />
-                <ScalarProperty Name="item1" ColumnName="item1" />
                 <ScalarProperty Name="item2" ColumnName="item2" />
-                <ScalarProperty Name="item3" ColumnName="item3" />
-                <ScalarProperty Name="item4" ColumnName="item4" />
-                <ScalarProperty Name="item5" ColumnName="item5" />
-                <ScalarProperty Name="item6" ColumnName="item6" />
-                <ScalarProperty Name="kills" ColumnName="kills" />
-                <ScalarProperty Name="deaths" ColumnName="deaths" />
-                <ScalarProperty Name="assists" ColumnName="assists" />
-                <ScalarProperty Name="largestKillingSpree" ColumnName="largestKillingSpree" />
-                <ScalarProperty Name="largestMultiKill" ColumnName="largestMultiKill" />
-                <ScalarProperty Name="killingSprees" ColumnName="killingSprees" />
-                <ScalarProperty Name="longestTimeSpentLiving" ColumnName="longestTimeSpentLiving" />
-                <ScalarProperty Name="doubleKills" ColumnName="doubleKills" />
-                <ScalarProperty Name="tripleKills" ColumnName="tripleKills" />
-                <ScalarProperty Name="quadraKills" ColumnName="quadraKills" />
-                <ScalarProperty Name="pentaKills" ColumnName="pentaKills" />
-                <ScalarProperty Name="unrealKills" ColumnName="unrealKills" />
-                <ScalarProperty Name="totalDamageDealt" ColumnName="totalDamageDealt" />
-                <ScalarProperty Name="magicDamageDealt" ColumnName="magicDamageDealt" />
-                <ScalarProperty Name="physicalDamageDealt" ColumnName="physicalDamageDealt" />
-                <ScalarProperty Name="trueDamageDealt" ColumnName="trueDamageDealt" />
-                <ScalarProperty Name="largestCriticalStrike" ColumnName="largestCriticalStrike" />
-                <ScalarProperty Name="totalDamageDealtToChampions" ColumnName="totalDamageDealtToChampions" />
-                <ScalarProperty Name="magicDamageDealtToChampions" ColumnName="magicDamageDealtToChampions" />
-                <ScalarProperty Name="physicalDamageDealtToChampions" ColumnName="physicalDamageDealtToChampions" />
-                <ScalarProperty Name="trueDamageDealtToChampions" ColumnName="trueDamageDealtToChampions" />
-                <ScalarProperty Name="totalHeal" ColumnName="totalHeal" />
-                <ScalarProperty Name="totalUnitsHealed" ColumnName="totalUnitsHealed" />
-                <ScalarProperty Name="totalDamageTaken" ColumnName="totalDamageTaken" />
-                <ScalarProperty Name="magicalDamageTaken" ColumnName="magicalDamageTaken" />
-                <ScalarProperty Name="physicalDamageTaken" ColumnName="physicalDamageTaken" />
-                <ScalarProperty Name="trueDamageTaken" ColumnName="trueDamageTaken" />
-                <ScalarProperty Name="goldEarned" ColumnName="goldEarned" />
-                <ScalarProperty Name="goldSpent" ColumnName="goldSpent" />
-                <ScalarProperty Name="turretKills" ColumnName="turretKills" />
-                <ScalarProperty Name="inhibitorKills" ColumnName="inhibitorKills" />
-                <ScalarProperty Name="totalMinionsKilled" ColumnName="totalMinionsKilled" />
-                <ScalarProperty Name="neutralMinionsKilled" ColumnName="neutralMinionsKilled" />
-                <ScalarProperty Name="neutralMinionsKilledTeamJungle" ColumnName="neutralMinionsKilledTeamJungle" />
-                <ScalarProperty Name="neutralMinionsKilledEnemyJungle" ColumnName="neutralMinionsKilledEnemyJungle" />
-                <ScalarProperty Name="totalTimeCrowdControlDealt" ColumnName="totalTimeCrowdControlDealt" />
-                <ScalarProperty Name="champLevel" ColumnName="champLevel" />
-                <ScalarProperty Name="visionWardsBoughtInGame" ColumnName="visionWardsBoughtInGame" />
-                <ScalarProperty Name="sightWardsBoughtInGame" ColumnName="sightWardsBoughtInGame" />
-                <ScalarProperty Name="wardsPlaced" ColumnName="wardsPlaced" />
-                <ScalarProperty Name="wardsKilled" ColumnName="wardsKilled" />
-                <ScalarProperty Name="firstBloodKill" ColumnName="firstBloodKill" />
-                <ScalarProperty Name="firstBloodAssist" ColumnName="firstBloodAssist" />
-                <ScalarProperty Name="firstTowerKill" ColumnName="firstTowerKill" />
-                <ScalarProperty Name="firstTowerAssist" ColumnName="firstTowerAssist" />
-                <ScalarProperty Name="firstInhibitorKill" ColumnName="firstInhibitorKill" />
-                <ScalarProperty Name="firstInhibitorAssist" ColumnName="firstInhibitorAssist" />
-                <ScalarProperty Name="combatPlayerScore" ColumnName="combatPlayerScore" />
-                <ScalarProperty Name="objectivePlayerScore" ColumnName="objectivePlayerScore" />
-                <ScalarProperty Name="totalPlayerScore" ColumnName="totalPlayerScore" />
                 <ScalarProperty Name="totalScoreRank" ColumnName="totalScoreRank" />
+                <ScalarProperty Name="totalPlayerScore" ColumnName="totalPlayerScore" />
+                <ScalarProperty Name="objectivePlayerScore" ColumnName="objectivePlayerScore" />
+                <ScalarProperty Name="combatPlayerScore" ColumnName="combatPlayerScore" />
+                <ScalarProperty Name="firstInhibitorAssist" ColumnName="firstInhibitorAssist" />
+                <ScalarProperty Name="firstInhibitorKill" ColumnName="firstInhibitorKill" />
+                <ScalarProperty Name="firstTowerAssist" ColumnName="firstTowerAssist" />
+                <ScalarProperty Name="firstTowerKill" ColumnName="firstTowerKill" />
+                <ScalarProperty Name="firstBloodAssist" ColumnName="firstBloodAssist" />
+                <ScalarProperty Name="firstBloodKill" ColumnName="firstBloodKill" />
+                <ScalarProperty Name="wardsKilled" ColumnName="wardsKilled" />
+                <ScalarProperty Name="wardsPlaced" ColumnName="wardsPlaced" />
+                <ScalarProperty Name="sightWardsBoughtInGame" ColumnName="sightWardsBoughtInGame" />
+                <ScalarProperty Name="visionWardsBoughtInGame" ColumnName="visionWardsBoughtInGame" />
+                <ScalarProperty Name="champLevel" ColumnName="champLevel" />
+                <ScalarProperty Name="totalTimeCrowdControlDealt" ColumnName="totalTimeCrowdControlDealt" />
+                <ScalarProperty Name="neutralMinionsKilledEnemyJungle" ColumnName="neutralMinionsKilledEnemyJungle" />
+                <ScalarProperty Name="neutralMinionsKilledTeamJungle" ColumnName="neutralMinionsKilledTeamJungle" />
+                <ScalarProperty Name="neutralMinionsKilled" ColumnName="neutralMinionsKilled" />
+                <ScalarProperty Name="totalMinionsKilled" ColumnName="totalMinionsKilled" />
+                <ScalarProperty Name="inhibitorKills" ColumnName="inhibitorKills" />
+                <ScalarProperty Name="turretKills" ColumnName="turretKills" />
+                <ScalarProperty Name="goldSpent" ColumnName="goldSpent" />
+                <ScalarProperty Name="goldEarned" ColumnName="goldEarned" />
+                <ScalarProperty Name="trueDamageTaken" ColumnName="trueDamageTaken" />
+                <ScalarProperty Name="physicalDamageTaken" ColumnName="physicalDamageTaken" />
+                <ScalarProperty Name="magicalDamageTaken" ColumnName="magicalDamageTaken" />
+                <ScalarProperty Name="totalDamageTaken" ColumnName="totalDamageTaken" />
+                <ScalarProperty Name="totalUnitsHealed" ColumnName="totalUnitsHealed" />
+                <ScalarProperty Name="totalHeal" ColumnName="totalHeal" />
+                <ScalarProperty Name="trueDamageDealtToChampions" ColumnName="trueDamageDealtToChampions" />
+                <ScalarProperty Name="physicalDamageDealtToChampions" ColumnName="physicalDamageDealtToChampions" />
+                <ScalarProperty Name="magicDamageDealtToChampions" ColumnName="magicDamageDealtToChampions" />
+                <ScalarProperty Name="totalDamageDealtToChampions" ColumnName="totalDamageDealtToChampions" />
+                <ScalarProperty Name="largestCriticalStrike" ColumnName="largestCriticalStrike" />
+                <ScalarProperty Name="trueDamageDealt" ColumnName="trueDamageDealt" />
+                <ScalarProperty Name="physicalDamageDealt" ColumnName="physicalDamageDealt" />
+                <ScalarProperty Name="magicDamageDealt" ColumnName="magicDamageDealt" />
+                <ScalarProperty Name="totalDamageDealt" ColumnName="totalDamageDealt" />
+                <ScalarProperty Name="unrealKills" ColumnName="unrealKills" />
+                <ScalarProperty Name="pentaKills" ColumnName="pentaKills" />
+                <ScalarProperty Name="quadraKills" ColumnName="quadraKills" />
+                <ScalarProperty Name="tripleKills" ColumnName="tripleKills" />
+                <ScalarProperty Name="doubleKills" ColumnName="doubleKills" />
+                <ScalarProperty Name="longestTimeSpentLiving" ColumnName="longestTimeSpentLiving" />
+                <ScalarProperty Name="killingSprees" ColumnName="killingSprees" />
+                <ScalarProperty Name="largestMultiKill" ColumnName="largestMultiKill" />
+                <ScalarProperty Name="largestKillingSpree" ColumnName="largestKillingSpree" />
+                <ScalarProperty Name="assists" ColumnName="assists" />
+                <ScalarProperty Name="deaths" ColumnName="deaths" />
+                <ScalarProperty Name="kills" ColumnName="kills" />
+                <ScalarProperty Name="item6" ColumnName="item6" />
+                <ScalarProperty Name="item5" ColumnName="item5" />
+                <ScalarProperty Name="item4" ColumnName="item4" />
+                <ScalarProperty Name="item3" ColumnName="item3" />
+                <ScalarProperty Name="item1" ColumnName="item1" />
+                <ScalarProperty Name="item0" ColumnName="item0" />
+                <ScalarProperty Name="win" ColumnName="win" />
+                <ScalarProperty Name="participantId" ColumnName="participantId" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="team">
             <EntityTypeMapping TypeName="lolModel.team">
               <MappingFragment StoreEntitySet="team">
-                <ScalarProperty Name="teamId" ColumnName="teamId" />
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="win" ColumnName="win" />
-                <ScalarProperty Name="firstBlood" ColumnName="firstBlood" />
-                <ScalarProperty Name="firstTower" ColumnName="firstTower" />
-                <ScalarProperty Name="firstInhibitor" ColumnName="firstInhibitor" />
-                <ScalarProperty Name="firstBaron" ColumnName="firstBaron" />
-                <ScalarProperty Name="firstDragon" ColumnName="firstDragon" />
-                <ScalarProperty Name="firstRiftHerald" ColumnName="firstRiftHerald" />
-                <ScalarProperty Name="towerKills" ColumnName="towerKills" />
-                <ScalarProperty Name="inhibitorKills" ColumnName="inhibitorKills" />
-                <ScalarProperty Name="baronKills" ColumnName="baronKills" />
-                <ScalarProperty Name="dragonKills" ColumnName="dragonKills" />
-                <ScalarProperty Name="vilemawKills" ColumnName="vilemawKills" />
-                <ScalarProperty Name="riftHeraldKills" ColumnName="riftHeraldKills" />
                 <ScalarProperty Name="dominionVictoryScore" ColumnName="dominionVictoryScore" />
+                <ScalarProperty Name="riftHeraldKills" ColumnName="riftHeraldKills" />
+                <ScalarProperty Name="vilemawKills" ColumnName="vilemawKills" />
+                <ScalarProperty Name="dragonKills" ColumnName="dragonKills" />
+                <ScalarProperty Name="baronKills" ColumnName="baronKills" />
+                <ScalarProperty Name="inhibitorKills" ColumnName="inhibitorKills" />
+                <ScalarProperty Name="towerKills" ColumnName="towerKills" />
+                <ScalarProperty Name="firstRiftHerald" ColumnName="firstRiftHerald" />
+                <ScalarProperty Name="firstDragon" ColumnName="firstDragon" />
+                <ScalarProperty Name="firstBaron" ColumnName="firstBaron" />
+                <ScalarProperty Name="firstInhibitor" ColumnName="firstInhibitor" />
+                <ScalarProperty Name="firstTower" ColumnName="firstTower" />
+                <ScalarProperty Name="firstBlood" ColumnName="firstBlood" />
+                <ScalarProperty Name="win" ColumnName="win" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="timeline">
             <EntityTypeMapping TypeName="lolModel.timeline">
               <MappingFragment StoreEntitySet="timeline">
-                <ScalarProperty Name="gameId" ColumnName="gameId" />
-                <ScalarProperty Name="participantId" ColumnName="participantId" />
-                <ScalarProperty Name="creepsPerMinDeltas_1" ColumnName="creepsPerMinDeltas_1" />
-                <ScalarProperty Name="creepsPerMinDeltas_2" ColumnName="creepsPerMinDeltas_2" />
-                <ScalarProperty Name="creepsPerMinDeltas_3" ColumnName="creepsPerMinDeltas_3" />
-                <ScalarProperty Name="creepsPerMinDeltas_4" ColumnName="creepsPerMinDeltas_4" />
-                <ScalarProperty Name="xpPerMinDeltas_1" ColumnName="xpPerMinDeltas_1" />
-                <ScalarProperty Name="xpPerMinDeltas_2" ColumnName="xpPerMinDeltas_2" />
-                <ScalarProperty Name="xpPerMinDeltas_3" ColumnName="xpPerMinDeltas_3" />
-                <ScalarProperty Name="xpPerMinDeltas_4" ColumnName="xpPerMinDeltas_4" />
-                <ScalarProperty Name="goldPerMinDeltas_1" ColumnName="goldPerMinDeltas_1" />
-                <ScalarProperty Name="goldPerMinDeltas_2" ColumnName="goldPerMinDeltas_2" />
-                <ScalarProperty Name="goldPerMinDeltas_3" ColumnName="goldPerMinDeltas_3" />
-                <ScalarProperty Name="goldPerMinDeltas_4" ColumnName="goldPerMinDeltas_4" />
-                <ScalarProperty Name="damageTakenPerMinDeltas_1" ColumnName="damageTakenPerMinDeltas_1" />
-                <ScalarProperty Name="damageTakenPerMinDeltas_2" ColumnName="damageTakenPerMinDeltas_2" />
-                <ScalarProperty Name="damageTakenPerMinDeltas_3" ColumnName="damageTakenPerMinDeltas_3" />
-                <ScalarProperty Name="damageTakenPerMinDeltas_4" ColumnName="damageTakenPerMinDeltas_4" />
-                <ScalarProperty Name="role" ColumnName="role" />
-                <ScalarProperty Name="lane" ColumnName="lane" />
-                <ScalarProperty Name="csDiffPerMinDeltas_1" ColumnName="csDiffPerMinDeltas_1" />
-                <ScalarProperty Name="csDiffPerMinDeltas_2" ColumnName="csDiffPerMinDeltas_2" />
-                <ScalarProperty Name="csDiffPerMinDeltas_3" ColumnName="csDiffPerMinDeltas_3" />
-                <ScalarProperty Name="csDiffPerMinDeltas_4" ColumnName="csDiffPerMinDeltas_4" />
-                <ScalarProperty Name="xpDiffPerMinDeltas_1" ColumnName="xpDiffPerMinDeltas_1" />
-                <ScalarProperty Name="xpDiffPerMinDeltas_2" ColumnName="xpDiffPerMinDeltas_2" />
-                <ScalarProperty Name="xpDiffPerMinDeltas_3" ColumnName="xpDiffPerMinDeltas_3" />
-                <ScalarProperty Name="xpDiffPerMinDeltas_4" ColumnName="xpDiffPerMinDeltas_4" />
-                <ScalarProperty Name="damageTakenDiffPerMinDeltas_1" ColumnName="damageTakenDiffPerMinDeltas_1" />
-                <ScalarProperty Name="damageTakenDiffPerMinDeltas_2" ColumnName="damageTakenDiffPerMinDeltas_2" />
-                <ScalarProperty Name="damageTakenDiffPerMinDeltas_3" ColumnName="damageTakenDiffPerMinDeltas_3" />
                 <ScalarProperty Name="damageTakenDiffPerMinDeltas_4" ColumnName="damageTakenDiffPerMinDeltas_4" />
+                <ScalarProperty Name="damageTakenDiffPerMinDeltas_3" ColumnName="damageTakenDiffPerMinDeltas_3" />
+                <ScalarProperty Name="damageTakenDiffPerMinDeltas_2" ColumnName="damageTakenDiffPerMinDeltas_2" />
+                <ScalarProperty Name="damageTakenDiffPerMinDeltas_1" ColumnName="damageTakenDiffPerMinDeltas_1" />
+                <ScalarProperty Name="xpDiffPerMinDeltas_4" ColumnName="xpDiffPerMinDeltas_4" />
+                <ScalarProperty Name="xpDiffPerMinDeltas_3" ColumnName="xpDiffPerMinDeltas_3" />
+                <ScalarProperty Name="xpDiffPerMinDeltas_2" ColumnName="xpDiffPerMinDeltas_2" />
+                <ScalarProperty Name="xpDiffPerMinDeltas_1" ColumnName="xpDiffPerMinDeltas_1" />
+                <ScalarProperty Name="csDiffPerMinDeltas_4" ColumnName="csDiffPerMinDeltas_4" />
+                <ScalarProperty Name="csDiffPerMinDeltas_3" ColumnName="csDiffPerMinDeltas_3" />
+                <ScalarProperty Name="csDiffPerMinDeltas_2" ColumnName="csDiffPerMinDeltas_2" />
+                <ScalarProperty Name="csDiffPerMinDeltas_1" ColumnName="csDiffPerMinDeltas_1" />
+                <ScalarProperty Name="lane" ColumnName="lane" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="damageTakenPerMinDeltas_4" ColumnName="damageTakenPerMinDeltas_4" />
+                <ScalarProperty Name="damageTakenPerMinDeltas_3" ColumnName="damageTakenPerMinDeltas_3" />
+                <ScalarProperty Name="damageTakenPerMinDeltas_2" ColumnName="damageTakenPerMinDeltas_2" />
+                <ScalarProperty Name="damageTakenPerMinDeltas_1" ColumnName="damageTakenPerMinDeltas_1" />
+                <ScalarProperty Name="goldPerMinDeltas_4" ColumnName="goldPerMinDeltas_4" />
+                <ScalarProperty Name="goldPerMinDeltas_3" ColumnName="goldPerMinDeltas_3" />
+                <ScalarProperty Name="goldPerMinDeltas_2" ColumnName="goldPerMinDeltas_2" />
+                <ScalarProperty Name="goldPerMinDeltas_1" ColumnName="goldPerMinDeltas_1" />
+                <ScalarProperty Name="xpPerMinDeltas_4" ColumnName="xpPerMinDeltas_4" />
+                <ScalarProperty Name="xpPerMinDeltas_3" ColumnName="xpPerMinDeltas_3" />
+                <ScalarProperty Name="xpPerMinDeltas_2" ColumnName="xpPerMinDeltas_2" />
+                <ScalarProperty Name="xpPerMinDeltas_1" ColumnName="xpPerMinDeltas_1" />
+                <ScalarProperty Name="creepsPerMinDeltas_4" ColumnName="creepsPerMinDeltas_4" />
+                <ScalarProperty Name="creepsPerMinDeltas_3" ColumnName="creepsPerMinDeltas_3" />
+                <ScalarProperty Name="creepsPerMinDeltas_2" ColumnName="creepsPerMinDeltas_2" />
+                <ScalarProperty Name="creepsPerMinDeltas_1" ColumnName="creepsPerMinDeltas_1" />
+                <ScalarProperty Name="participantId" ColumnName="participantId" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="frames" TypeName="lolModel.frames" StoreEntitySet="frames">
-            <EndProperty Name="frame">
-              <ScalarProperty Name="participantFramesId" ColumnName="participantFramesId" />
-            </EndProperty>
             <EndProperty Name="gameframe">
               <ScalarProperty Name="gameId" ColumnName="gameId" />
+            </EndProperty>
+            <EndProperty Name="frame">
+              <ScalarProperty Name="participantFramesId" ColumnName="participantFramesId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

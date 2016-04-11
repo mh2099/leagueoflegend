@@ -16,21 +16,22 @@ namespace lolLib.EF
     {
         public int teamId { get; set; }
         public long gameId { get; set; }
-        public string win { get; set; }
+        public Nullable<bool> win { get; set; }
         public Nullable<bool> firstBlood { get; set; }
         public Nullable<bool> firstTower { get; set; }
         public Nullable<bool> firstInhibitor { get; set; }
         public Nullable<bool> firstBaron { get; set; }
         public Nullable<bool> firstDragon { get; set; }
         public Nullable<bool> firstRiftHerald { get; set; }
-        public Nullable<int> towerKills { get; set; }
-        public Nullable<int> inhibitorKills { get; set; }
-        public Nullable<int> baronKills { get; set; }
-        public Nullable<int> dragonKills { get; set; }
-        public Nullable<int> vilemawKills { get; set; }
-        public Nullable<int> riftHeraldKills { get; set; }
-        public Nullable<int> dominionVictoryScore { get; set; }
+        public Nullable<short> towerKills { get; set; }
+        public Nullable<short> inhibitorKills { get; set; }
+        public Nullable<short> baronKills { get; set; }
+        public Nullable<short> dragonKills { get; set; }
+        public Nullable<short> vilemawKills { get; set; }
+        public Nullable<short> riftHeraldKills { get; set; }
+        public Nullable<short> dominionVictoryScore { get; set; }
     
+        public virtual ban ban { get; set; }
         public virtual game game { get; set; }
     }
 }

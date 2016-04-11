@@ -31,10 +31,10 @@ namespace lolLib.EF
         public Nullable<int> position_y { get; set; }
         public Nullable<int> currentGold { get; set; }
         public Nullable<int> totalGold { get; set; }
-        public Nullable<int> level { get; set; }
+        public Nullable<sbyte> level { get; set; }
         public Nullable<int> xp { get; set; }
-        public Nullable<int> minionsKilled { get; set; }
-        public Nullable<int> jungleMinionsKilled { get; set; }
+        public Nullable<sbyte> minionsKilled { get; set; }
+        public Nullable<sbyte> jungleMinionsKilled { get; set; }
         public Nullable<int> dominionScore { get; set; }
         public Nullable<int> teamScore { get; set; }
     
