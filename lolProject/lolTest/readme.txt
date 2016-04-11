@@ -2,10 +2,10 @@
 
 parameters:
 
-update		load, update and export game list
-analyze		analyze game list for each player
-sync		sync game list with database
-infos		game list informations
+cloud-sync		load, update and export game list
+db-sync		sync game list with database
+file-analyze	analyze game list for each player
+file-infos		game list informations
 
 help		show parameters
 version		show version
