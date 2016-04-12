@@ -87,9 +87,11 @@
         {
             using (var nE = new lolEntities())
             {
+                // Game
                 var entity = new game();
                 MapTo.MappingToEntity(Game, ref entity);
-                nE.game.Add(entity);
+                var game = nE.game.Add(entity);
+                //
                 nE.SaveChanges();
             }
         }

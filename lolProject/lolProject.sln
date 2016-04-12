@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4CC54C9-ED79-444C-A94D-8FA57C1DF70E}"
 	ProjectSection(SolutionItems) = preProject
 		lolDB.mwb = lolDB.mwb
+		lolDB.png = lolDB.png
 		readme.txt = readme.txt
 		todo.txt = todo.txt
 	EndProjectSection

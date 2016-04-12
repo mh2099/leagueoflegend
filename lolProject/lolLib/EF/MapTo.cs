@@ -1,6 +1,7 @@
 ﻿namespace lolLib.EF
 {
     using System;
+    using System.Collections.Generic;
     using DTO;
 
     public static class MapTo
@@ -37,6 +38,13 @@
                 e.gameMode = d.gameMode;
                 e.gameType = d.gameType;
                 // TODO
+                /*ICollection<team> teamCollection = new List<team>();
+                foreach (var teamd in d.teams)
+                {
+                    team team = new team();
+                    MapTo.MappingToEntity(teamd, ref team);
+                    teamCollection.Add(team);
+                }*/
                 return;
             }
             // Mastery DTO

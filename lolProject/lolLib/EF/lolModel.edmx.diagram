@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="70e379b13db646babd0ee2dd8735378f" Name="Diagram1" ZoomLevel="93">
-        <EntityTypeShape EntityType="lolModel.ban" Width="1.5" PointX="9.75" PointY="15.125" />
-        <EntityTypeShape EntityType="lolModel.frame" Width="1.5" PointX="5.25" PointY="2.375" />
-        <EntityTypeShape EntityType="lolModel.game" Width="1.5" PointX="5.25" PointY="6.5" />
-        <EntityTypeShape EntityType="lolModel.gameframe" Width="1.5" PointX="7.5" PointY="2.5" />
-        <EntityTypeShape EntityType="lolModel.mastery" Width="1.5" PointX="9.75" PointY="21.875" />
-        <EntityTypeShape EntityType="lolModel.participant" Width="1.5" PointX="7.5" PointY="30.625" />
-        <EntityTypeShape EntityType="lolModel.participantframe" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="lolModel.participantframes" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="lolModel.participantidentities" Width="1.5" PointX="7.5" PointY="7.375" />
-        <EntityTypeShape EntityType="lolModel.player" Width="1.5" PointX="5.25" PointY="11.125" />
-        <EntityTypeShape EntityType="lolModel.rune" Width="1.5" PointX="9.75" PointY="19.125" />
-        <EntityTypeShape EntityType="lolModel.stat" Width="1.5" PointX="9.75" PointY="24.5" />
-        <EntityTypeShape EntityType="lolModel.team" Width="1.5" PointX="7.5" PointY="13.875" />
-        <EntityTypeShape EntityType="lolModel.timeline" Width="1.5" PointX="9.75" PointY="38.25" />
+      <Diagram DiagramId="70e379b13db646babd0ee2dd8735378f" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="lolModel.ban" Width="1.5" PointX="5.75" PointY="4.875" />
+        <EntityTypeShape EntityType="lolModel.frame" Width="1.5" PointX="2.25" PointY="7.25" />
+        <EntityTypeShape EntityType="lolModel.game" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="lolModel.gameframe" Width="1.5" PointX="2.25" PointY="4.875" />
+        <EntityTypeShape EntityType="lolModel.mastery" Width="1.5" PointX="9.625" PointY="0.5" />
+        <EntityTypeShape EntityType="lolModel.participant" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="lolModel.participantframe" Width="1.5" PointX="4.125" PointY="10.125" />
+        <EntityTypeShape EntityType="lolModel.participantframes" Width="1.5" PointX="2.125" PointY="10.125" />
+        <EntityTypeShape EntityType="lolModel.participantidentities" Width="1.5" PointX="0.5" PointY="4.875" />
+        <EntityTypeShape EntityType="lolModel.player" Width="1.5" PointX="0.5" PointY="7.25" />
+        <EntityTypeShape EntityType="lolModel.rune" Width="1.5" PointX="5.625" PointY="0.5" />
+        <EntityTypeShape EntityType="lolModel.stat" Width="1.5" PointX="9.625" PointY="2.875" />
+        <EntityTypeShape EntityType="lolModel.team" Width="1.5" PointX="4" PointY="4.875" />
+        <EntityTypeShape EntityType="lolModel.timeline" Width="1.5" PointX="7.5" PointY="4.875" />
         <AssociationConnector Association="lolModel.fk_Ban_Team" />
         <AssociationConnector Association="lolModel.fk_Frame_ParticipantFrames" />
         <AssociationConnector Association="lolModel.fk_game_frame_game" />
